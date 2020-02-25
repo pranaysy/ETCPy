@@ -7,8 +7,10 @@ Currently computes the exact ETC on a 1-dimensional symbolic sequence. Convenien
 Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. *A New Complexity Measure for Time Series Analysis and Classification.* The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
   
 # Installation
-Dependencies: `Numba` and `NumPy`
-Currently unpackaged. Clone the repository, install NumPy and Numba using conda.
+*Dependencies:* `Numba` and `NumPy`  
+Currently unpackaged :(  
+  
+Clone the repository and install NumPy and Numba using conda; should be enough.
   
 # Demo
 Please check out `demo.py` to see ETC in action.
