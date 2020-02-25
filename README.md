@@ -1,7 +1,7 @@
 # ETCPy
 Compute Effort To Compress (ETC) using the NSRPS algorithm in Python.
 
-*Reference paper:*
+***Reference paper:***  
 Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. *A New Complexity Measure for Time Series Analysis and Classification.* The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
 
 # Installation
