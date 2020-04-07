@@ -1,94 +1,114 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+This module contains convenience functions for use elsewhere.
 
-
-@author: pranay
+@author: Pranay S. Yadav
 """
 
-import numpy as np
-from numba import njit
+# Import functions from standard library modules
+from random import choices, seed
+from collections import Counter
+from math import log2
 
+# Set seed for reproducibility
+seed(10)
 
-@njit
-def _discretize(x, n_bins):
+# Function definitions
+def partition(seq, n_bins):
+    """
+    This function takes an input sequence and bins it into discrete points.
 
-    delta_inv = n_bins / (np.ptp(x) + 1e-6)
+    Parameters
+    ----------
+    seq : list/tuple of float
+        Collection of floats.
+    n_bins : int
+        Number of bins/paritions to create.
 
-    return np.floor((x - x.min()) * delta_inv) + 1
+    Returns
+    -------
+    list
+        Collection of integers. Contains unique integers from 1 to n_bins.
 
+    """
+    # Get smallest value
+    a = min(seq)
 
-def _partition(x, n_bins):
+    # Compute reciprocal of peak-to-peak per bin
+    delta_inv = n_bins / (max(seq) - a + 1e-6)
 
-    return _discretize(x, n_bins).astype(np.int)
-
-
-def partition(x, n_bins):
-
-    if not isinstance(n_bins, int) or n_bins < 2:
-        print(">> Number of bins is invalid ...")
-        return None
-
-    if check_inputs(x) or n_bins > len(x):
-        return _partition(x, n_bins)
-    else:
-        return None
-
+    # Transform each element and return
+    return [1+int((elem - a) * delta_inv) for elem in seq]
 
 def generate(size=10, partitions=2):
+    """
+    This function generates discrete random data of desired size and bins.
 
-    if not isinstance(partitions, int) or partitions < 2 or partitions > size:
+    Parameters
+    ----------
+    size : int, optional
+        Length of sequence to generate. The default is 10.
+    partitions : int, optional
+        Number of bins/paritions to create.
+
+    Returns
+    -------
+    list
+        Collection of integers sampled from discrete uniform.
+
+    """
+    if not (isinstance(partitions, int) and isinstance(size,int) and partitions >= 2):
         print(">> Number of bins is invalid ...")
         return None
 
-    random = np.random.random(size)
-
-    return _partition(random, partitions)
+    return choices(range(1, partitions+1), k=size)
 
 
-def warmup():
+def equality(seq):
+    """
+    This function checks if all elements of a collection are equal.
 
-    from .NSRPS import one_step
+    Parameters
+    ----------
+    seq : list or tuple
+        Sequence of integers.
 
-    if one_step(generate()).any():
-        print(">> Numba optimizations ready ...")
+    Returns
+    -------
+    bool
+        True if all elements equal.
 
-        if np.array_equal(np.array([3, 3]), one_step(np.array([1, 2, 1, 2]))):
-            print(">> NSRPS ready ...")
-            return True
-        else:
-            print(">> NSRPS failed ...")
-            return False
-    else:
-        print(">> Numba optimizations failed ...")
-        return False
+    """
+    # Iterate over all elements in sequence
+    for element in seq:
 
-
-def check_equality(x):
-
-    if np.all(x == x[0]):
-        return True
-    else:
-        return False
-
-
-def check_inputs(x):
-
-    if isinstance(x, (np.ndarray, np.number)):
-        if len(x) > 1 and len(x.shape) == 1:
-            print(">> Input has valid type and dimensions ...")
-            return True
-        else:
-            print(">> Input has invalid dimensions ...")
+        # Break at first inequality
+        if seq[0] != element:
             return False
 
-    else:
-        print(">> Input is not a numeric NumPy array ...")
-        return False
+    # Else all equal
+    return True
 
+def entropy(seq):
+    """
+    This function computes Shannon Entropy of a given sequence.
 
-def check_sanity(x):
-    if check_inputs(x) and not check_equality(x):
-        return True
-    else:
-        return False
+    Parameters
+    ----------
+    seq : list or tuple
+        Sequence of integers.
+
+    Returns
+    -------
+    float
+        Shannon entropy of sequence.
+
+    """
+    # Get counts from Counter, normalize by total, transform each and sum all
+    return sum(
+        -seq*log2(seq)
+        for seq in (
+                elem/len(seq) for elem in Counter(seq).values()
+                )
+        )
