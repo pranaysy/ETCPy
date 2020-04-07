@@ -100,16 +100,16 @@ def _filter_windows(win, order=2):
 
     # Loop begins at 0, ends on penultimate index (each check looks ahead by 1)
     idx = 0
-    upper_idx_lim = len(win)-1
+    upper_idx_lim = len(win) - 1
 
     # Main while loop
     while idx < upper_idx_lim:
 
         # Check if current & next windows equal (tuple comparison, short-circuit)
-        if win[idx] == win[idx+1]:
+        if win[idx] == win[idx + 1]:
 
             # If so, next window is masked out, current window is "kept in"
-            mask[idx+1] = False
+            mask[idx + 1] = False
 
             # Move on to the next window
             idx += 1
@@ -124,7 +124,7 @@ def _filter_windows(win, order=2):
                 if subidx < upper_idx_lim and win[subidx] == win[subidx + 1]:
 
                     # If so, next window is masked out, current window is "kept in"
-                    mask[subidx+1] = False
+                    mask[subidx + 1] = False
 
                     # Increment the overall index to slide by 1
                     idx += 1
@@ -138,6 +138,7 @@ def _filter_windows(win, order=2):
 
     # Return the mask
     return mask
+
 
 def _apply_filter_mask(win, mask):
     """
@@ -173,6 +174,7 @@ def _apply_filter_mask(win, mask):
 
     return filtered_windows, filtered_indices
 
+
 def _find_frequent_windows(filtered_windows, filtered_indices):
     """
     This function returns the most frequently occurring window from a tuple of
@@ -207,11 +209,10 @@ def _find_frequent_windows(filtered_windows, filtered_indices):
     freq_win, count = Counter(filtered_windows).most_common(1)[0]
 
     # Select only those indices that correspond to the most frequent window
-    idx_freq_win = compress(
-        filtered_indices, [a==freq_win for a in filtered_windows]
-        )
+    idx_freq_win = compress(filtered_indices, [a == freq_win for a in filtered_windows])
 
     return freq_win, count, idx_freq_win
+
 
 def _substitute_window(seq, idx_freq_win, order=2):
     """
@@ -256,13 +257,14 @@ def _substitute_window(seq, idx_freq_win, order=2):
         seq[index] = a
 
         # Substitute the remaining elements of window, in seq, with False
-        for n in range(1,order):
+        for n in range(1, order):
             seq[index + n] = False
 
     # Filter out all False elements and return what's left
     reduced_seq = [element for element in seq if element]
 
     return reduced_seq
+
 
 def _execute_one_step(seq, order=2, verbose=False):
     """

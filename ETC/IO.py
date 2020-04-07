@@ -10,26 +10,39 @@ This module contains helper functions for reading and writing files.
 from pathlib import Path
 from csv import DictWriter
 
+
+def populate_files(filepath, suffix="*.txt"):
+    if not isinstance(filepath, Path):
+        filepath = Path(filepath)
+
+    if filepath.exists() and filepath.is_dir():
+        return filepath.rglob(suffix)
+
+    print("Invalid path")
+    return None
+
+
 def read(filepath, recode=True, delimiter=None):
     if not isinstance(filepath, Path):
         filepath = Path(filepath)
     text = filepath.read_text()
 
     if delimiter:
-        text = ''.join(text.split(delimiter))
+        text = "".join(text.split(delimiter))
 
     if recode:
         alphabets = sorted(set(text))
-        replacer = dict((y,str(x+1)) for x,y in enumerate(alphabets))
+        replacer = dict((y, str(x + 1)) for x, y in enumerate(alphabets))
         for key in replacer:
             text = text.replace(key, replacer[key])
 
     return tuple(map(int, text))
 
+
 def save(out, filename):
 
-    with open(filename, 'w') as fileout:
-        writer = DictWriter(fileout, fieldnames=out[0].keys(), delimiter=',')
+    with open(filename, "w") as fileout:
+        writer = DictWriter(fileout, fieldnames=out[0].keys(), delimiter=",")
         writer.writeheader()
         writer.writerows(out)
         print(f">> Data successfully stored to disk as {filename}")

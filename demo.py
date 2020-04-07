@@ -1,39 +1,40 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+This is a demo script for showcasing this package's functionality in brief.
 
-
-@author: pranay
+@author: Pranay S. Yadav
 """
 
 # Import statements
 import ETC
 
+# ETC ESTIMATION FOR A SINGLE SEQUENCE
+# ------------------------------------
 # Generate synthetic data from the discrete uniform distribution
-synthetic_data = ETC.utils.generate(size=100, partitions=4)
+synthetic = ETC.generate(size=1000, partitions=4)
 
 # Compute Effort To Compress using Non-Sequential Recursive Pair Substitution
-out = ETC.compute(synthetic_data, verbose=True)
+out = ETC.compute(synthetic, order=2, verbose=True)
 
-# from multiprocessing import Pool
-# from pathlib import Path
+# ETC ESTIMATION FOR CHUNKS OF A SINGLE SEQUENCE IN PARALLEL
+# ----------------------------------------------------------
+# Generate a long sequence
+seq = ETC.generate(10000, 4)
 
-# folder = Path("/home/pranay/Projects/GenomeComplexity/data/GISAID/sequence")
-# files = folder.glob("*.txt")
+# Compute strides of 1000 elements offsetted by 100, in parallel
+if __name__ == "__main__":
+    outp = ETC.parallel.pcompute_single(seq, size=1000, offset=100)
 
-# def comp(filepath):
-#     seq = ETC.IO.read(filepath)
-#     fname = filepath.with_name(filepath.stem+'_etc_ord2.csv')
-#     return filepath.stem, ETC.compute_save(seq, fname, order=2)
+# Compute non-overlapping strides of 1000 elements (set offset = size)
+if __name__ == "__main__":
+    outp = ETC.parallel.pcompute_single(seq, size=1000, offset=1000)
 
-# def pcompute(z):
-#     pool = Pool()
-#     x = pool.map_async(comp, z)
-#     pool.close()
-#     pool.join()
+# ETC ESTIMATION FOR MULTIPLE SEQUENCES IN PARALLEL
+# -------------------------------------------------
+# Generate 10 long sequences
+seqs = (ETC.generate(10000, 4) for _ in range(10))
 
-#     return x
-
-# if __name__ == '__main__':
-#     a = pcompute(files)
-
+# Compute ETC estimates for each sequence
+if __name__ == "__main__":
+    outps = ETC.parallel.pcompute_multiple_seq(seqs)

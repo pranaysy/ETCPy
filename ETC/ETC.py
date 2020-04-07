@@ -67,13 +67,15 @@ def _compute_verbose(seq, order=2):
     output = list()
 
     # Append estimates for original sequence
-    output.append({
-        "step":etc,
-        "length":len(temp),
-        "entropy":entropy(temp),
-        "window":None,
-        "count":None
-        })
+    output.append(
+        {
+            "step": etc,
+            "length": len(temp),
+            "entropy": entropy(temp),
+            "window": None,
+            "count": None,
+        }
+    )
 
     # Execute iteration loop until either all elements are equal or sequence is
     # reduced to less than size of the window being substituted (order)
@@ -86,17 +88,20 @@ def _compute_verbose(seq, order=2):
         etc += 1
 
         # Compute estimates and append to aggregator
-        output.append({
-            "step":etc,
-            "length":len(temp),
-            "entropy":entropy(temp),
-            "window":freq_win,
-            "count":count
-            })
+        output.append(
+            {
+                "step": etc,
+                "length": len(temp),
+                "entropy": entropy(temp),
+                "window": freq_win,
+                "count": count,
+            }
+        )
 
     # Display ETC and return it with aggregator
     print(f"ETC={etc}")
     return etc, output
+
 
 def _compute_compact(seq, order=2):
     """
@@ -168,11 +173,12 @@ def compute(seq, order=2, verbose=True):
     # If verbose, run the verbose version and return accordingly
     if verbose:
         etc, out = _compute_verbose(seq, order)
-        return {'ETC':etc,'Trajectory':out}
+        return {"ETC": etc, "Trajectory": out}
 
     # If not verbose, run the compact version and return accordingly
     etc = _compute_compact(seq, order)
-    return {'ETC':etc}
+    return {"ETC": etc}
+
 
 def compute_save(seq, filename, order=2):
     """
@@ -200,4 +206,4 @@ def compute_save(seq, filename, order=2):
 
     # Save the output to a csv file and return
     save(out, filename)
-    return {'ETC':etc}
+    return {"ETC": etc}

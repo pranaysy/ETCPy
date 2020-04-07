@@ -3,6 +3,8 @@
 """
 This module contains convenience functions for use elsewhere.
 
+External Dependecies: None
+
 @author: Pranay S. Yadav
 """
 
@@ -39,7 +41,8 @@ def partition(seq, n_bins):
     delta_inv = n_bins / (max(seq) - a + 1e-6)
 
     # Transform each element and return
-    return [1+int((elem - a) * delta_inv) for elem in seq]
+    return [1 + int((elem - a) * delta_inv) for elem in seq]
+
 
 def generate(size=10, partitions=2):
     """
@@ -58,11 +61,11 @@ def generate(size=10, partitions=2):
         Collection of integers sampled from discrete uniform.
 
     """
-    if not (isinstance(partitions, int) and isinstance(size,int) and partitions >= 2):
+    if not (isinstance(partitions, int) and isinstance(size, int) and partitions >= 2):
         print(">> Number of bins is invalid ...")
         return None
 
-    return choices(range(1, partitions+1), k=size)
+    return choices(range(1, partitions + 1), k=size)
 
 
 def equality(seq):
@@ -90,6 +93,7 @@ def equality(seq):
     # Else all equal
     return True
 
+
 def entropy(seq):
     """
     This function computes Shannon Entropy of a given sequence.
@@ -107,8 +111,5 @@ def entropy(seq):
     """
     # Get counts from Counter, normalize by total, transform each and sum all
     return sum(
-        -seq*log2(seq)
-        for seq in (
-                elem/len(seq) for elem in Counter(seq).values()
-                )
-        )
+        -seq * log2(seq) for seq in (elem / len(seq) for elem in Counter(seq).values())
+    )
