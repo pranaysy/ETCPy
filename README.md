@@ -1,20 +1,20 @@
 # ETCPy
-Compute Effort To Compress (ETC) using the NSRPS algorithm in Python.  
-  
-Currently computes the exact ETC on a 1-dimensional symbolic sequence. Convenience functions provided for converting data to symbolic sequence.  
-  
-***Reference paper:***  
+Compute Effort To Compress (ETC) using the NSRPS algorithm in Python.
+
+Currently computes the exact ETC on a 1-dimensional symbolic sequence. Convenience functions provided for converting data to symbolic sequence.
+
+***Reference paper:***
 Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. *A New Complexity Measure for Time Series Analysis and Classification.* The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
-  
+
 # Installation
-*Dependencies:* `Numba` and `NumPy`  
-Currently unpackaged :(  
-  
-Clone the repository and install NumPy and Numba using conda; should be enough.
-  
+*Dependencies:* None! Implemented in pure Python :)
+Currently unpackaged :(
+
+Clone the repository; should be enough.
+
 # Demo
 Please check out `demo.py` to see ETC in action.
-  
+
 # TODO
  - Add comments and documentation
  - Extend 1-dimensional ETC to n-dimensional ETC
@@ -24,7 +24,7 @@ Please check out `demo.py` to see ETC in action.
  - Functions to work with string data from text/genome sequence/etc
  - Packaging
  - Add tests
-  
+
 # License
 Copyright 2020 Pranay S. Yadav and Nithin Nagaraj
 
