@@ -1,0 +1,31 @@
+Timer unit: 0.001 s
+
+Total time: 0.369221 s
+File: /home/pranay/Projects/ETCPy/scratch.py
+Function: xlide at line 132
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   132                                           def xlide(win, order=2):
+   133                                           
+   134                                               # initialize counter for unique tuples
+   135         1          2.7      2.7      0.7      counter = Counter(dict(zip(set(win), it.repeat(0))))
+   136                                           
+   137                                               # initialize a boolean mask with True values
+   138         1          0.2      0.2      0.1      mask = list(it.repeat(True, len(win)))
+   139                                           
+   140                                               # iterate over each window
+   141    100000         47.6      0.0     12.9      for n, window in enumerate(win):    # 1st loop
+   142                                           
+   143                                                   # proceed only if mask is True for that window
+   144     99999         44.7      0.0     12.1          if mask[n]:
+   145                                           
+   146                                                       # count that window
+   147     83417         59.8      0.0     16.2              counter[window] += 1
+   148                                           
+   149                                                       #
+   150    166834        152.8      0.0     41.4              mask[n+1:n+order] = [window!=a and b for a,b in zip(
+   151     83417         61.5      0.0     16.7                  win[n+1:n+order], mask[n+1:n+order])
+   152                                                           ]
+   153                                           
+   154         1          0.0      0.0      0.0      return counter, mask

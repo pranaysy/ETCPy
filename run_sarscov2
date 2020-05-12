@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+
+
+@author: Pranay S. Yadav
+"""
+
+
+# from pathlib import Path
+import ETC
+
+filelist = ETC.helper.IO.populate_files("/home/pranay/Projects/GenomeComplexity/data/SARS-CoV-1/sequence")
+# filelist = tuple(filelist)
+
+# if __name__ == '__main__':
+#     results = ETC.parallel.pcompute_files(filelist, order=2)
+
+for n_order in [2]:
+    results = ETC.parallel.pcompute_files(filelist, order=n_order)
+    ETC.helper.IO.save(results, f'ETC_estimates{n_order}.csv')

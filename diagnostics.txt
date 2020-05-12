@@ -1,0 +1,31 @@
+Timer unit: 0.001 s
+
+Total time: 20.9497 s
+File: /home/pranay/Projects/ETCPy/scratch.py
+Function: nsrps at line 71
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    71                                           def nsrps(z):
+    72                                           
+    73     11997        176.9      0.0      0.8      mask = amasker(z)[:-1]
+    74     11997         67.2      0.0      0.3      z_windowed = it.compress(zip(z[:-1], z[1:]), mask)
+    75     11997      17048.3      1.4     81.4      freq = Counter(z_windowed).most_common(1)[0]
+    76     11997         37.3      0.0      0.2      pair = array('I',freq[0])
+    77     11997       1693.1      0.1      8.1      a = 1+max(z)
+    78                                           
+    79     11997       1926.9      0.2      9.2      return array('I', asubst(z, pair, a))
+
+Total time: 21.0609 s
+File: /home/pranay/Projects/ETCPy/scratch.py
+Function: etc at line 81
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    81                                           def etc(x):
+    82         1          0.4      0.4      0.0      z = x[:]
+    83         1          0.0      0.0      0.0      etc = 0
+    84     11998         19.0      0.0      0.1      while not check_equal(z):
+    85     11997      21031.1      1.8     99.9          z = nsrps(z)
+    86     11997         10.4      0.0      0.0          etc += 1
+    87         1          0.0      0.0      0.0      return etc

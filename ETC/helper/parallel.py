@@ -5,15 +5,18 @@
 
 @author: Pranay S. Yadav
 """
+from functools import partial
+from itertools import islice
+
 # Import functions from standard library modules
 from multiprocessing import Pool
-from itertools import islice
 
 # Import local modules
 import ETC
 
+
 # Function definitions
-def _compute_single_file(filepath):
+def _compute_single_file(filepath, order=2):
     """
     This function operates on a single file - reads sequence, computes ETC
     and writes to disk.
@@ -30,21 +33,21 @@ def _compute_single_file(filepath):
 
     """
     # Read file as a sequence
-    seq = ETC.IO.read(filepath)
+    seq = ETC.helper.IO.read(filepath)
 
     # Filename for writing output of ETC computation
-    fname = filepath.with_name(filepath.stem + "_etc_ord2.csv")
+    fname = filepath.with_name(filepath.stem + f"_etc_order{order}.csv")
 
     # Prepare output dictionary
     out = {"file": filepath.name, "length": len(seq)}
 
     # Compute ETC, write to file and update output dictionary
-    out.update(ETC.compute_save(seq, fname, order=2))
+    out.update(ETC.compute_save(seq, fname, order=order))
 
     return out
 
 
-def pcompute_files(filelist):
+def pcompute_files(filelist, order=2):
     """
     This function operates concurrently on a list of files. Reads each as a
     sequence, computes ETC and writes output to disk.
@@ -65,9 +68,9 @@ def pcompute_files(filelist):
     """
     # Initialize pool of parallel workers
     pool = Pool()
-
+    func = partial(_compute_single_file, order=order)
     # Map-execute function across files
-    out = pool.map_async(_compute_single_file, filelist)
+    out = pool.map_async(func, filelist)
 
     # Graceful exit
     pool.close()
@@ -98,7 +101,7 @@ def _compute_single_seq(seq):
     out = {"item": seq[0], "length": len(seq[1])}
 
     # Compute ETC and update output dictionary
-    out.update(ETC.compute(seq[1], order=2, verbose=False))
+    out.update(ETC.compute(seq[1], order=2, verbose=False, truncate=True))
 
     return out
 

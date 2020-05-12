@@ -8,10 +8,11 @@ External Dependecies: None
 @author: Pranay S. Yadav
 """
 
-# Import functions from standard library modules
-from random import choices, seed
 from collections import Counter
 from math import log2
+
+# Import functions from standard library modules
+from random import choices, seed
 
 # Set seed for reproducibility
 seed(10)

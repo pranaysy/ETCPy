@@ -6,9 +6,10 @@ This module contains helper functions for reading and writing files.
 @author: Pranay S. Yadav
 """
 
+from csv import DictWriter
+
 # Import functions from standard library modules
 from pathlib import Path
-from csv import DictWriter
 
 
 def populate_files(filepath, suffix="*.txt"):
@@ -33,6 +34,22 @@ def read(filepath, recode=True, delimiter=None):
     if recode:
         alphabets = sorted(set(text))
         replacer = dict((y, str(x + 1)) for x, y in enumerate(alphabets))
+        for key in replacer:
+            text = text.replace(key, replacer[key])
+
+    return tuple(map(int, text))
+
+
+def read_dna(filepath, recode=True, delimiter=None):
+    if not isinstance(filepath, Path):
+        filepath = Path(filepath)
+    text = filepath.read_text()
+
+    if delimiter:
+        text = "".join(text.split(delimiter))
+
+    if recode:
+        replacer = {"A": "1", "G": "1", "C": "2", "T": "2"}
         for key in replacer:
             text = text.replace(key, replacer[key])
 

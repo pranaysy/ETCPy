@@ -20,10 +20,12 @@ Reference paper:
 @author: Pranay S. Yadav
 """
 
+from ETC.IO import save
+
 # Import functions from local modules
 from ETC.NSRWS import _execute_one_step
-from ETC.utils import equality, entropy
-from ETC.IO import save
+from ETC.utils import entropy, equality
+
 
 # Function definitions
 def _compute_verbose(seq, order=2):
