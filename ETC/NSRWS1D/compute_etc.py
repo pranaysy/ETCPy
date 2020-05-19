@@ -129,7 +129,7 @@ def _compute_verbose_truncated(seq, order=2):
         else:
             etc += len(temp) // (order - 1)
     # Display ETC and return it with aggregator
-    print(f"ETC={etc}")
+    # print(f"ETC={etc}")
     return etc, output
 
 
@@ -211,7 +211,7 @@ def _compute_verbose_full(seq, order=2):
             }
         )
     # Display ETC and return it with aggregator
-    print(f"ETC={etc}")
+    # print(f"ETC={etc}")
     return etc, output
 
 
@@ -285,7 +285,7 @@ def _compute_compact_truncated(seq, order=2):
             etc += len(temp) // (order - 1)
 
     # Display ETC and return it
-    print(f"ETC={etc}")
+    # print(f"ETC={etc}")
     return etc
 
 
@@ -335,7 +335,7 @@ def _compute_compact_full(seq, order=2):
         etc += 1
 
     # Display ETC and return it
-    print(f"ETC={etc}")
+    # print(f"ETC={etc}")
     return etc
 
 
@@ -364,20 +364,20 @@ def compute(seq, order=2, verbose=True, truncate=True):
         # If verbose, run the verbose version and return accordingly
         if verbose:
             etc, out = _compute_verbose_truncated(seq, order)
-            return {"ETC": etc, "Trajectory": out}
+            return {"ETC1D": etc, "Trajectory": out}
         else:
             # If not verbose, run the compact version and return accordingly
             etc = _compute_compact_truncated(seq, order)
-            return {"ETC": etc}
+            return {"ETC1D": etc}
     else:
         # If verbose, run the verbose version and return accordingly
         if verbose:
             etc, out = _compute_verbose_full(seq, order)
-            return {"ETC": etc, "Trajectory": out}
+            return {"ETC1D": etc, "Trajectory": out}
         else:
             # If not verbose, run the compact version and return accordingly
             etc = _compute_compact_full(seq, order)
-            return {"ETC": etc}
+            return {"ETC1D": etc}
 
 
 def compute_save(seq, filename, truncate=True, order=2):
@@ -409,7 +409,7 @@ def compute_save(seq, filename, truncate=True, order=2):
     # Save the output to a csv file and return
     save(out, filename)
 
-    return {"ETC": etc}
+    return {"ETC1D": etc}
 
 
 # %% Adapt into test!

@@ -42,7 +42,7 @@ def _compute_single_file(filepath, order=2):
     out = {"file": filepath.name, "length": len(seq)}
 
     # Compute ETC, write to file and update output dictionary
-    out.update(ETC.compute_save(seq, fname, order=order))
+    out.update(ETC.compute_save_1D(seq, fname, order=order))
 
     return out
 
@@ -101,7 +101,7 @@ def _compute_single_seq(seq):
     out = {"item": seq[0], "length": len(seq[1])}
 
     # Compute ETC and update output dictionary
-    out.update(ETC.compute(seq[1], order=2, verbose=False, truncate=True))
+    out.update(ETC.compute_1D(seq[1], order=2, verbose=False, truncate=True))
 
     return out
 

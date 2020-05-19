@@ -116,10 +116,10 @@ def test_substitution(inputs):
 def test_truncation(inputs):
     x, order = inputs
 
-    etc_vf = cetc.compute(x, order, verbose=True, truncate=False)["ETC"]
-    etc_vt = cetc.compute(x, order, verbose=True, truncate=True)["ETC"]
-    etc_cf = cetc.compute(x, order, verbose=False, truncate=False)["ETC"]
-    etc_ct = cetc.compute(x, order, verbose=False, truncate=True)["ETC"]
+    etc_vf = cetc.compute(x, order, verbose=True, truncate=False)["ETC1D"]
+    etc_vt = cetc.compute(x, order, verbose=True, truncate=True)["ETC1D"]
+    etc_cf = cetc.compute(x, order, verbose=False, truncate=False)["ETC1D"]
+    etc_ct = cetc.compute(x, order, verbose=False, truncate=True)["ETC1D"]
 
     assert etc_vf == etc_vt == etc_cf == etc_ct
 
