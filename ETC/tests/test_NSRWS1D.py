@@ -12,9 +12,9 @@ from random import choice
 from hypothesis import given
 from hypothesis.strategies import composite, integers, lists
 
-from ETC.NSRWS1D.compute_one_step import one_step
-from ETC.NSRWS1D import compute_etc as cetc
-from ETC.NSRWS1D import compute_core as cc
+from ETC.NSRWS.x1D.compute_one_step import one_step
+from ETC.NSRWS.x1D import compute_etc as cetc
+from ETC.NSRWS.x1D import compute_core as cc
 
 
 @composite

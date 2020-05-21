@@ -8,14 +8,10 @@
 
 from array import array
 
-from ETC.complexity import compute_estimates as ce
-from ETC.helper.IO import save
-from ETC.NSRWS1D import compute_core as cc
-from ETC.NSRWS1D.compute_one_step import _one_step
-from ETC.utils import generate as G
-
-x = array("I", G(1000, 4))
-
+from ETC.common import compute_estimates as ce
+from ETC.seq.IO import save
+from ETC.NSRWS.x1D import compute_core as cc
+from ETC.NSRWS.x1D.compute_one_step import _one_step
 
 def _compute_verbose_truncated(seq, order=2):
     """

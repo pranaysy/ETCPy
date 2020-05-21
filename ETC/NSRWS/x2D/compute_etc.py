@@ -8,10 +8,10 @@
 
 from array import array
 
-from ETC.complexity import compute_estimates as ce
-from ETC.helper.IO import save
-from ETC.NSRWS2D import compute_core as cc
-from ETC.NSRWS2D.compute_one_step import _one_step
+from ETC.common import compute_estimates as ce
+from ETC.seq.IO import save
+from ETC.NSRWS.x2D import compute_core as cc
+from ETC.NSRWS.x2D.compute_one_step import _one_step
 
 
 def _compute_verbose_truncated(seq_x, seq_y, order=2):

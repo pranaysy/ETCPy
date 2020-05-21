@@ -10,7 +10,7 @@ from collections import Counter
 from itertools import compress, islice
 from time import perf_counter
 
-from ETC.NSRWS1D import compute_core as cc
+from ETC.NSRWS.x1D import compute_core as cc
 
 
 def _one_step_pairs(seq, verbose=True):
