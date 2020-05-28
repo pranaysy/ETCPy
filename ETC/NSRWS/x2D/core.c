@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "ETC.NSRWS.x1D.compute_core",
+        "name": "ETC.NSRWS.x2D.core",
         "sources": [
-            "ETC/NSRWS/x1D/compute_core.pyx"
+            "ETC/NSRWS/x2D/core.pyx"
         ]
     },
-    "module_name": "ETC.NSRWS.x1D.compute_core"
+    "module_name": "ETC.NSRWS.x2D.core"
 }
 END: Cython Metadata */
 
@@ -605,8 +605,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__ETC__NSRWS__x1D__compute_core
-#define __PYX_HAVE_API__ETC__NSRWS__x1D__compute_core
+#define __PYX_HAVE__ETC__NSRWS__x2D__core
+#define __PYX_HAVE_API__ETC__NSRWS__x2D__core
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -821,7 +821,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "ETC/NSRWS/x1D/compute_core.pyx",
+  "ETC/NSRWS/x2D/core.pyx",
   "array.pxd",
   "stringsource",
   "type.pxd",
@@ -1179,6 +1179,18 @@ static CYTHON_INLINE int __pyx_sub_acquisition_count_locked(
 static CYTHON_INLINE void __Pyx_INC_MEMVIEW(__Pyx_memviewslice *, int, int);
 static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *, int, int);
 
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* RaiseDoubleKeywords.proto */
+static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
+
+/* ParseKeywords.proto */
+static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
+    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
+    const char* function_name);
+
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
 
@@ -1198,18 +1210,6 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #else
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
-
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
-/* RaiseDoubleKeywords.proto */
-static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
-
-/* ParseKeywords.proto */
-static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
-    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
-    const char* function_name);
 
 /* ArgTypeTest.proto */
 #define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
@@ -1921,7 +1921,7 @@ static CYTHON_INLINE int __pyx_f_7cpython_5array_extend_buffer(arrayobject *, ch
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'ETC.NSRWS.x1D.compute_core' */
+/* Module declarations from 'ETC.NSRWS.x2D.core' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1933,11 +1933,9 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_pairs(__Pyx_memviewslice, __Pyx_memviewslice, unsigned int, int __pyx_skip_dispatch); /*proto*/
-static int __pyx_f_3ETC_5NSRWS_3x1D_12compute_core_check_equality(__Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
-static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_windows(__Pyx_memviewslice, unsigned int, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_windows(__Pyx_memviewslice, unsigned int, __Pyx_memviewslice, unsigned int, int __pyx_skip_dispatch); /*proto*/
+static arrayobject *__pyx_f_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(__Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_3ETC_5NSRWS_3x2D_4core_substitute_pairs(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, unsigned int, unsigned int, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_3ETC_5NSRWS_3x2D_4core_check_equality(__Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -1973,11 +1971,11 @@ static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int__const__ = { "const unsigned int", NULL, sizeof(unsigned int const ), { 0 }, 0, IS_UNSIGNED(unsigned int const ) ? 'U' : 'I', IS_UNSIGNED(unsigned int const ), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int = { "unsigned int", NULL, sizeof(unsigned int), { 0 }, 0, IS_UNSIGNED(unsigned int) ? 'U' : 'I', IS_UNSIGNED(unsigned int), 0 };
-#define __Pyx_MODULE_NAME "ETC.NSRWS.x1D.compute_core"
-extern int __pyx_module_is_main_ETC__NSRWS__x1D__compute_core;
-int __pyx_module_is_main_ETC__NSRWS__x1D__compute_core = 0;
+#define __Pyx_MODULE_NAME "ETC.NSRWS.x2D.core"
+extern int __pyx_module_is_main_ETC__NSRWS__x2D__core;
+int __pyx_module_is_main_ETC__NSRWS__x2D__core = 0;
 
-/* Implementation of 'ETC.NSRWS.x1D.compute_core' */
+/* Implementation of 'ETC.NSRWS.x2D.core' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_ValueError;
@@ -1990,6 +1988,7 @@ static const char __pyx_k_I[] = "I";
 static const char __pyx_k_O[] = "O";
 static const char __pyx_k_c[] = "c";
 static const char __pyx_k_x[] = "x";
+static const char __pyx_k_y[] = "y";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
@@ -2000,7 +1999,6 @@ static const char __pyx_k_mode[] = "mode";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_ndim[] = "ndim";
 static const char __pyx_k_pack[] = "pack";
-static const char __pyx_k_pair[] = "pair";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_step[] = "step";
 static const char __pyx_k_stop[] = "stop";
@@ -2010,23 +2008,24 @@ static const char __pyx_k_array[] = "array";
 static const char __pyx_k_class[] = "__class__";
 static const char __pyx_k_error[] = "error";
 static const char __pyx_k_flags[] = "flags";
-static const char __pyx_k_order[] = "order";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
-static const char __pyx_k_value[] = "value";
 static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_name_2[] = "__name__";
+static const char __pyx_k_pair_x[] = "pair_x";
+static const char __pyx_k_pair_y[] = "pair_y";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_struct[] = "struct";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
-static const char __pyx_k_window[] = "window";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
+static const char __pyx_k_value_x[] = "value_x";
+static const char __pyx_k_value_y[] = "value_y";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_itemsize[] = "itemsize";
@@ -2135,9 +2134,9 @@ static PyObject *__pyx_n_s_ndim;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_obj;
-static PyObject *__pyx_n_s_order;
 static PyObject *__pyx_n_s_pack;
-static PyObject *__pyx_n_s_pair;
+static PyObject *__pyx_n_s_pair_x;
+static PyObject *__pyx_n_s_pair_y;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
@@ -2168,14 +2167,13 @@ static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_n_s_value;
-static PyObject *__pyx_n_s_window;
+static PyObject *__pyx_n_s_value_x;
+static PyObject *__pyx_n_s_value_y;
 static PyObject *__pyx_n_s_x;
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x); /* proto */
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_2substitute_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_pair, unsigned int __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_4check_equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x); /* proto */
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order); /* proto */
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order, __Pyx_memviewslice __pyx_v_window, unsigned int __pyx_v_value); /* proto */
+static PyObject *__pyx_n_s_y;
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y); /* proto */
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_2substitute_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_pair_x, __Pyx_memviewslice __pyx_v_pair_y, unsigned int __pyx_v_value_x, unsigned int __pyx_v_value_y); /* proto */
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_4check_equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y); /* proto */
 static int __pyx_pf_7cpython_5array_5array___getbuffer__(arrayobject *__pyx_v_self, Py_buffer *__pyx_v_info, CYTHON_UNUSED int __pyx_v_flags); /* proto */
 static void __pyx_pf_7cpython_5array_5array_2__releasebuffer__(CYTHON_UNUSED arrayobject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2255,16 +2253,16 @@ static PyObject *__pyx_tuple__24;
 static PyObject *__pyx_codeobj__25;
 /* Late includes */
 
-/* "ETC/NSRWS/x1D/compute_core.pyx":15
+/* "ETC/NSRWS/x2D/core.pyx":15
  * 
  * # Function for getting mask for pairs
- * cpdef array.array get_mask_pairs(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ * cpdef array.array get_mask_pairs(const unsigned int[::1] x, const unsigned int[::1] y):             # <<<<<<<<<<<<<<
  *     """
  *     INPUT
  */
 
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx_memviewslice __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static arrayobject *__pyx_f_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(__Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y, CYTHON_UNUSED int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_v_x_size;
   arrayobject *__pyx_v_int_template = 0;
   arrayobject *__pyx_v_mask = 0;
@@ -2286,7 +2284,7 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
   int __pyx_t_12;
   __Pyx_RefNannySetupContext("get_mask_pairs", 0);
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":29
+  /* "ETC/NSRWS/x2D/core.pyx":29
  *     """
  *     # Get size of input
  *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
@@ -2296,11 +2294,11 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
   __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
   __pyx_v_x_size = __pyx_t_1;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":32
+  /* "ETC/NSRWS/x2D/core.pyx":32
  * 
  *     # Initialize a mask of Falses
  *     cdef array.array int_template = array.array('I', [])             # <<<<<<<<<<<<<<
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)
+ *     cdef array.array mask = array.clone(int_template, x_size-1, zero=True)
  *     cdef unsigned int[:] mask_view = mask
  */
   __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
@@ -2319,21 +2317,21 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
   __pyx_v_int_template = ((arrayobject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":33
+  /* "ETC/NSRWS/x2D/core.pyx":33
  *     # Initialize a mask of Falses
  *     cdef array.array int_template = array.array('I', [])
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)             # <<<<<<<<<<<<<<
+ *     cdef array.array mask = array.clone(int_template, x_size-1, zero=True)             # <<<<<<<<<<<<<<
  *     cdef unsigned int[:] mask_view = mask
  * 
  */
-  __pyx_t_2 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_int_template, __pyx_v_x_size, 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_int_template, (__pyx_v_x_size - 1), 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_mask = ((arrayobject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":34
+  /* "ETC/NSRWS/x2D/core.pyx":34
  *     cdef array.array int_template = array.array('I', [])
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)
+ *     cdef array.array mask = array.clone(int_template, x_size-1, zero=True)
  *     cdef unsigned int[:] mask_view = mask             # <<<<<<<<<<<<<<
  * 
  *     # Initialize bounds for iteration
@@ -2343,7 +2341,7 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":37
+  /* "ETC/NSRWS/x2D/core.pyx":37
  * 
  *     # Initialize bounds for iteration
  *     cdef Py_ssize_t n = 0             # <<<<<<<<<<<<<<
@@ -2352,21 +2350,21 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
  */
   __pyx_v_n = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":40
+  /* "ETC/NSRWS/x2D/core.pyx":40
  * 
  *     # Turn all values in mask to Trues
- *     for n in range(x_size):             # <<<<<<<<<<<<<<
+ *     for n in range(x_size-1):             # <<<<<<<<<<<<<<
  *         mask_view[n] += 1
  * 
  */
-  __pyx_t_5 = __pyx_v_x_size;
+  __pyx_t_5 = (__pyx_v_x_size - 1);
   __pyx_t_6 = __pyx_t_5;
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_n = __pyx_t_7;
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":41
+    /* "ETC/NSRWS/x2D/core.pyx":41
  *     # Turn all values in mask to Trues
- *     for n in range(x_size):
+ *     for n in range(x_size-1):
  *         mask_view[n] += 1             # <<<<<<<<<<<<<<
  * 
  *     # Iterate over all values of input
@@ -2375,30 +2373,30 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
     *((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_8 * __pyx_v_mask_view.strides[0]) )) += 1;
   }
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":44
+  /* "ETC/NSRWS/x2D/core.pyx":44
  * 
  *     # Iterate over all values of input
  *     n = 0             # <<<<<<<<<<<<<<
- *     while n < x_size - 1:
+ *     while n < x_size - 2:
  * 
  */
   __pyx_v_n = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":45
+  /* "ETC/NSRWS/x2D/core.pyx":45
  *     # Iterate over all values of input
  *     n = 0
- *     while n < x_size - 1:             # <<<<<<<<<<<<<<
+ *     while n < x_size - 2:             # <<<<<<<<<<<<<<
  * 
  *         # If successive pairs match
  */
   while (1) {
-    __pyx_t_9 = ((__pyx_v_n < (__pyx_v_x_size - 1)) != 0);
+    __pyx_t_9 = ((__pyx_v_n < (__pyx_v_x_size - 2)) != 0);
     if (!__pyx_t_9) break;
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":48
+    /* "ETC/NSRWS/x2D/core.pyx":48
  * 
  *         # If successive pairs match
- *         if x[n] == x[n+1] and x[n+1] == x[n+2]:             # <<<<<<<<<<<<<<
+ *         if x[n] == x[n+1] and x[n+1] == x[n+2] and y[n] == y[n+1] and y[n+1] == y[n+2]:             # <<<<<<<<<<<<<<
  * 
  *             # Mask out the second one
  */
@@ -2413,11 +2411,27 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
     __pyx_t_11 = (__pyx_v_n + 1);
     __pyx_t_10 = (__pyx_v_n + 2);
     __pyx_t_12 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_11)) ))) == (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_10)) )))) != 0);
+    if (__pyx_t_12) {
+    } else {
+      __pyx_t_9 = __pyx_t_12;
+      goto __pyx_L8_bool_binop_done;
+    }
+    __pyx_t_10 = __pyx_v_n;
+    __pyx_t_11 = (__pyx_v_n + 1);
+    __pyx_t_12 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_10)) ))) == (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_11)) )))) != 0);
+    if (__pyx_t_12) {
+    } else {
+      __pyx_t_9 = __pyx_t_12;
+      goto __pyx_L8_bool_binop_done;
+    }
+    __pyx_t_11 = (__pyx_v_n + 1);
+    __pyx_t_10 = (__pyx_v_n + 2);
+    __pyx_t_12 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_11)) ))) == (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_10)) )))) != 0);
     __pyx_t_9 = __pyx_t_12;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_9) {
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":51
+      /* "ETC/NSRWS/x2D/core.pyx":51
  * 
  *             # Mask out the second one
  *             mask_view[n+1] = 0             # <<<<<<<<<<<<<<
@@ -2427,7 +2441,7 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
       __pyx_t_10 = (__pyx_v_n + 1);
       *((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_10 * __pyx_v_mask_view.strides[0]) )) = 0;
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":54
+      /* "ETC/NSRWS/x2D/core.pyx":54
  * 
  *             # And slide over it
  *             n += 1             # <<<<<<<<<<<<<<
@@ -2436,16 +2450,16 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
  */
       __pyx_v_n = (__pyx_v_n + 1);
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":48
+      /* "ETC/NSRWS/x2D/core.pyx":48
  * 
  *         # If successive pairs match
- *         if x[n] == x[n+1] and x[n+1] == x[n+2]:             # <<<<<<<<<<<<<<
+ *         if x[n] == x[n+1] and x[n+1] == x[n+2] and y[n] == y[n+1] and y[n+1] == y[n+2]:             # <<<<<<<<<<<<<<
  * 
  *             # Mask out the second one
  */
     }
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":57
+    /* "ETC/NSRWS/x2D/core.pyx":57
  * 
  *         # Increment while loop index
  *         n += 1             # <<<<<<<<<<<<<<
@@ -2455,22 +2469,22 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
     __pyx_v_n = (__pyx_v_n + 1);
   }
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":59
+  /* "ETC/NSRWS/x2D/core.pyx":59
  *         n += 1
  * 
  *     return mask             # <<<<<<<<<<<<<<
  * 
- * # Function for substituting pairs
+ * # Function for substituting pairs (old non-ideal version, uses for loop)
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
   __Pyx_INCREF(((PyObject *)__pyx_v_mask));
   __pyx_r = __pyx_v_mask;
   goto __pyx_L0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":15
+  /* "ETC/NSRWS/x2D/core.pyx":15
  * 
  * # Function for getting mask for pairs
- * cpdef array.array get_mask_pairs(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ * cpdef array.array get_mask_pairs(const unsigned int[::1] x, const unsigned int[::1] y):             # <<<<<<<<<<<<<<
  *     """
  *     INPUT
  */
@@ -2480,7 +2494,7 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_int_template);
@@ -2492,874 +2506,16 @@ static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__Pyx
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static char __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs[] = "get_mask_pairs(const unsigned int[::1] x) -> array\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit integers.\n\n    OUTPUT\n    ------\n    mask : array.array\n        Array object containing 32-bit integers - 0s or 1s corresponding to values in\n        x for which successive overlapping pairs occur.\n    ";
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_3ETC_5NSRWS_3x2D_4core_get_mask_pairs[] = "get_mask_pairs(const unsigned int[::1] x, const unsigned int[::1] y) -> array\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit integers.\n\n    OUTPUT\n    ------\n    mask : array.array\n        Array object containing 32-bit integers - 0s or 1s corresponding to values in\n        x for which successive overlapping pairs occur.\n    ";
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_1get_mask_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_y = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_mask_pairs (wrapper)", 0);
-  assert(__pyx_arg_x); {
-    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(__pyx_arg_x, 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 15, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__pyx_self, __pyx_v_x);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("get_mask_pairs", 0);
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 15, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs(__pyx_v_x, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "ETC/NSRWS/x1D/compute_core.pyx":62
- * 
- * # Function for substituting pairs
- * cpdef list substitute_pairs(unsigned int[::1] x, unsigned int[::1] pair, unsigned int value):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_pairs(__Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_pair, unsigned int __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_n;
-  Py_ssize_t __pyx_v_x_size;
-  PyObject *__pyx_v_out = 0;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  size_t __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  int __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  int __pyx_t_11;
-  __Pyx_RefNannySetupContext("substitute_pairs", 0);
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":82
- *     """
- *     # Initialize looping variables and output list
- *     cdef Py_ssize_t n = 0             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t x_size = len(x)
- *     cdef list out = []
- */
-  __pyx_v_n = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":83
- *     # Initialize looping variables and output list
- *     cdef Py_ssize_t n = 0
- *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
- *     cdef list out = []
- * 
- */
-  __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
-  __pyx_v_x_size = __pyx_t_1;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":84
- *     cdef Py_ssize_t n = 0
- *     cdef Py_ssize_t x_size = len(x)
- *     cdef list out = []             # <<<<<<<<<<<<<<
- * 
- *     # Loop over input and replace pair
- */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_out = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":87
- * 
- *     # Loop over input and replace pair
- *     while n < x_size-1:             # <<<<<<<<<<<<<<
- * 
- *         # Check for match with supplied pair
- */
-  while (1) {
-    __pyx_t_3 = ((__pyx_v_n < (__pyx_v_x_size - 1)) != 0);
-    if (!__pyx_t_3) break;
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":90
- * 
- *         # Check for match with supplied pair
- *         if x[n] == pair[0] and x[n+1] == pair[1]:             # <<<<<<<<<<<<<<
- * 
- *             # Replace first value with supplied value
- */
-    __pyx_t_4 = __pyx_v_n;
-    __pyx_t_5 = 0;
-    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_4)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair.data) + __pyx_t_5)) )))) != 0);
-    if (__pyx_t_6) {
-    } else {
-      __pyx_t_3 = __pyx_t_6;
-      goto __pyx_L6_bool_binop_done;
-    }
-    __pyx_t_5 = (__pyx_v_n + 1);
-    __pyx_t_4 = 1;
-    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_5)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair.data) + __pyx_t_4)) )))) != 0);
-    __pyx_t_3 = __pyx_t_6;
-    __pyx_L6_bool_binop_done:;
-    if (__pyx_t_3) {
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":93
- * 
- *             # Replace first value with supplied value
- *             x[n] = value             # <<<<<<<<<<<<<<
- * 
- *             # Replace second value with 0
- */
-      __pyx_t_4 = __pyx_v_n;
-      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_4)) )) = __pyx_v_value;
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":96
- * 
- *             # Replace second value with 0
- *             x[n+1] = 0             # <<<<<<<<<<<<<<
- * 
- *             n += 1
- */
-      __pyx_t_5 = (__pyx_v_n + 1);
-      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_5)) )) = 0;
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":98
- *             x[n+1] = 0
- * 
- *             n += 1             # <<<<<<<<<<<<<<
- * 
- *         n += 1
- */
-      __pyx_v_n = (__pyx_v_n + 1);
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":90
- * 
- *         # Check for match with supplied pair
- *         if x[n] == pair[0] and x[n+1] == pair[1]:             # <<<<<<<<<<<<<<
- * 
- *             # Replace first value with supplied value
- */
-    }
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":100
- *             n += 1
- * 
- *         n += 1             # <<<<<<<<<<<<<<
- * 
- *     # Reset indexing variable
- */
-    __pyx_v_n = (__pyx_v_n + 1);
-  }
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":103
- * 
- *     # Reset indexing variable
- *     n = 0             # <<<<<<<<<<<<<<
- * 
- *     # Loop over mutated input and append non-zero values to list
- */
-  __pyx_v_n = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":106
- * 
- *     # Loop over mutated input and append non-zero values to list
- *     for n in range(x_size):             # <<<<<<<<<<<<<<
- * 
- *         if x[n]:
- */
-  __pyx_t_7 = __pyx_v_x_size;
-  __pyx_t_8 = __pyx_t_7;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_n = __pyx_t_9;
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":108
- *     for n in range(x_size):
- * 
- *         if x[n]:             # <<<<<<<<<<<<<<
- * 
- *             out.append(x[n])
- */
-    __pyx_t_10 = __pyx_v_n;
-    __pyx_t_3 = ((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_10)) ))) != 0);
-    if (__pyx_t_3) {
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":110
- *         if x[n]:
- * 
- *             out.append(x[n])             # <<<<<<<<<<<<<<
- * 
- *     return out
- */
-      __pyx_t_10 = __pyx_v_n;
-      __pyx_t_2 = __Pyx_PyInt_From_unsigned_int((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_10)) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_out, __pyx_t_2); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":108
- *     for n in range(x_size):
- * 
- *         if x[n]:             # <<<<<<<<<<<<<<
- * 
- *             out.append(x[n])
- */
-    }
-  }
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":112
- *             out.append(x[n])
- * 
- *     return out             # <<<<<<<<<<<<<<
- * 
- * # Function for checking whether all elements in input are identical
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_out);
-  __pyx_r = __pyx_v_out;
-  goto __pyx_L0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":62
- * 
- * # Function for substituting pairs
- * cpdef list substitute_pairs(unsigned int[::1] x, unsigned int[::1] pair, unsigned int value):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_out);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_2substitute_pairs[] = "substitute_pairs(unsigned int[::1] x, unsigned int[::1] pair, unsigned int value) -> list\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n    pair : array.array, length = 2\n        Array object containing 2 32-bit unsigned integers.\n\n    value : unsigned 32-bit int\n        Value to substitute the first element of pair with\n\n    OUTPUT\n    ------\n    out : list\n        Array object containing 32-bit integers, with supplied pair replaced everywhere\n        by the supplied value.\n    ";
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_pair = { 0, 0, { 0 }, { 0 }, { 0 } };
-  unsigned int __pyx_v_value;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("substitute_pairs (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_pair,&__pyx_n_s_value,0};
-    PyObject* values[3] = {0,0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pair)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 3, 3, 1); __PYX_ERR(0, 62, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 3, 3, 2); __PYX_ERR(0, 62, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "substitute_pairs") < 0)) __PYX_ERR(0, 62, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
-    }
-    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 62, __pyx_L3_error)
-    __pyx_v_pair = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_pair.memview)) __PYX_ERR(0, 62, __pyx_L3_error)
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_int(values[2]); if (unlikely((__pyx_v_value == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 62, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_2substitute_pairs(__pyx_self, __pyx_v_x, __pyx_v_pair, __pyx_v_value);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_2substitute_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_pair, unsigned int __pyx_v_value) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("substitute_pairs", 0);
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 62, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_pair.memview)) { __Pyx_RaiseUnboundLocalError("pair"); __PYX_ERR(0, 62, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_pairs(__pyx_v_x, __pyx_v_pair, __pyx_v_value, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_pair, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "ETC/NSRWS/x1D/compute_core.pyx":115
- * 
- * # Function for checking whether all elements in input are identical
- * cpdef bint check_equality(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static int __pyx_f_3ETC_5NSRWS_3x1D_12compute_core_check_equality(__Pyx_memviewslice __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_n;
-  Py_ssize_t __pyx_v_x_size;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  size_t __pyx_t_1;
-  Py_ssize_t __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  int __pyx_t_7;
-  __Pyx_RefNannySetupContext("check_equality", 0);
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":130
- *     # Intialize loop bounds
- *     cdef Py_ssize_t n
- *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
- * 
- *     # Iterate over values from input
- */
-  __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
-  __pyx_v_x_size = __pyx_t_1;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":133
- * 
- *     # Iterate over values from input
- *     for n in range(x_size):             # <<<<<<<<<<<<<<
- * 
- *         # Short-circuit the loop: check for any element that doesn't equal the first
- */
-  __pyx_t_2 = __pyx_v_x_size;
-  __pyx_t_3 = __pyx_t_2;
-  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_n = __pyx_t_4;
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":136
- * 
- *         # Short-circuit the loop: check for any element that doesn't equal the first
- *         if x[0] != x[n]:             # <<<<<<<<<<<<<<
- *             return False
- * 
- */
-    __pyx_t_5 = 0;
-    __pyx_t_6 = __pyx_v_n;
-    __pyx_t_7 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_5)) ))) != (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_6)) )))) != 0);
-    if (__pyx_t_7) {
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":137
- *         # Short-circuit the loop: check for any element that doesn't equal the first
- *         if x[0] != x[n]:
- *             return False             # <<<<<<<<<<<<<<
- * 
- *     return True
- */
-      __pyx_r = 0;
-      goto __pyx_L0;
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":136
- * 
- *         # Short-circuit the loop: check for any element that doesn't equal the first
- *         if x[0] != x[n]:             # <<<<<<<<<<<<<<
- *             return False
- * 
- */
-    }
-  }
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":139
- *             return False
- * 
- *     return True             # <<<<<<<<<<<<<<
- * 
- * # Function for getting mask for windows of any length
- */
-  __pyx_r = 1;
-  goto __pyx_L0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":115
- * 
- * # Function for checking whether all elements in input are identical
- * cpdef bint check_equality(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static char __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_4check_equality[] = "check_equality(const unsigned int[::1] x) -> bool\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n\n    OUTPUT\n    ------\n    bool\n        True if all elements are identical\n    ";
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
-  __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("check_equality (wrapper)", 0);
-  assert(__pyx_arg_x); {
-    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(__pyx_arg_x, 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 115, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.check_equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_4check_equality(__pyx_self, __pyx_v_x);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_4check_equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("check_equality", 0);
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 115, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_check_equality(__pyx_v_x, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.check_equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "ETC/NSRWS/x1D/compute_core.pyx":142
- * 
- * # Function for getting mask for windows of any length
- * cpdef array.array get_mask_windows(const unsigned int[::1] x, unsigned int order):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static arrayobject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_windows(__Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_x_size;
-  arrayobject *__pyx_v_int_template = 0;
-  arrayobject *__pyx_v_mask = 0;
-  __Pyx_memviewslice __pyx_v_mask_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_n;
-  Py_ssize_t __pyx_v_k;
-  Py_ssize_t __pyx_v_m;
-  unsigned int __pyx_v_track;
-  arrayobject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  size_t __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  __Pyx_memviewslice __pyx_t_4 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
-  int __pyx_t_10;
-  unsigned int __pyx_t_11;
-  unsigned int __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
-  unsigned int __pyx_t_14;
-  unsigned int __pyx_t_15;
-  Py_ssize_t __pyx_t_16;
-  Py_ssize_t __pyx_t_17;
-  __Pyx_RefNannySetupContext("get_mask_windows", 0);
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":159
- *     """
- *     # Get size of input
- *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
- * 
- *     # Initialize a mask of Falses
- */
-  __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
-  __pyx_v_x_size = __pyx_t_1;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":162
- * 
- *     # Initialize a mask of Falses
- *     cdef array.array int_template = array.array('I', [])             # <<<<<<<<<<<<<<
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)
- *     cdef unsigned int[:] mask_view = mask
- */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_INCREF(__pyx_n_u_I);
-  __Pyx_GIVEREF(__pyx_n_u_I);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_n_u_I);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_int_template = ((arrayobject *)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":163
- *     # Initialize a mask of Falses
- *     cdef array.array int_template = array.array('I', [])
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)             # <<<<<<<<<<<<<<
- *     cdef unsigned int[:] mask_view = mask
- * 
- */
-  __pyx_t_2 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_int_template, __pyx_v_x_size, 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_mask = ((arrayobject *)__pyx_t_2);
-  __pyx_t_2 = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":164
- *     cdef array.array int_template = array.array('I', [])
- *     cdef array.array mask = array.clone(int_template, x_size, zero=True)
- *     cdef unsigned int[:] mask_view = mask             # <<<<<<<<<<<<<<
- * 
- *      # Initialize variable for iteration
- */
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_int(((PyObject *)__pyx_v_mask), PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 164, __pyx_L1_error)
-  __pyx_v_mask_view = __pyx_t_4;
-  __pyx_t_4.memview = NULL;
-  __pyx_t_4.data = NULL;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":167
- * 
- *      # Initialize variable for iteration
- *     cdef Py_ssize_t n = 0             # <<<<<<<<<<<<<<
- * 
- *     # Turn all values in mask to Trues
- */
-  __pyx_v_n = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":170
- * 
- *     # Turn all values in mask to Trues
- *     for n in range(x_size):             # <<<<<<<<<<<<<<
- *         mask_view[n] += 1
- * 
- */
-  __pyx_t_5 = __pyx_v_x_size;
-  __pyx_t_6 = __pyx_t_5;
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_n = __pyx_t_7;
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":171
- *     # Turn all values in mask to Trues
- *     for n in range(x_size):
- *         mask_view[n] += 1             # <<<<<<<<<<<<<<
- * 
- *     # Initialize variables for iteration across input
- */
-    __pyx_t_8 = __pyx_v_n;
-    *((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_8 * __pyx_v_mask_view.strides[0]) )) += 1;
-  }
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":174
- * 
- *     # Initialize variables for iteration across input
- *     cdef Py_ssize_t k = 0 # Outer loop             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t m = 0 # Inner loop
- * 
- */
-  __pyx_v_k = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":175
- *     # Initialize variables for iteration across input
- *     cdef Py_ssize_t k = 0 # Outer loop
- *     cdef Py_ssize_t m = 0 # Inner loop             # <<<<<<<<<<<<<<
- * 
- *     # Tracking variable for counting matching elements in pairwise window comparison
- */
-  __pyx_v_m = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":178
- * 
- *     # Tracking variable for counting matching elements in pairwise window comparison
- *     cdef unsigned int track = 0             # <<<<<<<<<<<<<<
- * 
- *     # Iterate over input values except the last 'order' values [Outermost master loop]
- */
-  __pyx_v_track = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":181
- * 
- *     # Iterate over input values except the last 'order' values [Outermost master loop]
- *     n = 0             # <<<<<<<<<<<<<<
- *     for n in range(x_size-order):
- * 
- */
-  __pyx_v_n = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":182
- *     # Iterate over input values except the last 'order' values [Outermost master loop]
- *     n = 0
- *     for n in range(x_size-order):             # <<<<<<<<<<<<<<
- * 
- *         # proceed only if mask is True for current element
- */
-  __pyx_t_5 = (__pyx_v_x_size - __pyx_v_order);
-  __pyx_t_6 = __pyx_t_5;
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_n = __pyx_t_7;
-
-    /* "ETC/NSRWS/x1D/compute_core.pyx":185
- * 
- *         # proceed only if mask is True for current element
- *         if mask_view[n]:             # <<<<<<<<<<<<<<
- * 
- *             # Outer loop for sliding the 'next' window by unit step (current vs next)
- */
-    __pyx_t_9 = __pyx_v_n;
-    __pyx_t_10 = ((*((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_9 * __pyx_v_mask_view.strides[0]) ))) != 0);
-    if (__pyx_t_10) {
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":188
- * 
- *             # Outer loop for sliding the 'next' window by unit step (current vs next)
- *             for k in range(1,order):  # Start from 1 - begin comparing from next window             # <<<<<<<<<<<<<<
- * 
- *                 # Inner loop for comparing elements in current and next windows
- */
-      __pyx_t_11 = __pyx_v_order;
-      __pyx_t_12 = __pyx_t_11;
-      for (__pyx_t_13 = 1; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-        __pyx_v_k = __pyx_t_13;
-
-        /* "ETC/NSRWS/x1D/compute_core.pyx":191
- * 
- *                 # Inner loop for comparing elements in current and next windows
- *                 for m in range(order):             # <<<<<<<<<<<<<<
- * 
- *                     # If elements match, increment tracker
- */
-        __pyx_t_14 = __pyx_v_order;
-        __pyx_t_15 = __pyx_t_14;
-        for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
-          __pyx_v_m = __pyx_t_16;
-
-          /* "ETC/NSRWS/x1D/compute_core.pyx":194
- * 
- *                     # If elements match, increment tracker
- *                     if x[n+m] == x[n+m+k]:             # <<<<<<<<<<<<<<
- *                         track += 1
- * 
- */
-          __pyx_t_9 = (__pyx_v_n + __pyx_v_m);
-          __pyx_t_17 = ((__pyx_v_n + __pyx_v_m) + __pyx_v_k);
-          __pyx_t_10 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_9)) ))) == (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_17)) )))) != 0);
-          if (__pyx_t_10) {
-
-            /* "ETC/NSRWS/x1D/compute_core.pyx":195
- *                     # If elements match, increment tracker
- *                     if x[n+m] == x[n+m+k]:
- *                         track += 1             # <<<<<<<<<<<<<<
- * 
- *                     # Else stop iteration over this comparison of windows
- */
-            __pyx_v_track = (__pyx_v_track + 1);
-
-            /* "ETC/NSRWS/x1D/compute_core.pyx":194
- * 
- *                     # If elements match, increment tracker
- *                     if x[n+m] == x[n+m+k]:             # <<<<<<<<<<<<<<
- *                         track += 1
- * 
- */
-            goto __pyx_L12;
-          }
-
-          /* "ETC/NSRWS/x1D/compute_core.pyx":199
- *                     # Else stop iteration over this comparison of windows
- *                     else:
- *                         break             # <<<<<<<<<<<<<<
- * 
- *                 # Trick: preserve mask only if track doesn't equal order
- */
-          /*else*/ {
-            goto __pyx_L11_break;
-          }
-          __pyx_L12:;
-        }
-        __pyx_L11_break:;
-
-        /* "ETC/NSRWS/x1D/compute_core.pyx":203
- *                 # Trick: preserve mask only if track doesn't equal order
- *                 # If track == order, short-circuit eval takes precedence, returning 0
- *                 mask_view[n+k] = track!=order and mask_view[n+k]             # <<<<<<<<<<<<<<
- * 
- *                 # Reset tracker
- */
-        __pyx_t_10 = (__pyx_v_track != __pyx_v_order);
-        if (__pyx_t_10) {
-        } else {
-          __pyx_t_14 = __pyx_t_10;
-          goto __pyx_L13_bool_binop_done;
-        }
-        __pyx_t_17 = (__pyx_v_n + __pyx_v_k);
-        __pyx_t_15 = (*((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_17 * __pyx_v_mask_view.strides[0]) )));
-        __pyx_t_14 = __pyx_t_15;
-        __pyx_L13_bool_binop_done:;
-        __pyx_t_17 = (__pyx_v_n + __pyx_v_k);
-        *((unsigned int *) ( /* dim=0 */ (__pyx_v_mask_view.data + __pyx_t_17 * __pyx_v_mask_view.strides[0]) )) = __pyx_t_14;
-
-        /* "ETC/NSRWS/x1D/compute_core.pyx":206
- * 
- *                 # Reset tracker
- *                 track = 0             # <<<<<<<<<<<<<<
- * 
- *     return mask
- */
-        __pyx_v_track = 0;
-      }
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":185
- * 
- *         # proceed only if mask is True for current element
- *         if mask_view[n]:             # <<<<<<<<<<<<<<
- * 
- *             # Outer loop for sliding the 'next' window by unit step (current vs next)
- */
-    }
-  }
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":208
- *                 track = 0
- * 
- *     return mask             # <<<<<<<<<<<<<<
- * 
- * # Function for substituting windows of any length
- */
-  __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __Pyx_INCREF(((PyObject *)__pyx_v_mask));
-  __pyx_r = __pyx_v_mask;
-  goto __pyx_L0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":142
- * 
- * # Function for getting mask for windows of any length
- * cpdef array.array get_mask_windows(const unsigned int[::1] x, unsigned int order):             # <<<<<<<<<<<<<<
- *     """
- *     INPUT
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF((PyObject *)__pyx_v_int_template);
-  __Pyx_XDECREF((PyObject *)__pyx_v_mask);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_mask_view, 1);
-  __Pyx_XGIVEREF((PyObject *)__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows[] = "get_mask_windows(const unsigned int[::1] x, unsigned int order) -> array\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit integers.\n\n    order: unsigned 32-bit int\n        Length of the window to slide across input\n\n    OUTPUT\n    ------\n    mask : array.array\n        Array object containing 32-bit integers - 0s or 1s corresponding to values in\n        x for which successive overlapping pairs occur.\n    ";
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
-  unsigned int __pyx_v_order;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_mask_windows (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_order,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_y,0};
     PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -3379,13 +2535,13 @@ static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows(PyOb
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_order)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_mask_windows", 1, 2, 2, 1); __PYX_ERR(0, 142, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_mask_pairs", 1, 2, 2, 1); __PYX_ERR(0, 15, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_mask_windows") < 0)) __PYX_ERR(0, 142, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_mask_pairs") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3393,32 +2549,33 @@ static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows(PyOb
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(values[0], 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 142, __pyx_L3_error)
-    __pyx_v_order = __Pyx_PyInt_As_unsigned_int(values[1]); if (unlikely((__pyx_v_order == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
+    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(values[0], 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 15, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(values[1], 0); if (unlikely(!__pyx_v_y.memview)) __PYX_ERR(0, 15, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_mask_windows", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 142, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_mask_pairs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 15, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows(__pyx_self, __pyx_v_x, __pyx_v_order);
+  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(__pyx_self, __pyx_v_x, __pyx_v_y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order) {
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("get_mask_windows", 0);
+  __Pyx_RefNannySetupContext("get_mask_pairs", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 142, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_get_mask_windows(__pyx_v_x, __pyx_v_order, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 15, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_y.memview)) { __Pyx_RaiseUnboundLocalError("y"); __PYX_ERR(0, 15, __pyx_L1_error) }
+  __pyx_t_1 = ((PyObject *)__pyx_f_3ETC_5NSRWS_3x2D_4core_get_mask_pairs(__pyx_v_x, __pyx_v_y, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3427,229 +2584,209 @@ static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows(CYTH
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.get_mask_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.get_mask_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_y, 1);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ETC/NSRWS/x1D/compute_core.pyx":211
+/* "ETC/NSRWS/x2D/core.pyx":115
  * 
- * # Function for substituting windows of any length
- * cpdef list substitute_windows(unsigned int[::1] x, unsigned int order, unsigned int[::1] window, unsigned int value):             # <<<<<<<<<<<<<<
+ * # Function for substituting pairs (new version, uses while loop)
+ * cpdef substitute_pairs(unsigned int[::1] x, unsigned int[::1] y, unsigned int[::1] pair_x, unsigned int[::1] pair_y, unsigned int value_x, unsigned int value_y):             # <<<<<<<<<<<<<<
  *     """
  *     INPUT
  */
 
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_9substitute_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_windows(__Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order, __Pyx_memviewslice __pyx_v_window, unsigned int __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_3ETC_5NSRWS_3x2D_4core_substitute_pairs(__Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_pair_x, __Pyx_memviewslice __pyx_v_pair_y, unsigned int __pyx_v_value_x, unsigned int __pyx_v_value_y, CYTHON_UNUSED int __pyx_skip_dispatch) {
   Py_ssize_t __pyx_v_n;
-  Py_ssize_t __pyx_v_m;
   Py_ssize_t __pyx_v_x_size;
-  PyObject *__pyx_v_out = 0;
-  unsigned int __pyx_v_track;
+  PyObject *__pyx_v_out_x = 0;
+  PyObject *__pyx_v_out_y = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   size_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
+  int __pyx_t_3;
   Py_ssize_t __pyx_t_4;
   Py_ssize_t __pyx_t_5;
-  unsigned int __pyx_t_6;
-  unsigned int __pyx_t_7;
+  int __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
-  int __pyx_t_11;
+  Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
   int __pyx_t_13;
-  __Pyx_RefNannySetupContext("substitute_windows", 0);
+  __Pyx_RefNannySetupContext("substitute_pairs", 0);
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":234
+  /* "ETC/NSRWS/x2D/core.pyx":135
  *     """
  *     # Initialize looping variables and output list
- *     cdef Py_ssize_t n = 0 # Outer loop             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t m = 0 # Inner loop
+ *     cdef Py_ssize_t n = 0             # <<<<<<<<<<<<<<
  *     cdef Py_ssize_t x_size = len(x)
+ *     cdef list out_x = []
  */
   __pyx_v_n = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":235
+  /* "ETC/NSRWS/x2D/core.pyx":136
  *     # Initialize looping variables and output list
- *     cdef Py_ssize_t n = 0 # Outer loop
- *     cdef Py_ssize_t m = 0 # Inner loop             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t x_size = len(x)
- *     cdef list out = []
- */
-  __pyx_v_m = 0;
-
-  /* "ETC/NSRWS/x1D/compute_core.pyx":236
- *     cdef Py_ssize_t n = 0 # Outer loop
- *     cdef Py_ssize_t m = 0 # Inner loop
+ *     cdef Py_ssize_t n = 0
  *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
- *     cdef list out = []
- * 
+ *     cdef list out_x = []
+ *     cdef list out_y = []
  */
   __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
   __pyx_v_x_size = __pyx_t_1;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":237
- *     cdef Py_ssize_t m = 0 # Inner loop
+  /* "ETC/NSRWS/x2D/core.pyx":137
+ *     cdef Py_ssize_t n = 0
  *     cdef Py_ssize_t x_size = len(x)
- *     cdef list out = []             # <<<<<<<<<<<<<<
+ *     cdef list out_x = []             # <<<<<<<<<<<<<<
+ *     cdef list out_y = []
  * 
- *     # Tracking variable for counting matching elements in pairwise window comparison
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_out = ((PyObject*)__pyx_t_2);
+  __pyx_v_out_x = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":240
+  /* "ETC/NSRWS/x2D/core.pyx":138
+ *     cdef Py_ssize_t x_size = len(x)
+ *     cdef list out_x = []
+ *     cdef list out_y = []             # <<<<<<<<<<<<<<
  * 
- *     # Tracking variable for counting matching elements in pairwise window comparison
- *     cdef unsigned int track = 0             # <<<<<<<<<<<<<<
- * 
- *     # Iterate over input values except one less than the last 'order' values
+ *     # Loop over input and replace pair
  */
-  __pyx_v_track = 0;
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_v_out_y = ((PyObject*)__pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":244
- *     # Iterate over input values except one less than the last 'order' values
- *     # Logic: last window, say triplet must begin from 3rd-last index, leaving 2 values
- *     for n in range(x_size-order+1):             # <<<<<<<<<<<<<<
+  /* "ETC/NSRWS/x2D/core.pyx":141
  * 
- *         # Slide window of given order and do element-wise comparison
+ *     # Loop over input and replace pair
+ *     while n < x_size-1:             # <<<<<<<<<<<<<<
+ * 
+ *         # Check for match with supplied pair
  */
-  __pyx_t_3 = ((__pyx_v_x_size - __pyx_v_order) + 1);
-  __pyx_t_4 = __pyx_t_3;
-  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-    __pyx_v_n = __pyx_t_5;
+  while (1) {
+    __pyx_t_3 = ((__pyx_v_n < (__pyx_v_x_size - 1)) != 0);
+    if (!__pyx_t_3) break;
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":247
+    /* "ETC/NSRWS/x2D/core.pyx":144
  * 
- *         # Slide window of given order and do element-wise comparison
- *         for m in range(order):             # <<<<<<<<<<<<<<
+ *         # Check for match with supplied pair
+ *         if x[n] == pair_x[0] and x[n+1] == pair_x[1] and y[n] == pair_y[0] and y[n+1] == pair_y[1]:             # <<<<<<<<<<<<<<
  * 
- *             # Reset tracker
+ *             # Replace first value with supplied value
  */
-    __pyx_t_6 = __pyx_v_order;
-    __pyx_t_7 = __pyx_t_6;
-    for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-      __pyx_v_m = __pyx_t_8;
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":253
- * 
- *             # Track comparison of input elements with window elements
- *             if x[n+m] == window[m]:             # <<<<<<<<<<<<<<
- *                 track += 1
- *             # # If mismatch, break
- */
-      __pyx_t_9 = (__pyx_v_n + __pyx_v_m);
-      __pyx_t_10 = __pyx_v_m;
-      __pyx_t_11 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_9)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_window.data) + __pyx_t_10)) )))) != 0);
-      if (__pyx_t_11) {
-
-        /* "ETC/NSRWS/x1D/compute_core.pyx":254
- *             # Track comparison of input elements with window elements
- *             if x[n+m] == window[m]:
- *                 track += 1             # <<<<<<<<<<<<<<
- *             # # If mismatch, break
- *             else:
- */
-        __pyx_v_track = (__pyx_v_track + 1);
-
-        /* "ETC/NSRWS/x1D/compute_core.pyx":253
- * 
- *             # Track comparison of input elements with window elements
- *             if x[n+m] == window[m]:             # <<<<<<<<<<<<<<
- *                 track += 1
- *             # # If mismatch, break
- */
-        goto __pyx_L7;
-      }
-
-      /* "ETC/NSRWS/x1D/compute_core.pyx":257
- *             # # If mismatch, break
- *             else:
- *                 break             # <<<<<<<<<<<<<<
- * 
- *         # If all compared elements match for current window
- */
-      /*else*/ {
-        goto __pyx_L6_break;
-      }
-      __pyx_L7:;
+    __pyx_t_4 = __pyx_v_n;
+    __pyx_t_5 = 0;
+    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_4)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair_x.data) + __pyx_t_5)) )))) != 0);
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_3 = __pyx_t_6;
+      goto __pyx_L6_bool_binop_done;
     }
-    __pyx_L6_break:;
+    __pyx_t_5 = (__pyx_v_n + 1);
+    __pyx_t_4 = 1;
+    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_5)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair_x.data) + __pyx_t_4)) )))) != 0);
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_3 = __pyx_t_6;
+      goto __pyx_L6_bool_binop_done;
+    }
+    __pyx_t_4 = __pyx_v_n;
+    __pyx_t_5 = 0;
+    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_y.data) + __pyx_t_4)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair_y.data) + __pyx_t_5)) )))) != 0);
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_3 = __pyx_t_6;
+      goto __pyx_L6_bool_binop_done;
+    }
+    __pyx_t_5 = (__pyx_v_n + 1);
+    __pyx_t_4 = 1;
+    __pyx_t_6 = (((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_y.data) + __pyx_t_5)) ))) == (*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_pair_y.data) + __pyx_t_4)) )))) != 0);
+    __pyx_t_3 = __pyx_t_6;
+    __pyx_L6_bool_binop_done:;
+    if (__pyx_t_3) {
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":260
+      /* "ETC/NSRWS/x2D/core.pyx":147
  * 
- *         # If all compared elements match for current window
- *         if track == order:             # <<<<<<<<<<<<<<
+ *             # Replace first value with supplied value
+ *             x[n] = value_x             # <<<<<<<<<<<<<<
+ *             y[n] = value_y
  * 
- *             # Replace the first element with provided value
  */
-    __pyx_t_11 = ((__pyx_v_track == __pyx_v_order) != 0);
-    if (__pyx_t_11) {
+      __pyx_t_4 = __pyx_v_n;
+      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_4)) )) = __pyx_v_value_x;
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":263
+      /* "ETC/NSRWS/x2D/core.pyx":148
+ *             # Replace first value with supplied value
+ *             x[n] = value_x
+ *             y[n] = value_y             # <<<<<<<<<<<<<<
  * 
- *             # Replace the first element with provided value
- *             x[n] = value             # <<<<<<<<<<<<<<
- * 
- *             # Replace the remaining subsequent values with zeros
+ *             # Replace second value with 0
  */
-      __pyx_t_10 = __pyx_v_n;
-      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_10)) )) = __pyx_v_value;
+      __pyx_t_5 = __pyx_v_n;
+      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_y.data) + __pyx_t_5)) )) = __pyx_v_value_y;
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":266
+      /* "ETC/NSRWS/x2D/core.pyx":151
  * 
- *             # Replace the remaining subsequent values with zeros
- *             for m in range(1, order):             # <<<<<<<<<<<<<<
- *                 x[n+m] = 0
+ *             # Replace second value with 0
+ *             x[n+1] = 0             # <<<<<<<<<<<<<<
+ *             y[n+1] = 0
  * 
  */
-      __pyx_t_6 = __pyx_v_order;
-      __pyx_t_7 = __pyx_t_6;
-      for (__pyx_t_8 = 1; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_m = __pyx_t_8;
+      __pyx_t_7 = (__pyx_v_n + 1);
+      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_7)) )) = 0;
 
-        /* "ETC/NSRWS/x1D/compute_core.pyx":267
- *             # Replace the remaining subsequent values with zeros
- *             for m in range(1, order):
- *                 x[n+m] = 0             # <<<<<<<<<<<<<<
+      /* "ETC/NSRWS/x2D/core.pyx":152
+ *             # Replace second value with 0
+ *             x[n+1] = 0
+ *             y[n+1] = 0             # <<<<<<<<<<<<<<
  * 
- *         # Reset tracker
+ *             n += 1
  */
-        __pyx_t_9 = (__pyx_v_n + __pyx_v_m);
-        *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_9)) )) = 0;
-      }
+      __pyx_t_8 = (__pyx_v_n + 1);
+      *((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_y.data) + __pyx_t_8)) )) = 0;
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":260
+      /* "ETC/NSRWS/x2D/core.pyx":154
+ *             y[n+1] = 0
  * 
- *         # If all compared elements match for current window
- *         if track == order:             # <<<<<<<<<<<<<<
+ *             n += 1             # <<<<<<<<<<<<<<
  * 
- *             # Replace the first element with provided value
+ *         n += 1
+ */
+      __pyx_v_n = (__pyx_v_n + 1);
+
+      /* "ETC/NSRWS/x2D/core.pyx":144
+ * 
+ *         # Check for match with supplied pair
+ *         if x[n] == pair_x[0] and x[n+1] == pair_x[1] and y[n] == pair_y[0] and y[n+1] == pair_y[1]:             # <<<<<<<<<<<<<<
+ * 
+ *             # Replace first value with supplied value
  */
     }
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":270
+    /* "ETC/NSRWS/x2D/core.pyx":156
+ *             n += 1
  * 
- *         # Reset tracker
- *         track = 0             # <<<<<<<<<<<<<<
+ *         n += 1             # <<<<<<<<<<<<<<
+ * 
  *     # Reset indexing variable
- *     n = 0
  */
-    __pyx_v_track = 0;
+    __pyx_v_n = (__pyx_v_n + 1);
   }
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":272
- *         track = 0
+  /* "ETC/NSRWS/x2D/core.pyx":159
+ * 
  *     # Reset indexing variable
  *     n = 0             # <<<<<<<<<<<<<<
  * 
@@ -3657,66 +2794,89 @@ static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_windows(__Py
  */
   __pyx_v_n = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":275
+  /* "ETC/NSRWS/x2D/core.pyx":162
  * 
  *     # Loop over mutated input and append non-zero values to list
  *     for n in range(x_size):             # <<<<<<<<<<<<<<
  * 
- *         if x[n]:
+ *         if x[n]: # Check only for x as both x & y can only be simultaneously 0
  */
-  __pyx_t_3 = __pyx_v_x_size;
-  __pyx_t_4 = __pyx_t_3;
-  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-    __pyx_v_n = __pyx_t_5;
+  __pyx_t_9 = __pyx_v_x_size;
+  __pyx_t_10 = __pyx_t_9;
+  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+    __pyx_v_n = __pyx_t_11;
 
-    /* "ETC/NSRWS/x1D/compute_core.pyx":277
+    /* "ETC/NSRWS/x2D/core.pyx":164
  *     for n in range(x_size):
  * 
- *         if x[n]:             # <<<<<<<<<<<<<<
+ *         if x[n]: # Check only for x as both x & y can only be simultaneously 0             # <<<<<<<<<<<<<<
  * 
- *             out.append(x[n])
+ *             out_x.append(x[n])
  */
     __pyx_t_12 = __pyx_v_n;
-    __pyx_t_11 = ((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_12)) ))) != 0);
-    if (__pyx_t_11) {
+    __pyx_t_3 = ((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_12)) ))) != 0);
+    if (__pyx_t_3) {
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":279
- *         if x[n]:
+      /* "ETC/NSRWS/x2D/core.pyx":166
+ *         if x[n]: # Check only for x as both x & y can only be simultaneously 0
  * 
- *             out.append(x[n])             # <<<<<<<<<<<<<<
+ *             out_x.append(x[n])             # <<<<<<<<<<<<<<
+ *             out_y.append(y[n])
  * 
- *     return out
  */
       __pyx_t_12 = __pyx_v_n;
-      __pyx_t_2 = __Pyx_PyInt_From_unsigned_int((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_12)) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_unsigned_int((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_x.data) + __pyx_t_12)) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_out, __pyx_t_2); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_out_x, __pyx_t_2); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "ETC/NSRWS/x1D/compute_core.pyx":277
+      /* "ETC/NSRWS/x2D/core.pyx":167
+ * 
+ *             out_x.append(x[n])
+ *             out_y.append(y[n])             # <<<<<<<<<<<<<<
+ * 
+ *     return out_x, out_y
+ */
+      __pyx_t_12 = __pyx_v_n;
+      __pyx_t_2 = __Pyx_PyInt_From_unsigned_int((*((unsigned int *) ( /* dim=0 */ ((char *) (((unsigned int *) __pyx_v_y.data) + __pyx_t_12)) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_out_y, __pyx_t_2); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+      /* "ETC/NSRWS/x2D/core.pyx":164
  *     for n in range(x_size):
  * 
- *         if x[n]:             # <<<<<<<<<<<<<<
+ *         if x[n]: # Check only for x as both x & y can only be simultaneously 0             # <<<<<<<<<<<<<<
  * 
- *             out.append(x[n])
+ *             out_x.append(x[n])
  */
     }
   }
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":281
- *             out.append(x[n])
+  /* "ETC/NSRWS/x2D/core.pyx":169
+ *             out_y.append(y[n])
  * 
- *     return out             # <<<<<<<<<<<<<<
+ *     return out_x, out_y             # <<<<<<<<<<<<<<
+ * 
+ * # Function for checking whether all elements in input are identical
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_out);
-  __pyx_r = __pyx_v_out;
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_v_out_x);
+  __Pyx_GIVEREF(__pyx_v_out_x);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_out_x);
+  __Pyx_INCREF(__pyx_v_out_y);
+  __Pyx_GIVEREF(__pyx_v_out_y);
+  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_out_y);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":211
+  /* "ETC/NSRWS/x2D/core.pyx":115
  * 
- * # Function for substituting windows of any length
- * cpdef list substitute_windows(unsigned int[::1] x, unsigned int order, unsigned int[::1] window, unsigned int value):             # <<<<<<<<<<<<<<
+ * # Function for substituting pairs (new version, uses while loop)
+ * cpdef substitute_pairs(unsigned int[::1] x, unsigned int[::1] y, unsigned int[::1] pair_x, unsigned int[::1] pair_y, unsigned int value_x, unsigned int value_y):             # <<<<<<<<<<<<<<
  *     """
  *     INPUT
  */
@@ -3724,33 +2884,40 @@ static PyObject *__pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_windows(__Py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_out);
+  __Pyx_XDECREF(__pyx_v_out_x);
+  __Pyx_XDECREF(__pyx_v_out_y);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_9substitute_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows[] = "substitute_windows(unsigned int[::1] x, unsigned int order, unsigned int[::1] window, unsigned int value) -> list\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n    order: unsigned 32-bit int\n        Length of the window to slide across input\n\n    window : array.array, length = 2\n        Array object containing 2 32-bit unsigned integers.\n\n    value : unsigned 32-bit int\n        Value to substitute the first element of pair with\n\n    OUTPUT\n    ------\n    out : list\n        Array object containing 32-bit integers, with supplied pair replaced everywhere\n        by the supplied value.\n    ";
-static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_9substitute_windows(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_3ETC_5NSRWS_3x2D_4core_2substitute_pairs[] = "substitute_pairs(unsigned int[::1] x, unsigned int[::1] y, unsigned int[::1] pair_x, unsigned int[::1] pair_y, unsigned int value_x, unsigned int value_y)\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n    pair : array.array, length = 2\n        Array object containing 2 32-bit unsigned integers.\n\n    value : unsigned 32-bit int\n        Value to substitute the first element of pair with\n\n    OUTPUT\n    ------\n    out : list\n        Array object containing 32-bit integers, with supplied pair replaced everywhere\n        by the supplied value.\n    ";
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_3substitute_pairs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
-  unsigned int __pyx_v_order;
-  __Pyx_memviewslice __pyx_v_window = { 0, 0, { 0 }, { 0 }, { 0 } };
-  unsigned int __pyx_v_value;
+  __Pyx_memviewslice __pyx_v_y = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_pair_x = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_pair_y = { 0, 0, { 0 }, { 0 }, { 0 } };
+  unsigned int __pyx_v_value_x;
+  unsigned int __pyx_v_value_y;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("substitute_windows (wrapper)", 0);
+  __Pyx_RefNannySetupContext("substitute_pairs (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_order,&__pyx_n_s_window,&__pyx_n_s_value,0};
-    PyObject* values[4] = {0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_y,&__pyx_n_s_pair_x,&__pyx_n_s_pair_y,&__pyx_n_s_value_x,&__pyx_n_s_value_y,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
@@ -3769,63 +2936,81 @@ static PyObject *__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_9substitute_windows(Py
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_order)) != 0)) kw_args--;
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("substitute_windows", 1, 4, 4, 1); __PYX_ERR(0, 211, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, 1); __PYX_ERR(0, 115, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_window)) != 0)) kw_args--;
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pair_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("substitute_windows", 1, 4, 4, 2); __PYX_ERR(0, 211, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, 2); __PYX_ERR(0, 115, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
-        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pair_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("substitute_windows", 1, 4, 4, 3); __PYX_ERR(0, 211, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, 3); __PYX_ERR(0, 115, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value_x)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, 4); __PYX_ERR(0, 115, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value_y)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, 5); __PYX_ERR(0, 115, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "substitute_windows") < 0)) __PYX_ERR(0, 211, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "substitute_pairs") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+      values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+      values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
     }
-    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 211, __pyx_L3_error)
-    __pyx_v_order = __Pyx_PyInt_As_unsigned_int(values[1]); if (unlikely((__pyx_v_order == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
-    __pyx_v_window = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_window.memview)) __PYX_ERR(0, 211, __pyx_L3_error)
-    __pyx_v_value = __Pyx_PyInt_As_unsigned_int(values[3]); if (unlikely((__pyx_v_value == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
+    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 115, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_y.memview)) __PYX_ERR(0, 115, __pyx_L3_error)
+    __pyx_v_pair_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_pair_x.memview)) __PYX_ERR(0, 115, __pyx_L3_error)
+    __pyx_v_pair_y = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(values[3], PyBUF_WRITABLE); if (unlikely(!__pyx_v_pair_y.memview)) __PYX_ERR(0, 115, __pyx_L3_error)
+    __pyx_v_value_x = __Pyx_PyInt_As_unsigned_int(values[4]); if (unlikely((__pyx_v_value_x == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L3_error)
+    __pyx_v_value_y = __Pyx_PyInt_As_unsigned_int(values[5]); if (unlikely((__pyx_v_value_y == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("substitute_windows", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 211, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("substitute_pairs", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 115, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows(__pyx_self, __pyx_v_x, __pyx_v_order, __pyx_v_window, __pyx_v_value);
+  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x2D_4core_2substitute_pairs(__pyx_self, __pyx_v_x, __pyx_v_y, __pyx_v_pair_x, __pyx_v_pair_y, __pyx_v_value_x, __pyx_v_value_y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, unsigned int __pyx_v_order, __Pyx_memviewslice __pyx_v_window, unsigned int __pyx_v_value) {
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_2substitute_pairs(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y, __Pyx_memviewslice __pyx_v_pair_x, __Pyx_memviewslice __pyx_v_pair_y, unsigned int __pyx_v_value_x, unsigned int __pyx_v_value_y) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("substitute_windows", 0);
+  __Pyx_RefNannySetupContext("substitute_pairs", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 211, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_window.memview)) { __Pyx_RaiseUnboundLocalError("window"); __PYX_ERR(0, 211, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_3ETC_5NSRWS_3x1D_12compute_core_substitute_windows(__pyx_v_x, __pyx_v_order, __pyx_v_window, __pyx_v_value, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 115, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_y.memview)) { __Pyx_RaiseUnboundLocalError("y"); __PYX_ERR(0, 115, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_pair_x.memview)) { __Pyx_RaiseUnboundLocalError("pair_x"); __PYX_ERR(0, 115, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_pair_y.memview)) { __Pyx_RaiseUnboundLocalError("pair_y"); __PYX_ERR(0, 115, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_3ETC_5NSRWS_3x2D_4core_substitute_pairs(__pyx_v_x, __pyx_v_y, __pyx_v_pair_x, __pyx_v_pair_y, __pyx_v_value_x, __pyx_v_value_y, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3834,11 +3019,214 @@ static PyObject *__pyx_pf_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows(CY
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.NSRWS.x1D.compute_core.substitute_windows", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.substitute_pairs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_window, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_y, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_pair_x, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_pair_y, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ETC/NSRWS/x2D/core.pyx":172
+ * 
+ * # Function for checking whether all elements in input are identical
+ * cpdef bint check_equality(const unsigned int[::1] x, const unsigned int[::1] y):             # <<<<<<<<<<<<<<
+ *     """
+ *     INPUT
+ */
+
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_f_3ETC_5NSRWS_3x2D_4core_check_equality(__Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  Py_ssize_t __pyx_v_n;
+  Py_ssize_t __pyx_v_x_size;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  size_t __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
+  int __pyx_t_8;
+  __Pyx_RefNannySetupContext("check_equality", 0);
+
+  /* "ETC/NSRWS/x2D/core.pyx":187
+ *     # Intialize loop bounds
+ *     cdef Py_ssize_t n
+ *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
+ * 
+ *     # Iterate over values from input
+ */
+  __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
+  __pyx_v_x_size = __pyx_t_1;
+
+  /* "ETC/NSRWS/x2D/core.pyx":190
+ * 
+ *     # Iterate over values from input
+ *     for n in range(x_size):             # <<<<<<<<<<<<<<
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ */
+  __pyx_t_2 = __pyx_v_x_size;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_n = __pyx_t_4;
+
+    /* "ETC/NSRWS/x2D/core.pyx":193
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n] or y[0] != y[n]:             # <<<<<<<<<<<<<<
+ *             return False
+ * 
+ */
+    __pyx_t_6 = 0;
+    __pyx_t_7 = __pyx_v_n;
+    __pyx_t_8 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_6)) ))) != (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_7)) )))) != 0);
+    if (!__pyx_t_8) {
+    } else {
+      __pyx_t_5 = __pyx_t_8;
+      goto __pyx_L6_bool_binop_done;
+    }
+    __pyx_t_7 = 0;
+    __pyx_t_6 = __pyx_v_n;
+    __pyx_t_8 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_7)) ))) != (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_y.data) + __pyx_t_6)) )))) != 0);
+    __pyx_t_5 = __pyx_t_8;
+    __pyx_L6_bool_binop_done:;
+    if (__pyx_t_5) {
+
+      /* "ETC/NSRWS/x2D/core.pyx":194
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n] or y[0] != y[n]:
+ *             return False             # <<<<<<<<<<<<<<
+ * 
+ *     return True
+ */
+      __pyx_r = 0;
+      goto __pyx_L0;
+
+      /* "ETC/NSRWS/x2D/core.pyx":193
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n] or y[0] != y[n]:             # <<<<<<<<<<<<<<
+ *             return False
+ * 
+ */
+    }
+  }
+
+  /* "ETC/NSRWS/x2D/core.pyx":196
+ *             return False
+ * 
+ *     return True             # <<<<<<<<<<<<<<
+ * 
+ * # # Function for getting mask for windows of any length
+ */
+  __pyx_r = 1;
+  goto __pyx_L0;
+
+  /* "ETC/NSRWS/x2D/core.pyx":172
+ * 
+ * # Function for checking whether all elements in input are identical
+ * cpdef bint check_equality(const unsigned int[::1] x, const unsigned int[::1] y):             # <<<<<<<<<<<<<<
+ *     """
+ *     INPUT
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_3ETC_5NSRWS_3x2D_4core_4check_equality[] = "check_equality(const unsigned int[::1] x, const unsigned int[::1] y) -> bool\n\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n\n    OUTPUT\n    ------\n    bool\n        True if all elements are identical\n    ";
+static PyObject *__pyx_pw_3ETC_5NSRWS_3x2D_4core_5check_equality(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_y = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("check_equality (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_x,&__pyx_n_s_y,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("check_equality", 1, 2, 2, 1); __PYX_ERR(0, 172, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "check_equality") < 0)) __PYX_ERR(0, 172, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(values[0], 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 172, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(values[1], 0); if (unlikely(!__pyx_v_y.memview)) __PYX_ERR(0, 172, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("check_equality", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 172, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.check_equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3ETC_5NSRWS_3x2D_4core_4check_equality(__pyx_self, __pyx_v_x, __pyx_v_y);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3ETC_5NSRWS_3x2D_4core_4check_equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x, __Pyx_memviewslice __pyx_v_y) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("check_equality", 0);
+  __Pyx_XDECREF(__pyx_r);
+  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 172, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_y.memview)) { __Pyx_RaiseUnboundLocalError("y"); __PYX_ERR(0, 172, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_3ETC_5NSRWS_3x2D_4core_check_equality(__pyx_v_x, __pyx_v_y, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("ETC.NSRWS.x2D.core.check_equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_y, 1);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -17426,7 +16814,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.NSRWS.x1D.compute_core.array", /*tp_name*/
+  "ETC.NSRWS.x2D.core.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -17545,7 +16933,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.NSRWS.x1D.compute_core.Enum", /*tp_name*/
+  "ETC.NSRWS.x2D.core.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -17806,7 +17194,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.NSRWS.x1D.compute_core.memoryview", /*tp_name*/
+  "ETC.NSRWS.x2D.core.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -17944,7 +17332,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.NSRWS.x1D.compute_core._memoryviewslice", /*tp_name*/
+  "ETC.NSRWS.x2D.core._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -18020,28 +17408,26 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"get_mask_pairs", (PyCFunction)__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_1get_mask_pairs, METH_O, __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_get_mask_pairs},
-  {"substitute_pairs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_3substitute_pairs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_2substitute_pairs},
-  {"check_equality", (PyCFunction)__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_5check_equality, METH_O, __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_4check_equality},
-  {"get_mask_windows", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_7get_mask_windows, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_6get_mask_windows},
-  {"substitute_windows", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x1D_12compute_core_9substitute_windows, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x1D_12compute_core_8substitute_windows},
+  {"get_mask_pairs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x2D_4core_1get_mask_pairs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x2D_4core_get_mask_pairs},
+  {"substitute_pairs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x2D_4core_3substitute_pairs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x2D_4core_2substitute_pairs},
+  {"check_equality", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3ETC_5NSRWS_3x2D_4core_5check_equality, METH_VARARGS|METH_KEYWORDS, __pyx_doc_3ETC_5NSRWS_3x2D_4core_4check_equality},
   {0, 0, 0, 0}
 };
 
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_compute_core(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_core(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_compute_core},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_core},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "compute_core",
+    "core",
     __pyx_k_author_Pranay_S_Yadav, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -18127,9 +17513,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
-  {&__pyx_n_s_order, __pyx_k_order, sizeof(__pyx_k_order), 0, 0, 1, 1},
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
-  {&__pyx_n_s_pair, __pyx_k_pair, sizeof(__pyx_k_pair), 0, 0, 1, 1},
+  {&__pyx_n_s_pair_x, __pyx_k_pair_x, sizeof(__pyx_k_pair_x), 0, 0, 1, 1},
+  {&__pyx_n_s_pair_y, __pyx_k_pair_y, sizeof(__pyx_k_pair_y), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
@@ -18160,9 +17546,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
-  {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
-  {&__pyx_n_s_window, __pyx_k_window, sizeof(__pyx_k_window), 0, 0, 1, 1},
+  {&__pyx_n_s_value_x, __pyx_k_value_x, sizeof(__pyx_k_value_x), 0, 0, 1, 1},
+  {&__pyx_n_s_value_y, __pyx_k_value_y, sizeof(__pyx_k_value_y), 0, 0, 1, 1},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
+  {&__pyx_n_s_y, __pyx_k_y, sizeof(__pyx_k_y), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -18628,11 +18015,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initcompute_core(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initcompute_core(void)
+__Pyx_PyMODINIT_FUNC initcore(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initcore(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_compute_core(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_compute_core(void)
+__Pyx_PyMODINIT_FUNC PyInit_core(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_core(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -18699,7 +18086,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_compute_core(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_core(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -18709,7 +18096,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_compute_core(PyObject *__pyx_pyini
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'compute_core' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'core' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -18724,7 +18111,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_compute_core(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_core(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -18763,7 +18150,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("compute_core", __pyx_methods, __pyx_k_author_Pranay_S_Yadav, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("core", __pyx_methods, __pyx_k_author_Pranay_S_Yadav, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -18781,14 +18168,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_ETC__NSRWS__x1D__compute_core) {
+  if (__pyx_module_is_main_ETC__NSRWS__x2D__core) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ETC.NSRWS.x1D.compute_core")) {
-      if (unlikely(PyDict_SetItemString(modules, "ETC.NSRWS.x1D.compute_core", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ETC.NSRWS.x2D.core")) {
+      if (unlikely(PyDict_SetItemString(modules, "ETC.NSRWS.x2D.core", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -18809,7 +18196,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":12
+  /* "ETC/NSRWS/x2D/core.pyx":12
  * from cpython cimport array, bool
  * cimport cython
  * import array             # <<<<<<<<<<<<<<
@@ -18821,7 +18208,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_array, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ETC/NSRWS/x1D/compute_core.pyx":1
+  /* "ETC/NSRWS/x2D/core.pyx":1
  * # cython: language_level=3, boundscheck=False, wraparound=False, nonecheck=False, emit_code_comments=True, cdivision=True, embedsignature=True             # <<<<<<<<<<<<<<
  * #!/usr/bin/env python3
  * # -*- coding: utf-8 -*-
@@ -18991,11 +18378,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init ETC.NSRWS.x1D.compute_core", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ETC.NSRWS.x2D.core", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ETC.NSRWS.x1D.compute_core");
+    PyErr_SetString(PyExc_ImportError, "init ETC.NSRWS.x2D.core");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -19208,11 +18595,6 @@ static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *memslice,
     }
 }
 
-/* None */
-static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname) {
-    PyErr_Format(PyExc_UnboundLocalError, "local variable '%s' referenced before assignment", varname);
-}
-
 /* RaiseArgTupleInvalid */
 static void __Pyx_RaiseArgtupleInvalid(
     const char* func_name,
@@ -19353,6 +18735,11 @@ invalid_keyword:
     #endif
 bad:
     return -1;
+}
+
+/* None */
+static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname) {
+    PyErr_Format(PyExc_UnboundLocalError, "local variable '%s' referenced before assignment", varname);
 }
 
 /* ArgTypeTest */

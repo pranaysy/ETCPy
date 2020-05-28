@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "ETC.common.compute_estimates",
+        "name": "ETC.seq.estimates",
         "sources": [
-            "ETC/common/compute_estimates.pyx"
+            "ETC/seq/estimates.pyx"
         ]
     },
-    "module_name": "ETC.common.compute_estimates"
+    "module_name": "ETC.seq.estimates"
 }
 END: Cython Metadata */
 
@@ -605,8 +605,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__ETC__common__compute_estimates
-#define __PYX_HAVE_API__ETC__common__compute_estimates
+#define __PYX_HAVE__ETC__seq__estimates
+#define __PYX_HAVE_API__ETC__seq__estimates
 /* Early includes */
 #include <math.h>
 #include <string.h>
@@ -846,7 +846,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "ETC/common/compute_estimates.pyx",
+  "ETC/seq/estimates.pyx",
   "__init__.pxd",
   "stringsource",
   "type.pxd",
@@ -1947,12 +1947,18 @@ static int __Pyx_ValidateAndInit_memviewslice(
 /* ObjectToMemviewSlice.proto */
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(PyObject *, int writable_flag);
 
+/* ObjectToMemviewSlice.proto */
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(PyObject *, int writable_flag);
+
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value);
 
 /* MemviewDtypeToObject.proto */
 static CYTHON_INLINE PyObject *__pyx_memview_get_unsigned_int(const char *itemp);
 static CYTHON_INLINE int __pyx_memview_set_unsigned_int(const char *itemp, PyObject *obj);
+
+/* MemviewDtypeToObject.proto */
+static CYTHON_INLINE PyObject *__pyx_memview_get_unsigned_int__const__(const char *itemp);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -2135,7 +2141,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'ETC.common.compute_estimates' */
+/* Module declarations from 'ETC.seq.estimates' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2147,7 +2153,8 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_3ETC_3seq_9estimates_entropy(__Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_3ETC_3seq_9estimates_equality(__Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2182,12 +2189,13 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int = { "unsigned int", NULL, sizeof(unsigned int), { 0 }, 0, IS_UNSIGNED(unsigned int) ? 'U' : 'I', IS_UNSIGNED(unsigned int), 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int__const__ = { "const unsigned int", NULL, sizeof(unsigned int const ), { 0 }, 0, IS_UNSIGNED(unsigned int const ) ? 'U' : 'I', IS_UNSIGNED(unsigned int const ), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
-#define __Pyx_MODULE_NAME "ETC.common.compute_estimates"
-extern int __pyx_module_is_main_ETC__common__compute_estimates;
-int __pyx_module_is_main_ETC__common__compute_estimates = 0;
+#define __Pyx_MODULE_NAME "ETC.seq.estimates"
+extern int __pyx_module_is_main_ETC__seq__estimates;
+int __pyx_module_is_main_ETC__seq__estimates = 0;
 
-/* Implementation of 'ETC.common.compute_estimates' */
+/* Implementation of 'ETC.seq.estimates' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
@@ -2395,7 +2403,8 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_pf_3ETC_6common_17compute_estimates_get_entropy(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x); /* proto */
+static PyObject *__pyx_pf_3ETC_3seq_9estimates_entropy(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x); /* proto */
+static PyObject *__pyx_pf_3ETC_3seq_9estimates_2equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2482,16 +2491,16 @@ static PyObject *__pyx_tuple__31;
 static PyObject *__pyx_codeobj__32;
 /* Late includes */
 
-/* "ETC/common/compute_estimates.pyx":13
+/* "ETC/seq/estimates.pyx":13
  * cimport numpy as np
  * 
- * cpdef double get_entropy(unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ * cpdef double entropy(unsigned int[::1] x):             # <<<<<<<<<<<<<<
  * 
  *     # cdef np.ndarray[np.npy_int64, ndim=1] counts = np.bincount(x)
  */
 
-static PyObject *__pyx_pw_3ETC_6common_17compute_estimates_1get_entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memviewslice __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_1entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static double __pyx_f_3ETC_3seq_9estimates_entropy(__Pyx_memviewslice __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
   __Pyx_memviewslice __pyx_v_counts_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   double __pyx_v_counts_total;
   Py_ssize_t __pyx_v_counts_size;
@@ -2514,9 +2523,9 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
   int __pyx_t_10;
   int __pyx_t_11;
   long __pyx_t_12;
-  __Pyx_RefNannySetupContext("get_entropy", 0);
+  __Pyx_RefNannySetupContext("entropy", 0);
 
-  /* "ETC/common/compute_estimates.pyx":16
+  /* "ETC/seq/estimates.pyx":16
  * 
  *     # cdef np.ndarray[np.npy_int64, ndim=1] counts = np.bincount(x)
  *     cdef long int[:] counts_view = np.bincount(x)             # <<<<<<<<<<<<<<
@@ -2552,7 +2561,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "ETC/common/compute_estimates.pyx":18
+  /* "ETC/seq/estimates.pyx":18
  *     cdef long int[:] counts_view = np.bincount(x)
  *     # cdef long int[:] counts_view = counts
  *     cdef double counts_total = 0             # <<<<<<<<<<<<<<
@@ -2561,7 +2570,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
   __pyx_v_counts_total = 0.0;
 
-  /* "ETC/common/compute_estimates.pyx":19
+  /* "ETC/seq/estimates.pyx":19
  *     # cdef long int[:] counts_view = counts
  *     cdef double counts_total = 0
  *     cdef Py_ssize_t counts_size = counts_view.shape[0]             # <<<<<<<<<<<<<<
@@ -2570,7 +2579,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
   __pyx_v_counts_size = (__pyx_v_counts_view.shape[0]);
 
-  /* "ETC/common/compute_estimates.pyx":22
+  /* "ETC/seq/estimates.pyx":22
  *     cdef Py_ssize_t m
  * 
  *     for m in range(counts_size):             # <<<<<<<<<<<<<<
@@ -2582,7 +2591,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_m = __pyx_t_8;
 
-    /* "ETC/common/compute_estimates.pyx":23
+    /* "ETC/seq/estimates.pyx":23
  * 
  *     for m in range(counts_size):
  *         counts_total += counts_view[m]             # <<<<<<<<<<<<<<
@@ -2602,7 +2611,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
     __pyx_v_counts_total = (__pyx_v_counts_total + (*((long *) ( /* dim=0 */ (__pyx_v_counts_view.data + __pyx_t_9 * __pyx_v_counts_view.strides[0]) ))));
   }
 
-  /* "ETC/common/compute_estimates.pyx":25
+  /* "ETC/seq/estimates.pyx":25
  *         counts_total += counts_view[m]
  * 
  *     cdef double E = 0.0             # <<<<<<<<<<<<<<
@@ -2611,7 +2620,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
   __pyx_v_E = 0.0;
 
-  /* "ETC/common/compute_estimates.pyx":28
+  /* "ETC/seq/estimates.pyx":28
  *     cdef double prob, logprob
  * 
  *     m = 0             # <<<<<<<<<<<<<<
@@ -2620,7 +2629,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
   __pyx_v_m = 0;
 
-  /* "ETC/common/compute_estimates.pyx":29
+  /* "ETC/seq/estimates.pyx":29
  * 
  *     m = 0
  *     for n in range(counts_size):             # <<<<<<<<<<<<<<
@@ -2632,7 +2641,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_n = __pyx_t_8;
 
-    /* "ETC/common/compute_estimates.pyx":30
+    /* "ETC/seq/estimates.pyx":30
  *     m = 0
  *     for n in range(counts_size):
  *         if counts_view[n]!=0:             # <<<<<<<<<<<<<<
@@ -2652,7 +2661,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
     __pyx_t_11 = (((*((long *) ( /* dim=0 */ (__pyx_v_counts_view.data + __pyx_t_9 * __pyx_v_counts_view.strides[0]) ))) != 0) != 0);
     if (__pyx_t_11) {
 
-      /* "ETC/common/compute_estimates.pyx":31
+      /* "ETC/seq/estimates.pyx":31
  *     for n in range(counts_size):
  *         if counts_view[n]!=0:
  *             prob = counts_view[n] / counts_total             # <<<<<<<<<<<<<<
@@ -2676,7 +2685,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
       }
       __pyx_v_prob = (((double)__pyx_t_12) / __pyx_v_counts_total);
 
-      /* "ETC/common/compute_estimates.pyx":32
+      /* "ETC/seq/estimates.pyx":32
  *         if counts_view[n]!=0:
  *             prob = counts_view[n] / counts_total
  *             logprob = log2(prob)             # <<<<<<<<<<<<<<
@@ -2685,7 +2694,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
       __pyx_v_logprob = log2(__pyx_v_prob);
 
-      /* "ETC/common/compute_estimates.pyx":33
+      /* "ETC/seq/estimates.pyx":33
  *             prob = counts_view[n] / counts_total
  *             logprob = log2(prob)
  *             E = E-prob*logprob             # <<<<<<<<<<<<<<
@@ -2694,7 +2703,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
  */
       __pyx_v_E = (__pyx_v_E - (__pyx_v_prob * __pyx_v_logprob));
 
-      /* "ETC/common/compute_estimates.pyx":30
+      /* "ETC/seq/estimates.pyx":30
  *     m = 0
  *     for n in range(counts_size):
  *         if counts_view[n]!=0:             # <<<<<<<<<<<<<<
@@ -2704,18 +2713,20 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
     }
   }
 
-  /* "ETC/common/compute_estimates.pyx":35
+  /* "ETC/seq/estimates.pyx":35
  *             E = E-prob*logprob
  * 
  *     return E             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
   __pyx_r = __pyx_v_E;
   goto __pyx_L0;
 
-  /* "ETC/common/compute_estimates.pyx":13
+  /* "ETC/seq/estimates.pyx":13
  * cimport numpy as np
  * 
- * cpdef double get_entropy(unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ * cpdef double entropy(unsigned int[::1] x):             # <<<<<<<<<<<<<<
  * 
  *     # cdef np.ndarray[np.npy_int64, ndim=1] counts = np.bincount(x)
  */
@@ -2727,7 +2738,7 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __Pyx_WriteUnraisable("ETC.common.compute_estimates.get_entropy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_counts_view, 1);
@@ -2736,36 +2747,36 @@ static double __pyx_f_3ETC_6common_17compute_estimates_get_entropy(__Pyx_memview
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3ETC_6common_17compute_estimates_1get_entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
-static PyObject *__pyx_pw_3ETC_6common_17compute_estimates_1get_entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_1entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_1entropy(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
   __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_entropy (wrapper)", 0);
+  __Pyx_RefNannySetupContext("entropy (wrapper)", 0);
   assert(__pyx_arg_x); {
     __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int(__pyx_arg_x, PyBUF_WRITABLE); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 13, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.common.compute_estimates.get_entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ETC_6common_17compute_estimates_get_entropy(__pyx_self, __pyx_v_x);
+  __pyx_r = __pyx_pf_3ETC_3seq_9estimates_entropy(__pyx_self, __pyx_v_x);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3ETC_6common_17compute_estimates_get_entropy(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x) {
+static PyObject *__pyx_pf_3ETC_3seq_9estimates_entropy(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("get_entropy", 0);
+  __Pyx_RefNannySetupContext("entropy", 0);
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 13, __pyx_L1_error) }
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3ETC_6common_17compute_estimates_get_entropy(__pyx_v_x, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_3ETC_3seq_9estimates_entropy(__pyx_v_x, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2774,7 +2785,177 @@ static PyObject *__pyx_pf_3ETC_6common_17compute_estimates_get_entropy(CYTHON_UN
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.common.compute_estimates.get_entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "ETC/seq/estimates.pyx":39
+ * 
+ * # Function for checking whether all elements in input are identical
+ * cpdef bint equality(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ *     """
+ *     INPUT
+ */
+
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_3equality(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static int __pyx_f_3ETC_3seq_9estimates_equality(__Pyx_memviewslice __pyx_v_x, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  Py_ssize_t __pyx_v_n;
+  Py_ssize_t __pyx_v_x_size;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  size_t __pyx_t_1;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  Py_ssize_t __pyx_t_5;
+  int __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
+  int __pyx_t_8;
+  __Pyx_RefNannySetupContext("equality", 0);
+
+  /* "ETC/seq/estimates.pyx":54
+ *     # Intialize loop bounds
+ *     cdef Py_ssize_t n
+ *     cdef Py_ssize_t x_size = len(x)             # <<<<<<<<<<<<<<
+ * 
+ *     # Iterate over values from input
+ */
+  __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
+  __pyx_v_x_size = __pyx_t_1;
+
+  /* "ETC/seq/estimates.pyx":57
+ * 
+ *     # Iterate over values from input
+ *     for n in range(x_size):             # <<<<<<<<<<<<<<
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ */
+  __pyx_t_2 = __pyx_v_x_size;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_n = __pyx_t_4;
+
+    /* "ETC/seq/estimates.pyx":60
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n]:             # <<<<<<<<<<<<<<
+ *             return False
+ * 
+ */
+    __pyx_t_5 = 0;
+    __pyx_t_6 = -1;
+    if (__pyx_t_5 < 0) {
+      __pyx_t_5 += __pyx_v_x.shape[0];
+      if (unlikely(__pyx_t_5 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_5 >= __pyx_v_x.shape[0])) __pyx_t_6 = 0;
+    if (unlikely(__pyx_t_6 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      __PYX_ERR(0, 60, __pyx_L1_error)
+    }
+    __pyx_t_7 = __pyx_v_n;
+    __pyx_t_6 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_v_x.shape[0];
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_6 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_v_x.shape[0])) __pyx_t_6 = 0;
+    if (unlikely(__pyx_t_6 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      __PYX_ERR(0, 60, __pyx_L1_error)
+    }
+    __pyx_t_8 = (((*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_5)) ))) != (*((unsigned int const  *) ( /* dim=0 */ ((char *) (((unsigned int const  *) __pyx_v_x.data) + __pyx_t_7)) )))) != 0);
+    if (__pyx_t_8) {
+
+      /* "ETC/seq/estimates.pyx":61
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n]:
+ *             return False             # <<<<<<<<<<<<<<
+ * 
+ *     return True
+ */
+      __pyx_r = 0;
+      goto __pyx_L0;
+
+      /* "ETC/seq/estimates.pyx":60
+ * 
+ *         # Short-circuit the loop: check for any element that doesn't equal the first
+ *         if x[0] != x[n]:             # <<<<<<<<<<<<<<
+ *             return False
+ * 
+ */
+    }
+  }
+
+  /* "ETC/seq/estimates.pyx":63
+ *             return False
+ * 
+ *     return True             # <<<<<<<<<<<<<<
+ */
+  __pyx_r = 1;
+  goto __pyx_L0;
+
+  /* "ETC/seq/estimates.pyx":39
+ * 
+ * # Function for checking whether all elements in input are identical
+ * cpdef bint equality(const unsigned int[::1] x):             # <<<<<<<<<<<<<<
+ *     """
+ *     INPUT
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_WriteUnraisable("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_3equality(PyObject *__pyx_self, PyObject *__pyx_arg_x); /*proto*/
+static char __pyx_doc_3ETC_3seq_9estimates_2equality[] = "\n    INPUT\n    -----\n    x : array.array\n        Array object containing 32-bit unsigned integers.\n\n\n    OUTPUT\n    ------\n    bool\n        True if all elements are identical\n    ";
+static PyObject *__pyx_pw_3ETC_3seq_9estimates_3equality(PyObject *__pyx_self, PyObject *__pyx_arg_x) {
+  __Pyx_memviewslice __pyx_v_x = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("equality (wrapper)", 0);
+  assert(__pyx_arg_x); {
+    __pyx_v_x = __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(__pyx_arg_x, 0); if (unlikely(!__pyx_v_x.memview)) __PYX_ERR(0, 39, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_3ETC_3seq_9estimates_2equality(__pyx_self, __pyx_v_x);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_3ETC_3seq_9estimates_2equality(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_x) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("equality", 0);
+  __Pyx_XDECREF(__pyx_r);
+  if (unlikely(!__pyx_v_x.memview)) { __Pyx_RaiseUnboundLocalError("x"); __PYX_ERR(0, 39, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_3ETC_3seq_9estimates_equality(__pyx_v_x, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
@@ -18146,7 +18327,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.common.compute_estimates.array", /*tp_name*/
+  "ETC.seq.estimates.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -18265,7 +18446,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.common.compute_estimates.Enum", /*tp_name*/
+  "ETC.seq.estimates.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -18526,7 +18707,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.common.compute_estimates.memoryview", /*tp_name*/
+  "ETC.seq.estimates.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -18664,7 +18845,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.common.compute_estimates._memoryviewslice", /*tp_name*/
+  "ETC.seq.estimates._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -18740,24 +18921,25 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"get_entropy", (PyCFunction)__pyx_pw_3ETC_6common_17compute_estimates_1get_entropy, METH_O, 0},
+  {"entropy", (PyCFunction)__pyx_pw_3ETC_3seq_9estimates_1entropy, METH_O, 0},
+  {"equality", (PyCFunction)__pyx_pw_3ETC_3seq_9estimates_3equality, METH_O, __pyx_doc_3ETC_3seq_9estimates_2equality},
   {0, 0, 0, 0}
 };
 
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_compute_estimates(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_estimates(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_compute_estimates},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_estimates},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "compute_estimates",
+    "estimates",
     __pyx_k_author_Pranay_S_Yadav, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -19427,11 +19609,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initcompute_estimates(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initcompute_estimates(void)
+__Pyx_PyMODINIT_FUNC initestimates(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initestimates(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_compute_estimates(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_compute_estimates(void)
+__Pyx_PyMODINIT_FUNC PyInit_estimates(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_estimates(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -19498,7 +19680,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_compute_estimates(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_estimates(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -19508,7 +19690,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_compute_estimates(PyObject *__pyx_
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'compute_estimates' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'estimates' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -19523,7 +19705,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_compute_estimates(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_estimates(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -19562,7 +19744,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("compute_estimates", __pyx_methods, __pyx_k_author_Pranay_S_Yadav, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("estimates", __pyx_methods, __pyx_k_author_Pranay_S_Yadav, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -19580,14 +19762,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_ETC__common__compute_estimates) {
+  if (__pyx_module_is_main_ETC__seq__estimates) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ETC.common.compute_estimates")) {
-      if (unlikely(PyDict_SetItemString(modules, "ETC.common.compute_estimates", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ETC.seq.estimates")) {
+      if (unlikely(PyDict_SetItemString(modules, "ETC.seq.estimates", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -19608,7 +19790,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "ETC/common/compute_estimates.pyx":9
+  /* "ETC/seq/estimates.pyx":9
  * """
  * cimport cython
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -19620,7 +19802,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ETC/common/compute_estimates.pyx":1
+  /* "ETC/seq/estimates.pyx":1
  * #!/usr/bin/env python3             # <<<<<<<<<<<<<<
  * # -*- coding: utf-8 -*-
  * """
@@ -19790,11 +19972,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init ETC.common.compute_estimates", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ETC.seq.estimates", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ETC.common.compute_estimates");
+    PyErr_SetString(PyExc_ImportError, "init ETC.seq.estimates");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -22903,6 +23085,29 @@ __pyx_fail:
     return result;
 }
 
+/* ObjectToMemviewSlice */
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dc_unsigned_int__const__(PyObject *obj, int writable_flag) {
+    __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
+    __Pyx_BufFmt_StackElem stack[1];
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
+    int retcode;
+    if (obj == Py_None) {
+        result.memview = (struct __pyx_memoryview_obj *) Py_None;
+        return result;
+    }
+    retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
+                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 1,
+                                                 &__Pyx_TypeInfo_unsigned_int__const__, stack,
+                                                 &result, obj);
+    if (unlikely(retcode == -1))
+        goto __pyx_fail;
+    return result;
+__pyx_fail:
+    result.memview = NULL;
+    result.data = NULL;
+    return result;
+}
+
 /* CIntToPy */
   static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value) {
     const unsigned int neg_one = (unsigned int) ((unsigned int) 0 - (unsigned int) 1), const_zero = (unsigned int) 0;
@@ -22966,6 +23171,11 @@ static CYTHON_INLINE int __pyx_memview_set_unsigned_int(const char *itemp, PyObj
         return 0;
     *(unsigned int *) itemp = value;
     return 1;
+}
+
+/* MemviewDtypeToObject */
+  static CYTHON_INLINE PyObject *__pyx_memview_get_unsigned_int__const__(const char *itemp) {
+    return (PyObject *) __Pyx_PyInt_From_unsigned_int(*(unsigned int const  *) itemp);
 }
 
 /* Declarations */

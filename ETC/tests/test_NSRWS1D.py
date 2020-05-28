@@ -12,9 +12,9 @@ from random import choice
 from hypothesis import given
 from hypothesis.strategies import composite, integers, lists
 
-from ETC.NSRWS.x1D.compute_one_step import one_step
-from ETC.NSRWS.x1D import compute_etc as cetc
-from ETC.NSRWS.x1D import compute_core as cc
+from ETC.NSRWS.x1D.onestep import onestep
+from ETC.NSRWS.x1D import etc as cetc
+from ETC.NSRWS.x1D import core as cc
 
 
 @composite
@@ -34,10 +34,10 @@ def generate_sequence_identical(draw, elements=[lists, integers]):
 
 
 @given(generate_sequence())
-def test_one_step(inputs):
+def test_onestep(inputs):
     x, order = inputs
-    output1, signal = one_step(x, order, verbose=False, check=False)
-    output2 = one_step(x, order, verbose=True, check=False)
+    output1, signal = onestep(x, order, verbose=False, check=False)
+    output2 = onestep(x, order, verbose=True, check=False)
 
     assert len(output1) < len(x)
     assert max(output1) > max(x)
@@ -48,10 +48,10 @@ def test_one_step(inputs):
 
 
 @given(generate_sequence_identical())
-def test_one_step_equality(inputs):
+def test_onestep_equality(inputs):
 
     seq, order = inputs
-    output = one_step(seq, order, verbose=False, check=True)
+    output = onestep(seq, order, verbose=False, check=True)
 
     assert output is None
 
@@ -61,7 +61,7 @@ def test_get_mask_general(inputs):
     x = array("I", x)
 
     if order == 2:
-        mask = cc.get_mask_pairs(x)[:-1]
+        mask = cc.get_mask_pairs(x)
     else:
         mask = cc.get_mask_windows(x, order)[:-(order-1)]
 
@@ -81,11 +81,11 @@ def test_get_mask_identical(inputs):
     x = array("I", x)
 
     if order == 2:
-        mask = cc.get_mask_pairs(x)[:-1]
-        mask_rev = cc.get_mask_pairs(x[::-1])[:-1]
+        mask = cc.get_mask_pairs(x)
+        mask_rev = cc.get_mask_pairs(x[::-1])
     else:
-        mask = cc.get_mask_windows(x, order)[:-(order-1)]
-        mask_rev = cc.get_mask_windows(x[::-1], order)[:-(order-1)]
+        mask = cc.get_mask_windows(x, order)
+        mask_rev = cc.get_mask_windows(x[::-1], order)
 
     idx0 = mask.index(0)
 

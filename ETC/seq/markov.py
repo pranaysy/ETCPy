@@ -238,13 +238,16 @@ def compute(filepath, order, compact=True, flatten=False):
     # Compute and return transition probability matrix
     return _compute_transition_probs(sequence, compact=compact, flatten=flatten)
 
+
 def sample_sequence(sequence, order, size, sampler_seed=0):
 
     # Read sequence file and get tuple of overlapping subsequences
     overlapped = _generate_overlaps(sequence, order)
 
     # Compute and return transition probability matrix
-    transition_probs = _compute_transition_probs(overlapped, compact=True, flatten=False)
+    transition_probs = _compute_transition_probs(
+        overlapped, compact=True, flatten=False
+    )
 
     order += 1
     chain = sequence[-order:]
@@ -253,8 +256,8 @@ def sample_sequence(sequence, order, size, sampler_seed=0):
 
     for n in range(size):
         last = chain[-order:]
-        probs = transition_probs.loc[last,:]
-        new = ''.join(choices(population=probs.index, weights = probs.values, k=1))
+        probs = transition_probs.loc[last, :]
+        new = "".join(choices(population=probs.index, weights=probs.values, k=1))
         chain += new
 
     return chain[order:]

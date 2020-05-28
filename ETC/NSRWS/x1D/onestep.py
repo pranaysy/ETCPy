@@ -10,14 +10,19 @@ from collections import Counter
 from itertools import compress, islice
 from time import perf_counter
 
-from ETC.NSRWS.x1D import compute_core as cc
+from ETC.NSRWS.x1D import core as cc
 
+def _apply_mask(seq, mask, order):
 
-def _one_step_pairs(seq, verbose=True):
+    filtered = compress(zip(*(islice(seq, i, None) for i in range(order))), mask)
+    freq_window, count = Counter(filtered).most_common(1)[0]
+
+    return freq_window, count
+
+def _onestep_pairs(seq, verbose=True):
     before = perf_counter()
-    mask = cc.get_mask_pairs(seq)[:-1]
-    seq_pairs_filt = compress(zip(seq[:-1], seq[1:]), mask)
-    freq_pair, count = Counter(seq_pairs_filt).most_common(1)[0]
+    mask = cc.get_mask_pairs(seq)
+    freq_pair, count = _apply_mask(seq, mask, 2)
     sub_value = 1 + max(seq)
     pair = array("I", freq_pair)
     if count == 1:
@@ -33,14 +38,11 @@ def _one_step_pairs(seq, verbose=True):
     return out, signal
 
 
-def _one_step_windows(seq, order, verbose=True):
+def _onestep_windows(seq, order, verbose=True):
 
     before = perf_counter()
-    mask = cc.get_mask_windows(seq, order)[: -(order - 1)]
-    # mask = cc.get_mask_windows(seq, order)
-    z_windowed = compress(zip(*(islice(seq, i, None) for i in range(order))), mask)
-    z_windowed = tuple(z_windowed)
-    freq_window, count = Counter(z_windowed).most_common(1)[0]
+    mask = cc.get_mask_windows(seq, order)
+    freq_window, count = _apply_mask(seq, mask, order)
     sub_value = 1 + max(seq)
     window = array("I", freq_window)
     if count == 1:
@@ -57,14 +59,14 @@ def _one_step_windows(seq, order, verbose=True):
     return out, signal
 
 
-def _one_step(seq, order, verbose=True):
+def _onestep(seq, order, verbose=True):
     if order == 2:
-        return _one_step_pairs(seq[:], verbose)
+        return _onestep_pairs(seq[:], verbose)
     if order > 2:
-        return _one_step_windows(seq[:], order, verbose)
+        return _onestep_windows(seq[:], order, verbose)
 
 
-def one_step(seq, order, verbose=True, check=True):
+def onestep(seq, order, verbose=True, check=True):
     if not isinstance(seq, array):
         seq = array("I", seq)
     if check and cc.check_equality(seq):
@@ -74,4 +76,4 @@ def one_step(seq, order, verbose=True, check=True):
         print("> Sequence input shorter than order!\n> Can't perform substitution ...")
         return None
 
-    return _one_step(seq, order, verbose)
+    return _onestep(seq, order, verbose)

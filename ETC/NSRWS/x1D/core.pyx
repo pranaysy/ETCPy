@@ -30,19 +30,19 @@ cpdef array.array get_mask_pairs(const unsigned int[::1] x):
 
     # Initialize a mask of Falses
     cdef array.array int_template = array.array('I', [])
-    cdef array.array mask = array.clone(int_template, x_size, zero=True)
+    cdef array.array mask = array.clone(int_template, x_size-1, zero=True)
     cdef unsigned int[:] mask_view = mask
 
     # Initialize bounds for iteration
     cdef Py_ssize_t n = 0
 
     # Turn all values in mask to Trues
-    for n in range(x_size):
+    for n in range(x_size-1):
         mask_view[n] += 1
 
     # Iterate over all values of input
     n = 0
-    while n < x_size - 1:
+    while n < x_size - 2:
 
         # If successive pairs match
         if x[n] == x[n+1] and x[n+1] == x[n+2]:
@@ -160,14 +160,14 @@ cpdef array.array get_mask_windows(const unsigned int[::1] x, unsigned int order
 
     # Initialize a mask of Falses
     cdef array.array int_template = array.array('I', [])
-    cdef array.array mask = array.clone(int_template, x_size, zero=True)
+    cdef array.array mask = array.clone(int_template, x_size - (order-1), zero=True)
     cdef unsigned int[:] mask_view = mask
 
      # Initialize variable for iteration
     cdef Py_ssize_t n = 0
 
     # Turn all values in mask to Trues
-    for n in range(x_size):
+    for n in range(x_size - order + 1):
         mask_view[n] += 1
 
     # Initialize variables for iteration across input
@@ -179,7 +179,7 @@ cpdef array.array get_mask_windows(const unsigned int[::1] x, unsigned int order
 
     # Iterate over input values except the last 'order' values [Outermost master loop]
     n = 0
-    for n in range(x_size-order):
+    for n in range(x_size - (order-1)):
 
         # proceed only if mask is True for current element
         if mask_view[n]:
@@ -190,13 +190,16 @@ cpdef array.array get_mask_windows(const unsigned int[::1] x, unsigned int order
                 # Inner loop for comparing elements in current and next windows
                 for m in range(order):
 
+                    if n+m+k >= x_size:
+                        return mask
+
                     # If elements match, increment tracker
                     if x[n+m] == x[n+m+k]:
                         track += 1
 
                     # Else stop iteration over this comparison of windows
-                    else:
-                        break
+                    # else:
+                    #     break
 
                 # Trick: preserve mask only if track doesn't equal order
                 # If track == order, short-circuit eval takes precedence, returning 0

@@ -13,9 +13,9 @@ import numpy
 setup(
     ext_modules=cythonize(
         [
-            "ETC/NSRWS/x1D/compute_core.pyx",
-            "ETC/NSRWS/x2D/compute_core.pyx",
-            "ETC/common/compute_estimates.pyx",
+            "ETC/NSRWS/x1D/core.pyx",
+            "ETC/NSRWS/x2D/core.pyx",
+            "ETC/seq/estimates.pyx",
         ],
         annotate=True,
         compiler_directives={"language_level": "3"},

@@ -312,7 +312,7 @@ def _substitute_window(seq, idx_freq_win, order=2):
     return reduced_seq
 
 
-def _execute_one_step(seq, order=2, verbose=False):
+def _execute_onestep(seq, order=2, verbose=False):
     """
     This function runs one full step of the non-sequential recursive window-
     substitution algorithm. (For pairs or order=2, called NSRPS).
@@ -409,7 +409,7 @@ def run_once_NSRWS(seq, order=2, check=True, verbose=False):
             print("> Constant symbolic sequence, nothing to substitute ...")
             return None
         else:
-            return _execute_one_step(temp, order, verbose)
+            return _execute_onestep(temp, order, verbose)
 
     # If check is disabled, run one step and return
-    return _execute_one_step(temp, order, verbose)
+    return _execute_onestep(temp, order, verbose)

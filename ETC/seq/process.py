@@ -1,21 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-This module contains convenience functions for use elsewhere.
 
-External Dependecies: None
 
 @author: Pranay S. Yadav
 """
-
 from collections import Counter
 from math import log2
+from random import choices
+from ETC.seq import estimates, recode
+from array import array
+import re
 
-# Import functions from standard library modules
-from random import choices, seed
+def sanitize(text, whitespace=False, lowercase=False):
 
-# Set seed for reproducibility
-seed(10)
+    if whitespace:
+        joiner = " "
+
+    else:
+        joiner = ""
+
+    if lowercase:
+        text = text.lower()
+
+    text = joiner.join(re.findall("[a-zA-Z]+", text))
+
+    return text
+
 
 # Function definitions
 def partition(seq, n_bins):
@@ -66,36 +77,13 @@ def generate(size=10, partitions=2):
         print(">> Number of bins is invalid ...")
         return None
 
-    return choices(range(1, partitions + 1), k=size)
+    return recode.cast(choices(range(1, partitions + 1), k=size))
 
+def frequencies(seq):
 
-def equality(seq):
-    """
-    This function checks if all elements of a collection are equal.
+    return Counter(seq).most_common()
 
-    Parameters
-    ----------
-    seq : list or tuple
-        Sequence of integers.
-
-    Returns
-    -------
-    bool
-        True if all elements equal.
-
-    """
-    # Iterate over all elements in sequence
-    for element in seq:
-
-        # Break at first inequality
-        if seq[0] != element:
-            return False
-
-    # Else all equal
-    return True
-
-
-def entropy(seq):
+def entropy(seq, legacy=False):
     """
     This function computes Shannon Entropy of a given sequence.
 
@@ -110,7 +98,12 @@ def entropy(seq):
         Shannon entropy of sequence.
 
     """
+
+    if isinstance(seq, array) and seq.typecode == 'I' and not legacy:
+        return estimates.entropy(seq)
+
     # Get counts from Counter, normalize by total, transform each and sum all
     return sum(
         -seq * log2(seq) for seq in (elem / len(seq) for elem in Counter(seq).values())
     )
+

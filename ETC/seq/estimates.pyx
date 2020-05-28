@@ -10,7 +10,7 @@ import numpy as np
 from libc.math cimport log2
 cimport numpy as np
 
-cpdef double get_entropy(unsigned int[::1] x):
+cpdef double entropy(unsigned int[::1] x):
 
     # cdef np.ndarray[np.npy_int64, ndim=1] counts = np.bincount(x)
     cdef long int[:] counts_view = np.bincount(x)
@@ -33,3 +33,31 @@ cpdef double get_entropy(unsigned int[::1] x):
             E = E-prob*logprob
 
     return E
+
+
+# Function for checking whether all elements in input are identical
+cpdef bint equality(const unsigned int[::1] x):
+    """
+    INPUT
+    -----
+    x : array.array
+        Array object containing 32-bit unsigned integers.
+
+
+    OUTPUT
+    ------
+    bool
+        True if all elements are identical
+    """
+    # Intialize loop bounds
+    cdef Py_ssize_t n
+    cdef Py_ssize_t x_size = len(x)
+
+    # Iterate over values from input
+    for n in range(x_size):
+
+        # Short-circuit the loop: check for any element that doesn't equal the first
+        if x[0] != x[n]:
+            return False
+
+    return True

@@ -10,10 +10,10 @@ from collections import Counter
 from itertools import compress, islice
 from time import perf_counter
 
-from ETC.NSRWS.x2D import compute_core as cc
+from ETC.NSRWS.x2D import core as cc
 
 
-def _one_step_pairs(seq_x, seq_y, verbose=True):
+def _onestep_pairs(seq_x, seq_y, verbose=True):
     before = perf_counter()
     mask = cc.get_mask_pairs(seq_x, seq_y)
     seq_pairs_filt = compress(
@@ -43,7 +43,7 @@ def _one_step_pairs(seq_x, seq_y, verbose=True):
     return out_x, out_y, signal
 
 
-# def _one_step_windows(seq, order, verbose=True):
+# def _onestep_windows(seq, order, verbose=True):
 
 #     before = perf_counter()
 #     mask = cc.get_mask_windows(seq, order)[: -(order - 1)]
@@ -66,19 +66,19 @@ def _one_step_pairs(seq_x, seq_y, verbose=True):
 #     return out, signal
 
 
-def _one_step_windows(seq, order, verbose=True):
+def _onestep_windows(seq, order, verbose=True):
     pass
 
 
-def _one_step(seq_x, seq_y, order, verbose=True):
+def _onestep(seq_x, seq_y, order, verbose=True):
 
     if order == 2:
-        return _one_step_pairs(seq_x[:], seq_y[:], verbose)
+        return _onestep_pairs(seq_x[:], seq_y[:], verbose)
     if order > 2:
-        return _one_step_windows(seq_x[:], seq_y[:], order, verbose)
+        return _onestep_windows(seq_x[:], seq_y[:], order, verbose)
 
 
-def one_step(seq_x, seq_y, order, verbose=True, check=True):
+def onestep(seq_x, seq_y, order, verbose=True, check=True):
     if not isinstance(seq_x, array):
         seq_x = array("I", seq_x)
     if not isinstance(seq_y, array):
@@ -95,4 +95,4 @@ def one_step(seq_x, seq_y, order, verbose=True, check=True):
         print("> Sequence input shorter than order!\n> Can't perform substitution ...")
         return None
 
-    return _one_step(seq_x, seq_y, order, verbose)
+    return _onestep(seq_x, seq_y, order, verbose)

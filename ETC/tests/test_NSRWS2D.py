@@ -12,9 +12,9 @@ from random import choice
 from hypothesis import given
 from hypothesis.strategies import composite, integers, lists
 
-from ETC.NSRWS.x2D import compute_core as cc
-from ETC.NSRWS.x2D import compute_etc as cetc
-from ETC.NSRWS.x2D.compute_one_step import one_step
+from ETC.NSRWS.x2D import core as cc
+from ETC.NSRWS.x2D import etc as cetc
+from ETC.NSRWS.x2D.onestep import onestep
 
 
 @composite
@@ -46,9 +46,9 @@ def generate_sequences_identical(draw, elements=[lists, integers]):
 
 
 @given(generate_sequences())
-def test_one_step(inputs):
+def test_onestep(inputs):
     seq_x, seq_y = inputs
-    out_x, out_y, signal = one_step(seq_x, seq_y, order=2, verbose=False, check=False)
+    out_x, out_y, signal = onestep(seq_x, seq_y, order=2, verbose=False, check=False)
 
     assert len(out_x) < len(seq_x) and len(out_y) < len(seq_y)
 
