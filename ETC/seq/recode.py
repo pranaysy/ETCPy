@@ -10,10 +10,12 @@ from string import ascii_lowercase
 from random import shuffle, choices
 from array import array
 
+
 def cast(seq):
 
-    out = array('I', seq)
+    out = array("I", seq)
     return out
+
 
 def recode_lexical(text):
 
@@ -53,5 +55,3 @@ def recode_randint(text):
     replacer = dict(zip(alphabets, numbers))
     text = cast(int(replacer[x]) for x in text)
     return text
-
-

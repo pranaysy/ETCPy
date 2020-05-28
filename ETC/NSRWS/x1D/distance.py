@@ -18,6 +18,7 @@ import ETC
 
 get1D = partial(ETC.compute_1D, order=2, verbose=False, truncate=True)
 
+
 def _compute_distance(inputs):
     """
     This function operates on a single sequence and computes ETC.
@@ -41,22 +42,23 @@ def _compute_distance(inputs):
 
     # Compute ETC and update output dictionary
     ETC1D_seq1 = get1D(seqs[0])["ETC1D"]
-    out.update({"ETC1D_seq1" : ETC1D_seq1})
+    out.update({"ETC1D_seq1": ETC1D_seq1})
 
     ETC1D_seq2 = get1D(seqs[1])["ETC1D"]
-    out.update({"ETC1D_seq2" : ETC1D_seq2})
+    out.update({"ETC1D_seq2": ETC1D_seq2})
 
     ETC1D_seq1seq2 = get1D(seqs[0] + seqs[1])["ETC1D"]
-    out.update({"ETC1D_seq1seq2" : ETC1D_seq1seq2})
+    out.update({"ETC1D_seq1seq2": ETC1D_seq1seq2})
 
     ETC1D_seq2seq1 = get1D(seqs[1] + seqs[0])["ETC1D"]
-    out.update({"ETC1D_seq2seq1" : ETC1D_seq2seq1})
+    out.update({"ETC1D_seq2seq1": ETC1D_seq2seq1})
 
-    dETC = 0.5*(ETC1D_seq1seq2 + ETC1D_seq2seq1 - ETC1D_seq1 - ETC1D_seq2)
+    dETC = 0.5 * (ETC1D_seq1seq2 + ETC1D_seq2seq1 - ETC1D_seq1 - ETC1D_seq2)
 
-    out.update({"distance" : dETC})
+    out.update({"distance": dETC})
 
     return out
+
 
 def _overlapping_chunks(seq, size, offset=1):
     """
@@ -84,6 +86,7 @@ def _overlapping_chunks(seq, size, offset=1):
 
     return zip(*(islice(seq, i, None, offset) for i in range(size)))
 
+
 def _non_overlapping_chunks(seq, size):
     """
     This function takes an input sequence and produces chunks of chosen size
@@ -105,6 +108,7 @@ def _non_overlapping_chunks(seq, size):
     """
 
     return zip(*[iter(seq)] * size)
+
 
 def pcompute_multiple_seq(iterable):
     """
@@ -138,6 +142,7 @@ def pcompute_multiple_seq(iterable):
     # Return collected results
     return out
 
+
 def truncate(seq1, seq2):
 
     # Truncate the longer sequence
@@ -145,11 +150,12 @@ def truncate(seq1, seq2):
         return seq1, seq2
 
     if len(seq1) > len(seq2):
-        seq1 = seq1[:len(seq2)]
+        seq1 = seq1[: len(seq2)]
     else:
-        seq2 = seq2[:len(seq1)]
+        seq2 = seq2[: len(seq1)]
 
     return seq1, seq2
+
 
 def pcompute_single(seq1, seq2, size, offset=1):
     """

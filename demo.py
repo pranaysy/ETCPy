@@ -62,4 +62,3 @@ ADD_meas = 15
 STEP_size = 20
 
 ccc_est = ETC.compute_CCC(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, partitions=False)
-

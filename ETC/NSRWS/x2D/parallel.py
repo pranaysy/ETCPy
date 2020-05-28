@@ -9,6 +9,7 @@ from functools import partial
 from itertools import islice
 from collections import Counter
 from random import choices
+
 # Import functions from standard library modules
 from multiprocessing import Pool
 
@@ -39,22 +40,23 @@ def _compute_two_files_truncated(files, order=2):
     seq2 = ETC.helper.IO.read(filepath2)
 
     if len(seq1) > len(seq2):
-        seq1 = seq1[:len(seq2)]
+        seq1 = seq1[: len(seq2)]
     else:
-        seq2 = seq2[:len(seq1)]
+        seq2 = seq2[: len(seq1)]
 
     # Prepare output dictionary
-    out = {'seq1':filepath1.stem, 'seq2':filepath2.stem, "length": len(seq1)}
+    out = {"seq1": filepath1.stem, "seq2": filepath2.stem, "length": len(seq1)}
 
     # Compute ETC, write to file and update output dictionary
     out.update(ETC.compute_2D(seq1, seq2, order=order, truncate=True, verbose=False))
-    seq1etc = ETC.compute_1D(seq1, order=order, truncate=True, verbose=False)['ETC1D']
-    out.update({'ETC1D_seq1':seq1etc})
+    seq1etc = ETC.compute_1D(seq1, order=order, truncate=True, verbose=False)["ETC1D"]
+    out.update({"ETC1D_seq1": seq1etc})
 
-    seq2etc = ETC.compute_1D(seq2, order=order, truncate=True, verbose=False)['ETC1D']
-    out.update({'ETC1D_seq2':seq2etc})
+    seq2etc = ETC.compute_1D(seq2, order=order, truncate=True, verbose=False)["ETC1D"]
+    out.update({"ETC1D_seq2": seq2etc})
 
     return out
+
 
 # Function definitions
 def _compute_two_files_markov(files, markov_order, order=2):
@@ -83,12 +85,16 @@ def _compute_two_files_markov(files, markov_order, order=2):
 
     if lseq1 > lseq2:
         diff = lseq1 - lseq2
-        extra_tail = sample_sequence(seq2, order=markov_order, size=diff, sampler_seed=64)
+        extra_tail = sample_sequence(
+            seq2, order=markov_order, size=diff, sampler_seed=64
+        )
         seq2 += extra_tail
 
     elif lseq1 < lseq2:
         diff = lseq2 - lseq1
-        extra_tail = sample_sequence(seq1, order=markov_order, size=diff, sampler_seed=64)
+        extra_tail = sample_sequence(
+            seq1, order=markov_order, size=diff, sampler_seed=64
+        )
         seq1 += extra_tail
 
     assert len(seq1) == len(seq2)
@@ -100,17 +106,18 @@ def _compute_two_files_markov(files, markov_order, order=2):
     # fname = filepath1.with_name(filepath1.stem + '_&_'+ filepath2.stem + f"_etc_order{order}_markov_order{markov_order}.csv")
 
     # Prepare output dictionary
-    out = {'seq1':filepath1.stem, 'seq2':filepath2.stem, "length": len(seq1)}
+    out = {"seq1": filepath1.stem, "seq2": filepath2.stem, "length": len(seq1)}
 
     # Compute ETC, write to file and update output dictionary
     out.update(ETC.compute_2D(seq1, seq2, order=order, truncate=True, verbose=False))
-    seq1etc = ETC.compute_1D(seq1, order=order, truncate=True, verbose=False)['ETC1D']
-    out.update({'ETC1D_seq1':seq1etc})
+    seq1etc = ETC.compute_1D(seq1, order=order, truncate=True, verbose=False)["ETC1D"]
+    out.update({"ETC1D_seq1": seq1etc})
 
-    seq2etc = ETC.compute_1D(seq2, order=order, truncate=True, verbose=False)['ETC1D']
-    out.update({'ETC1D_seq2':seq2etc})
+    seq2etc = ETC.compute_1D(seq2, order=order, truncate=True, verbose=False)["ETC1D"]
+    out.update({"ETC1D_seq2": seq2etc})
 
     return out
+
 
 def pcompute_files_markov(filelist, markov_order, order=2):
     """
@@ -143,6 +150,7 @@ def pcompute_files_markov(filelist, markov_order, order=2):
 
     # Return collected results
     return out.get()
+
 
 def pcompute_files_truncated(filelist, order=2):
     """

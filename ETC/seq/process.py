@@ -12,6 +12,7 @@ from ETC.seq import estimates, recode
 from array import array
 import re
 
+
 def sanitize(text, whitespace=False, lowercase=False):
 
     if whitespace:
@@ -79,9 +80,11 @@ def generate(size=10, partitions=2):
 
     return recode.cast(choices(range(1, partitions + 1), k=size))
 
+
 def frequencies(seq):
 
     return Counter(seq).most_common()
+
 
 def entropy(seq, legacy=False):
     """
@@ -99,11 +102,10 @@ def entropy(seq, legacy=False):
 
     """
 
-    if isinstance(seq, array) and seq.typecode == 'I' and not legacy:
+    if isinstance(seq, array) and seq.typecode == "I" and not legacy:
         return estimates.entropy(seq)
 
     # Get counts from Counter, normalize by total, transform each and sum all
     return sum(
         -seq * log2(seq) for seq in (elem / len(seq) for elem in Counter(seq).values())
     )
-

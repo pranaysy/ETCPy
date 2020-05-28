@@ -9,10 +9,12 @@
 from ETC.seq import estimates
 from array import array
 
+
 def zeroes(seq):
     if 0 in seq:
         return True
     return False
+
 
 def equality(seq, legacy=False):
     """
@@ -40,7 +42,8 @@ def equality(seq, legacy=False):
     # Else all equal
     return True
 
+
 def arraytype(seq):
-    if isinstance(seq, array) and seq.typecode == 'I':
+    if isinstance(seq, array) and seq.typecode == "I":
         return True
     return False

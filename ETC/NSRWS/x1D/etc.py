@@ -6,9 +6,8 @@
 @author: Pranay S. Yadav
 """
 
-from array import array
-
 from ETC.seq import estimates as ce
+from ETC.seq.recode import cast
 from ETC.seq.IO import save
 from ETC.NSRWS.x1D import core as cc
 from ETC.NSRWS.x1D.onestep import _onestep
@@ -48,7 +47,7 @@ def _compute_verbose_truncated(seq, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp = array("I", seq)
+    temp = cast(seq)
 
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
@@ -77,7 +76,7 @@ def _compute_verbose_truncated(seq, order=2):
     while not signal and len(temp) >= order and not cc.check_equality(temp):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp, freq_win, count, time, signal = _onestep(temp, order, verbose=True)
+        temp, signal, freq_win, count, time = _onestep(temp, order, verbose=True)
 
         # Increment ETC
         etc += 1
@@ -99,7 +98,7 @@ def _compute_verbose_truncated(seq, order=2):
         while len(temp) >= order and not cc.check_equality(temp) and n < 5:
 
             # Run one step of NSRWS in verbose mode (returns window and count)
-            temp, freq_win, count, time, signal = _onestep(temp, order, verbose=True)
+            temp, signal, freq_win, count, time = _onestep(temp, order, verbose=True)
 
             # Increment ETC
             etc += 1
@@ -124,8 +123,7 @@ def _compute_verbose_truncated(seq, order=2):
             etc += len(temp) // (order - 1) - 1  # one less step is needed
         else:
             etc += len(temp) // (order - 1)
-    # Display ETC and return it with aggregator
-    # print(f"ETC={etc}")
+    # Return ETC it with aggregator
     return etc, output
 
 
@@ -164,7 +162,7 @@ def _compute_verbose_full(seq, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp = array("I", seq)
+    temp = cast(seq)
 
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
@@ -190,7 +188,7 @@ def _compute_verbose_full(seq, order=2):
     while len(temp) >= order and not cc.check_equality(temp):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp, freq_win, count, time, signal = _onestep(temp, order, verbose=True)
+        temp, signal, freq_win, count, time = _onestep(temp, order, verbose=True)
 
         # Increment ETC
         etc += 1
@@ -206,8 +204,7 @@ def _compute_verbose_full(seq, order=2):
                 "time": time,
             }
         )
-    # Display ETC and return it with aggregator
-    # print(f"ETC={etc}")
+    # Return ETC with aggregator
     return etc, output
 
 
@@ -240,7 +237,7 @@ def _compute_compact_truncated(seq, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp = array("I", seq)
+    temp = cast(seq)
 
     # Check if all elements are equal and break if so
     if cc.check_equality(temp):
@@ -314,7 +311,7 @@ def _compute_compact_full(seq, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp = array("I", seq)
+    temp = cast(seq)
     print(temp)
     # Check if all elements are equal and break if so
     if cc.check_equality(temp):
@@ -335,7 +332,7 @@ def _compute_compact_full(seq, order=2):
     return etc
 
 
-def compute(seq, order=2, verbose=True, truncate=True):
+def compute(seq, order=2, verbose=False, truncate=True):
     """
     This function estimates the Effort-To-Compress for a given sequence. It
     wraps around other functions and executes them based on input options.

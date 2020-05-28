@@ -5,37 +5,107 @@
 
 @author: Pranay S. Yadav
 """
-from array import array
 from collections import Counter
 from itertools import compress, islice
 from time import perf_counter
 
 from ETC.NSRWS.x2D import core as cc
+from ETC.seq.recode import cast
+from ETC.seq.check import arraytype
 
+def _mask_and_count(seq_x, seq_y, mask, order):
+    """
+    Apply binary mask to a pair of sequences & count most frequently jointly occurring windows
+
+    This function does 3 things in the following sequence:
+        1. Create sliding windows of a given size (order) - using zip and islice
+        2. Apply a supplied mask to the sliding windows - using compress
+        3. Count most frequently occurring window - using Counter
+
+    In the NSRWS algorithm, this is the most time consuming step. Essentially expands
+    two 1D sequences to a 2D sequence - where the sequences follows along row-wise &
+    the columnar expansion encodes a sliding window for each row jointly from both
+    sequences:
+        1D sequences:
+            (1,2,3,4,5,6,7)
+            (3,4,5,6,7,8,9)
+
+        2D expansion for window order=3:
+            (((1,3),(2,4),(3,5)),
+             ((2,4),(3,5),(4,6)),
+             ((3,5),(4,6),(5,7)),
+             ((4,6),(5,7),(6,8)),
+             ((5,7),(6,8),(7,9)))
+
+        The mask is applied row-wise & must be of the same length as the number of rows
+        in this 2D expansion. This is given by:
+            len(mask) = len(seq) - (order - 1)
+
+        Example application of the mask (1,0,0,1,1):
+            1 -> (((1,3),(2,4),(3,5)),
+            0 ->  ((2,4),(3,5),(4,6)),          (((1,3),(2,4),(3,5)),
+            0 ->  ((3,5),(4,6),(5,7)),    --->   ((4,6),(5,7),(6,8)),
+            1 ->  ((4,6),(5,7),(6,8)),           ((5,7),(6,8),(7,9)))
+            1 ->  ((5,7),(6,8),(7,9)))
+
+        Unique windows (rows of 2D expansion) are counted and most frequently occurring
+        row is returned with counts.
+
+    Parameters
+    ----------
+    seq_x : array.array
+        Discrete symbolic sequence containing 32-bit unsigned integers.
+    seq_y : array.array
+        Discrete symbolic sequence containing 32-bit unsigned integers.
+    mask : array.array
+        Collection of Booleans, where 0s indicate locations on "seq" to mask out.
+        0s correspond to overlapping windows.
+    order : int
+        Size of window for NSRWS, 2 or greater.
+
+    Returns
+    -------
+    pair_x : array.array
+        Most frequently occurring non-overlapping "window" of size "order" in seq_x
+    pair_y : array.array
+        Most frequently occurring non-overlapping "window" of size "order" in seq_y
+    count : int
+        Number of times the most frequently occurring window occurs.
+
+    """
+    # Create overlapped sliding windows (each window a tuple of size order) & apply mask
+    filtered = compress(zip(*(islice(zip(seq_x, seq_y), i, None) for i in range(order))), mask)
+
+    # Count sliding windows (tuples are hashable!) & get the one most common with counts
+    freq_pair, count = Counter(filtered).most_common(1)[0]
+
+    # Assign array type and return
+    pair_x = cast([freq_pair[0][0], freq_pair[1][0]])
+    pair_y = cast([freq_pair[0][1], freq_pair[1][1]])
+
+    return pair_x, pair_y, count
 
 def _onestep_pairs(seq_x, seq_y, verbose=True):
     before = perf_counter()
     mask = cc.get_mask_pairs(seq_x, seq_y)
-    seq_pairs_filt = compress(
-        zip(zip(seq_x[:-1], seq_y[:-1]), zip(seq_x[1:], seq_y[1:])), mask
-    )
-    freq_pair, count = Counter(seq_pairs_filt).most_common(1)[0]
+
+    pair_x, pair_y, count = _mask_and_count(seq_x, seq_y, mask, 2)
+
     sub_value_x = 1 + max(seq_x)
     sub_value_y = 1 + max(seq_y)
-    pair_x = array("I", [freq_pair[0][0], freq_pair[1][0]])
-    pair_y = array("I", [freq_pair[0][1], freq_pair[1][1]])
+
     if count == 1:
-        out_x = array("I", seq_x[1:])
+        out_x = cast(seq_x[1:])
         out_x[0] = sub_value_x
-        out_y = array("I", seq_y[1:])
+        out_y = cast(seq_y[1:])
         out_y[0] = sub_value_y
         signal = True
     else:
         out_x, out_y = cc.substitute_pairs(
             seq_x, seq_y, pair_x, pair_y, sub_value_x, sub_value_y
         )
-        out_x = array("I", out_x)
-        out_y = array("I", out_y)
+        out_x = cast(out_x)
+        out_y = cast(out_y)
         signal = False
     after = perf_counter()
     if verbose:
@@ -79,10 +149,10 @@ def _onestep(seq_x, seq_y, order, verbose=True):
 
 
 def onestep(seq_x, seq_y, order, verbose=True, check=True):
-    if not isinstance(seq_x, array):
-        seq_x = array("I", seq_x)
-    if not isinstance(seq_y, array):
-        seq_y = array("I", seq_y)
+    if not arraytype(seq_x):
+        seq_x = cast(seq_x)
+    if not arraytype(seq_y):
+        seq_y = cast(seq_y)
 
     if check and cc.check_equality(seq_x):
         print("> All elements in sequence x are equal!")

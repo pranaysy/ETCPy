@@ -14,10 +14,12 @@ from time import perf_counter
 from matplotlib import pyplot as plt
 import pandas as pd
 import seaborn as sns
+
 sns.set()
 
 get1D = partial(compute_1D, order=2, verbose=False, truncate=True)
 get2D = partial(compute_2D, order=2, verbose=False, truncate=True)
+
 
 def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
     if partitions:
@@ -26,13 +28,12 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
 
     aggregator = []
 
-
     length = len(seq_x)
     total_win_size = past_win_size + delta
 
     for n, k in enumerate(range(0, length - total_win_size, step_size)):
         out = {}
-        out["window"] = n+1
+        out["window"] = n + 1
         out["begin"] = k
         out["past_win_size"] = past_win_size
         out["end_past"] = k + past_win_size
@@ -128,22 +129,23 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
 
     return pd.DataFrame(aggregator)
 
+
 def test_multiple(seq_x, seq_y):
 
     # Past window size
-    PWS = [100,150,175,200]
+    PWS = [100, 150, 175, 200]
 
     # Current window size
-    CWS = [10,15,20,25]
+    CWS = [10, 15, 20, 25]
 
     # Jump step size
-    SS = [10,15,20,25,30]
+    SS = [10, 15, 20, 25, 30]
 
     before = perf_counter()
 
     results = []
 
-    for past_win_size, delta, step_size in product(PWS, CWS,SS):
+    for past_win_size, delta, step_size in product(PWS, CWS, SS):
         results.append(test(seq_x, seq_y, past_win_size, delta, step_size))
 
     results = pd.concat(results)
@@ -156,6 +158,7 @@ def test_multiple(seq_x, seq_y):
 def unpack(function, params):
     past_win_size, delta, step_size = params
     return function(past_win_size, delta, step_size)
+
 
 def test_multiple_parallel(seq_x, seq_y):
 
@@ -176,7 +179,7 @@ def test_multiple_parallel(seq_x, seq_y):
     pool = Pool()
 
     # Map-execute function across files
-    results = pool.map(func, product(PWS, CWS,SS))
+    results = pool.map(func, product(PWS, CWS, SS))
 
     # Graceful exit
     pool.close()
@@ -187,6 +190,7 @@ def test_multiple_parallel(seq_x, seq_y):
     after = perf_counter()
 
     return results, after - before
+
 
 x = generate(1000)
 y = generate(1000)
@@ -201,6 +205,22 @@ a2, timings = test_multiple_parallel(x, y)
 # sns.lineplot(data=a2, x='past_win_size', y='ETC_2D_X_total_Y_past_norm', ax=ax)
 
 # %%
-fig, ax = plt.subplots(1,1)
-sns.lineplot(data=a2, hue='past_win_size', y='ETC_1D_X_past_norm', x='delta', ci=None, ax=ax, palette='viridis')
-sns.lineplot(data=a2, hue='past_win_size', y='ETC_1D_X_total_norm', x='delta', ci=None, ax=ax, palette='viridis')
+fig, ax = plt.subplots(1, 1)
+sns.lineplot(
+    data=a2,
+    hue="past_win_size",
+    y="ETC_1D_X_past_norm",
+    x="delta",
+    ci=None,
+    ax=ax,
+    palette="viridis",
+)
+sns.lineplot(
+    data=a2,
+    hue="past_win_size",
+    y="ETC_1D_X_total_norm",
+    x="delta",
+    ci=None,
+    ax=ax,
+    palette="viridis",
+)
