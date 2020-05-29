@@ -9,9 +9,10 @@ from collections import Counter
 from itertools import compress, islice
 from time import perf_counter
 
-from ETC.NSRWS.x1D import core as cc
+from ETC.NSRWS.x1D import core
 from ETC.seq.recode import cast
 from ETC.seq.check import arraytype
+
 
 def _mask_and_count(seq, mask, order):
     """
@@ -155,7 +156,7 @@ def _onestep_pairs(seq, verbose=True):
     signal = False
 
     # Compute mask for overlapping pairs
-    mask = cc.get_mask_pairs(seq)
+    mask = core.get_mask_pairs(seq)
 
     # Apply mask and find most frequent pair
     freq_pair, count = _mask_and_count(seq, mask, 2)
@@ -170,7 +171,7 @@ def _onestep_pairs(seq, verbose=True):
         signal = True
     # Else, substitute all instances of the frequent pair
     else:
-        out = cast(cc.substitute_pairs(seq, freq_pair, sub_value))
+        out = cast(core.substitute_pairs(seq, freq_pair, sub_value))
 
     # Completion timer
     after = perf_counter()
@@ -244,7 +245,7 @@ def _onestep_windows(seq, order, verbose=True):
     signal = False
 
     # Compute mask for overlapping windows
-    mask = cc.get_mask_windows(seq, order)
+    mask = core.get_mask_windows(seq, order)
 
     # Apply mask and find most frequent window
     freq_window, count = _mask_and_count(seq, mask, order)
@@ -259,7 +260,7 @@ def _onestep_windows(seq, order, verbose=True):
         signal = True
     # Else, substitute all instances of the frequent window
     else:
-        out = cast(cc.substitute_windows(seq, order, freq_window, sub_value))
+        out = cast(core.substitute_windows(seq, order, freq_window, sub_value))
 
     # Completion timer
     after = perf_counter()
@@ -334,8 +335,8 @@ def onestep(seq, order, verbose=True, check=True):
     verbose : bool, optional
         Whether to report extra details. These include the frequent pair that was
         substituted, its counts & total time taken. The default is True.
-    check : TYPE, optional
-        DESCRIPTION. The default is True.
+    check : bool, optional
+        Check for equality of all symbols in sequence. The default is True.
 
     Returns
     -------
@@ -361,16 +362,12 @@ def onestep(seq, order, verbose=True, check=True):
 
     # Coerce input to appropriate array type, if not possible throw a fit & exit
     if not arraytype(seq):
-        try:
-            seq = cast(seq)
-        except TypeError as error:
-            print('ERROR:',error)
-            print('> Input must be a list/tuple/array of integers!')
-            print('> Recode or partition using the "seq" sub-package ...')
+        seq = cast(seq)
+        if seq is None:
             return None
 
     # Check whether all elements are equal, if requested, & exit if True
-    if check and cc.check_equality(seq):
+    if check and core.check_equality(seq):
         print("> All elements in sequence are equal!")
         return None
 

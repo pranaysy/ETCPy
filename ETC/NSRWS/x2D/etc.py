@@ -79,7 +79,7 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
     while not signal and len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp_x, temp_y, pair_x, pair_y, count, time, signal = _onestep(
+        temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
             temp_x, temp_y, order, verbose=True
         )
 
@@ -100,10 +100,11 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
             }
         )
     n = 0
-    if signal:
+    if signal and not cc.check_equality(temp_x, temp_y):
+
         while len(temp_x) >= order and n < 5:
             # Run one step of NSRWS in verbose mode (returns window and count)
-            temp_x, temp_y, pair_x, pair_y, count, time, signal = _onestep(
+            temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
                 temp_x, temp_y, order, verbose=True
             )
 
@@ -197,7 +198,7 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
     while len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp_x, temp_y, pair_x, pair_y, count, time, signal = _onestep(
+        temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
             temp_x, temp_y, order, verbose=True
         )
         # Increment ETC
@@ -269,7 +270,8 @@ def _compute_compact_truncated(seq_x, seq_y, order=2):
         etc += 1
 
     n = 0
-    if signal:
+    if signal and not cc.check_equality(temp_x, temp_y):
+
         while len(temp_x) >= order and n < 5:
             # Run one step of NSRWS in verbose mode (returns window and count)
             temp_x, temp_y, signal = _onestep(temp_x, temp_y, order, verbose=False)

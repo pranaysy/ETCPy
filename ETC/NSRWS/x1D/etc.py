@@ -12,6 +12,7 @@ from ETC.seq.IO import save
 from ETC.NSRWS.x1D import core as cc
 from ETC.NSRWS.x1D.onestep import _onestep
 
+
 def _compute_verbose_truncated(seq, order=2):
     """
     This function runs the NSRWS algorithm for estimation of ETC and extracts

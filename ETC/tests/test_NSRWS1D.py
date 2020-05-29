@@ -48,7 +48,7 @@ def test_onestep(inputs):
     """
     seq, order = inputs
     output1, signal = onestep.onestep(seq, order, verbose=False, check=False)
-    output2 = onestep.onestep(seq, order, verbose=True, check=False)
+    output2verbose = onestep.onestep(seq, order, verbose=True, check=False)
 
     # Substituted sequence should be shorter than input
     assert len(output1) < len(seq)
@@ -63,7 +63,8 @@ def test_onestep(inputs):
     assert len(set(output1) - set(seq)) == 1
 
     # Changing verbosity parameter should not alter the substituted sequence
-    assert output1 == output2[0]
+    assert output1 == output2verbose[0]
+
 
 @given(generate_sequence())
 def test_onestep_invalid(inputs):
@@ -72,9 +73,10 @@ def test_onestep_invalid(inputs):
     """
     seq, order = inputs
 
-    output = onestep.onestep(seq[:order-1], order, verbose=False, check=False)
+    output = onestep.onestep(seq[: order - 1], order, verbose=False, check=False)
 
     assert output is None
+
 
 def test_onestep_invalid_str():
     """
@@ -83,6 +85,7 @@ def test_onestep_invalid_str():
     output = onestep.onestep("abcdef", 6, verbose=False, check=False)
 
     assert output is None
+
 
 @given(generate_sequence_identical())
 def test_onestep_identical(inputs):
@@ -94,6 +97,7 @@ def test_onestep_identical(inputs):
     output = onestep.onestep(seq, order, verbose=False, check=True)
 
     assert output is None
+
 
 @given(generate_sequence())
 def test_onestep_pairs_vs_windows(inputs):
@@ -112,6 +116,7 @@ def test_onestep_pairs_vs_windows(inputs):
     # Check equality of all but last (timings) part of output
     for n in range(4):
         assert out_pairs[n] == out_windows[n]
+
 
 @given(generate_sequence_identical())
 def test_onestep_pairs_vs_windows_identical(inputs):
@@ -152,7 +157,7 @@ def test_get_mask_general(inputs):
     # Mask should only contain 0s and 1s
     assert set(mask).issubset({0, 1})
 
-    # First element has to be a 1
+    # First element must be 1
     assert mask[0] == 1
 
     # If mask contains a 0, then that position in the sequence indicates an overlap
@@ -196,25 +201,27 @@ def test_get_mask_identical(inputs):
     # Check if consecutive elements equal where 0 found in mask
     assert seq[idx0] == seq[idx0 + order - 1]
 
+
 def test_mask_and_count():
     """
     Test the function for applying mask and counting frequent windows
     """
-    seq = (1,2,3,4,5,6,7)
-    mask = (1,0,0,1,1)
-    assert onestep._mask_and_count(seq, mask, 3) == (array('I', (1,2,3)), 1)
+    seq = (1, 2, 3, 4, 5, 6, 7)
+    mask = (1, 0, 0, 1, 1)
+    assert onestep._mask_and_count(seq, mask, 3) == (array("I", (1, 2, 3)), 1)
 
-    seq = (1,2,3,4,5,6,7)
-    mask = (1,1,1,1,1)
-    assert onestep._mask_and_count(seq, mask, 3) == (array('I', (1,2,3)), 1)
+    seq = (1, 2, 3, 4, 5, 6, 7)
+    mask = (1, 1, 1, 1, 1)
+    assert onestep._mask_and_count(seq, mask, 3) == (array("I", (1, 2, 3)), 1)
 
-    seq = (1,2,3,4,5,6,7)
-    mask = (0,1,1,1,1)
-    assert onestep._mask_and_count(seq, mask, 3) == (array('I', (2,3,4)), 1)
+    seq = (1, 2, 3, 4, 5, 6, 7)
+    mask = (0, 1, 1, 1, 1)
+    assert onestep._mask_and_count(seq, mask, 3) == (array("I", (2, 3, 4)), 1)
 
-    seq = (1,1,1,1,1,2,1)
-    mask = (1,0,0,1,1)
-    assert onestep._mask_and_count(seq, mask, 3) == (array('I', (1,1,1)), 1)
+    seq = (1, 1, 1, 1, 1, 2, 1)
+    mask = (1, 0, 0, 1, 1)
+    assert onestep._mask_and_count(seq, mask, 3) == (array("I", (1, 1, 1)), 1)
+
 
 @given(generate_sequence())
 def test_substitution(inputs):
@@ -282,4 +289,4 @@ def test_compute_save(tmp_path):
     assert isinstance(etc_vt, dict)
 
     # Values should be same of course
-    assert etc_vf['ETC1D'] == etc_vt['ETC1D']
+    assert etc_vf["ETC1D"] == etc_vt["ETC1D"]

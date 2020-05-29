@@ -29,34 +29,6 @@ def sanitize(text, whitespace=False, lowercase=False):
     return text
 
 
-# Function definitions
-def partition(seq, n_bins):
-    """
-    This function takes an input sequence and bins it into discrete points.
-
-    Parameters
-    ----------
-    seq : list/tuple of float
-        Collection of floats.
-    n_bins : int
-        Number of bins/paritions to create.
-
-    Returns
-    -------
-    list
-        Collection of integers. Contains unique integers from 1 to n_bins.
-
-    """
-    # Get smallest value
-    a = min(seq)
-
-    # Compute reciprocal of peak-to-peak per bin
-    delta_inv = n_bins / (max(seq) - a + 1e-6)
-
-    # Transform each element and return
-    return [1 + int((elem - a) * delta_inv) for elem in seq]
-
-
 def generate(size=10, partitions=2):
     """
     This function generates discrete random data of desired size and bins.

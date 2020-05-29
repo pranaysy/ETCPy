@@ -16,7 +16,7 @@ from ETC.NSRWS.x2D.etc import compute as compute_2D
 
 # from ETC.CCC.compute_CCC import compute as compute_CCC
 
-from ETC.seq.process import generate, partition
+from ETC.seq.process import generate
 from ETC.seq.recode import cast, recode_lexical
 
 
