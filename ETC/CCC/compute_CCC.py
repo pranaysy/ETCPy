@@ -8,7 +8,7 @@
 
 # import ETC
 from ETC import compute_1D, compute_2D
-from ETC.common.utils import partition
+from ETC.seq.recode import partition
 from functools import partial
 
 get1D = partial(compute_1D, order=2, verbose=False, truncate=True)

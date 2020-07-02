@@ -8,7 +8,7 @@
 
 from ETC import compute_1D, compute_2D, generate
 from ETC.seq.recode import partition
-from itertools import product, chain
+from itertools import product
 from functools import partial
 from multiprocessing import Pool
 from time import perf_counter
@@ -45,44 +45,43 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
         out["step_size"] = step_size
 
         ## CC 1D for X --------------------------------------------------------
+        # ETC 1D for past values of X
+        ETC1D_X_ini = get1D(seq_x[k : k + past_win_size])["ETC1D"]
+        out["ETC_1D_X_past_raw"] = ETC1D_X_ini
+
+        ETC1D_X_ini /= past_win_size - 1
+        out["ETC_1D_X_past_norm"] = ETC1D_X_ini
+
         # ETC 1D for past and current+past=total values of X
-        ETC1D_X_total = get1D(seq_x[k : k + total_win_size])["ETC1D"]
-        out["ETC_1D_X_total_raw"] = ETC1D_X_total
+        ETC1D_X_fin = get1D(seq_x[k : k + total_win_size])["ETC1D"]
+        out["ETC_1D_X_total_raw"] = ETC1D_X_fin
 
-        ETC1D_X_total /= total_win_size - 1
-        out["ETC_1D_X_total_norm"] = ETC1D_X_total
+        ETC1D_X_fin /= total_win_size - 1
+        out["ETC_1D_X_total_norm"] = ETC1D_X_fin
 
-        # ETC 1D for past of Y and current of X
-        segment = tuple(chain(
-            seq_y[k : k + past_win_size],
-            seq_x[k + past_win_size : k + total_win_size]
-        ))
-        ETC1D_X_Ypast = get1D(segment)["ETC1D"]
-        out["ETC_1D_X_YpastXcurr_raw"] = ETC1D_X_Ypast
-
-        ETC1D_X_Ypast /= total_win_size - 1
-        out["ETC_1D_X_YpastXcurr_norm"] = ETC1D_X_Ypast
-
+        # CC 1D for past and total values of X
+        CC1D_X_past = ETC1D_X_fin - ETC1D_X_ini
+        out["CC_1D_X"] = CC1D_X_past
         ## --------------------------------------------------------------------
 
         ## CC 1D for Y --------------------------------------------------------
         # ETC 1D for past values of Y
-        # ETC1D_Y_ini = get1D(seq_y[k : k + past_win_size])["ETC1D"]
-        # out["ETC_1D_Y_past_raw"] = ETC1D_Y_ini
+        ETC1D_Y_ini = get1D(seq_y[k : k + past_win_size])["ETC1D"]
+        out["ETC_1D_Y_past_raw"] = ETC1D_Y_ini
 
-        # ETC1D_Y_ini /= past_win_size - 1
-        # out["ETC_1D_Y_past_norm"] = ETC1D_Y_ini
+        ETC1D_Y_ini /= past_win_size - 1
+        out["ETC_1D_Y_past_norm"] = ETC1D_Y_ini
 
-        # # ETC 1D for past and current+past=total values of Y
-        # ETC1D_Y_fin = get1D(seq_y[k : k + total_win_size])["ETC1D"]
-        # out["ETC_1D_Y_total_raw"] = ETC1D_Y_fin
+        # ETC 1D for past and current+past=total values of Y
+        ETC1D_Y_fin = get1D(seq_y[k : k + total_win_size])["ETC1D"]
+        out["ETC_1D_Y_total_raw"] = ETC1D_Y_fin
 
-        # ETC1D_Y_fin /= total_win_size - 1
-        # out["ETC_1D_Y_total_norm"] = ETC1D_Y_fin
+        ETC1D_Y_fin /= total_win_size - 1
+        out["ETC_1D_Y_total_norm"] = ETC1D_Y_fin
 
-        # # CC 1D for past and total values of Y
-        # CC1D_Y_past = ETC1D_Y_fin - ETC1D_Y_ini
-        # out["CC_1D_Y"] = CC1D_Y_past
+        # CC 1D for past and total values of Y
+        CC1D_Y_past = ETC1D_Y_fin - ETC1D_Y_ini
+        out["CC_1D_Y"] = CC1D_Y_past
         ## --------------------------------------------------------------------
 
         # ETC 2D for past values of X and Y -----------------------------------
@@ -100,29 +99,33 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
         # ETC 2D for current+past=total values of X and past values of Y plus current values of X
         ETC2D_X_fin = get2D(
             seq_x[k : k + total_win_size],
-            segment,
+            seq_y[k : k + past_win_size]
+            + seq_x[k + past_win_size : k + total_win_size],
         )["ETC2D"]
-        out["ETC_2D_X_total_Y_pastX_curr_raw"] = ETC2D_X_fin
+        out["ETC_2D_X_total_Y_past_raw"] = ETC2D_X_fin
 
         ETC2D_X_fin /= total_win_size - 1
-        out["ETC_2D_X_total_Y_pastX_curr_norm"] = ETC2D_X_fin
+        out["ETC_2D_X_total_Y_past_norm"] = ETC2D_X_fin
 
+        # CC 2D for past and total values of X
+        CC2D_X_total_Y_past = ETC2D_X_fin - ETC2D_ini
+        out["CC_2D_X_by_Y_past"] = CC2D_X_total_Y_past
         ## --------------------------------------------------------------------
 
         # ETC 2D for current+past=total values of Y and past values of X plus current values of Y
-        # ETC2D_Y_fin = get2D(
-        #     seq_y[k : k + total_win_size],
-        #     seq_x[k : k + past_win_size]
-        #     + seq_y[k + past_win_size : k + total_win_size],
-        # )["ETC2D"]
-        # out["ETC_2D_Y_total_X_past_raw"] = ETC2D_Y_fin
+        ETC2D_Y_fin = get2D(
+            seq_y[k : k + total_win_size],
+            seq_x[k : k + past_win_size]
+            + seq_y[k + past_win_size : k + total_win_size],
+        )["ETC2D"]
+        out["ETC_2D_Y_total_X_past_raw"] = ETC2D_Y_fin
 
-        # ETC2D_Y_fin /= total_win_size - 1
-        # out["ETC_2D_Y_total_X_past_norm"] = ETC2D_Y_fin
+        ETC2D_Y_fin /= total_win_size - 1
+        out["ETC_2D_Y_total_X_past_norm"] = ETC2D_Y_fin
 
-        # # CC 2D for past and total values of X
-        # CC2D_Y_total_X_past = ETC2D_Y_fin - ETC2D_ini
-        # out["CC_2D_Y_by_X_past"] = CC2D_Y_total_X_past
+        # CC 2D for past and total values of X
+        CC2D_Y_total_X_past = ETC2D_Y_fin - ETC2D_ini
+        out["CC_2D_Y_by_X_past"] = CC2D_Y_total_X_past
         ## --------------------------------------------------------------------
         aggregator.append(out)
 
