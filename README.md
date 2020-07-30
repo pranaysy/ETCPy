@@ -1,5 +1,5 @@
 # ETCPy
-Contents:
+
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it be used for](https://github.com/pranaysy/ETCPy#what-can-it-be-used-for)
