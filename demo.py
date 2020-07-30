@@ -28,7 +28,7 @@ ETC.partition([0.1, 0.34, 0.68, -1.9, 25.3], n_bins=2)
 ETC.generate(size=1000, partitions=4)
 
 # Compute Shannon Entropy for a sequence
-ETC.entropy(seq=[1,2,1,1,1,2,1])
+ETC.entropy(seq=[1, 2, 1, 1, 1, 2, 1])
 
 
 # 1D ETC ESTIMATION FOR A SINGLE SEQUENCE
@@ -102,12 +102,22 @@ ar = CCC.coupled_AR(length=10000, a=0.9, b=0.8, c=0.8, e=0.01, burn=1000, seed=1
 
 # Estimate CCC for the direction independent -> dependent with binning
 ccc_ar = CCC.compute(
-    ar["dependent"], ar["independent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
+    seq_x=ar["dependent"],
+    seq_y=ar["independent"],
+    LEN_past=150,
+    ADD_meas=15,
+    STEP_size=20,
+    n_partitions=2,
 )
 # [Out]: CCC for seq_y -> seq_x = 0.006690822761916147
 
 # And for the opposite direction
 ccc_ar = CCC.compute(
-    ar["independent"], ar["dependent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
+    seq_x=ar["independent"],
+    seq_y=ar["dependent"],
+    LEN_past=150,
+    ADD_meas=15,
+    STEP_size=20,
+    n_partitions=2,
 )
 # [Out]: CCC for seq_y -> seq_x = -0.0009449848459036229
