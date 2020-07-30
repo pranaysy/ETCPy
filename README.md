@@ -19,7 +19,7 @@ The simplest way right now is to clone this repository and use inside a conda or
 For running tests (strongly recommended), additional packages need to be installed using pip.
 
 ### Dependencies
-For core functionality
+For core functionality:
  - `numpy`
  - `cython`
 
@@ -28,17 +28,20 @@ For tests:
  - `hypothesis`
 
 ### Installation
-Skip this step if environment is already available:
-0. Create a fresh conda or pip-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
+Skip to the first test if environment is already available:
+1. Create a fresh conda or pip-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
 ```bash
 conda create -n myenv python numpy cython
 ```
-1. Activate environment using `conda activate myenv` or virtualenv equivalent.
-2. Use pip to install directly from GitHub using git (mixing `pip` and `conda` is not a generally advised but can be used based on [guidelines](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env) )
+2. Activate environment using `conda activate myenv` or virtualenv equivalent.
+3. Use pip* to install directly from GitHub using git
 ```
 python -m pip install git+https://github.com/pranaysy/ETCPy.git
 ```
-3. Done!
+4. Done!
+
+---
+*mixing `pip` and `conda` is not a generally advised but can be used based on [guidelines](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env)
 
 ### Usage
 Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L83) is also included for uncoupled as well as coupled first-order auto-regressive processes.
