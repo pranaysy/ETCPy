@@ -28,13 +28,13 @@ For tests:
  - `hypothesis`
 
 ### Installation
-Skip to the first test if environment is already available:
-1. Create a fresh conda or pip-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
+Skip the first step if environment is already available:
+1. Create a fresh `conda` or `pip`/`virtualenv`-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
 ```bash
 conda create -n myenv python numpy cython
 ```
 2. Activate environment using `conda activate myenv` or virtualenv equivalent.
-3. Use pip* to install directly from GitHub using git
+3. Use `pip`* to install directly from GitHub using the `git` VCS backend
 ```
 python -m pip install git+https://github.com/pranaysy/ETCPy.git
 ```
