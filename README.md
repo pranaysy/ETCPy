@@ -62,13 +62,14 @@ While the repository is called `ETCPy`, the package namespsace available for use
 For running tests (strongly recommended), additional packages need to be installed.
 
 ### Operating System Support
- - Linux-based distributions (tested on Ubuntu 16.04, 18.04, 20.04)
- - **Currently does not work out of the box on Windows.** Cython and C/C++ build toolchain need to be setup properly for compilation on Windows to work. It may work with MinGW + Visual Studio Build Tools, **currently untested.**
+ - GNU/Linux-based distributions (tested on Ubuntu 16.04, 18.04, 20.04)
+ - **Currently does not work out of the box on Windows.** Cython and C/C++ build toolchain need to be setup properly for compilation on Windows to work. It may work with some gymnastics using MinGW + Visual Studio Build Tools, **currently untested.**
 
 ### Dependencies
 For core functionality:
  - `numpy`
  - `cython`
+   - Note: Cython needs a working C/C++ compiler such as GCC/Clang and associated build-utils/toolchain. While it should work out of the box on any modern Linux distribution, ensure a proper installation as instructed in the [official documentation.](https://cython.readthedocs.io/en/latest/src/quickstart/install.html).
 
 For tests:
  - `pytest`
