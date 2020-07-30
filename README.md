@@ -1,10 +1,10 @@
 # ETCPy
-**E**ffort-**T**o-**C**ompress **Py**thon
+**E**ffort-**T**o-**C**ompress in **Py**thon
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it do](https://github.com/pranaysy/ETCPy#what-can-it-do)
    - [Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG](https://github.com/pranaysy/ETCPy#study-haemodynamics-heart-rate-variability-and-cardiac-aging-using-ecgekg)
-   - [Network Neuroscience and Scientific Study of Consciousness using EEG and fMRI]()
+   - [Network Neuroscience and Scientific Study of Consciousness using EEG, fMRI](https://github.com/pranaysy/ETCPy#network-neuroscience-and-scientific-study-of-consciousness-using-eeg-fmri)
    - [Genome Complexity Analysis and Classification of Nucleotide Sequences](https://github.com/pranaysy/ETCPy#genome-complexity-analysis-and-classification-of-nucleotide-sequences)
    - [Denoise Acoustic Signals](https://github.com/pranaysy/ETCPy#denoise-acoustic-signals)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
