@@ -1,9 +1,9 @@
 # ETCPy
 
 ## What is this
-A Python implementation of the compression-complexity measure called Effort-To-Compress or ETC. ETC captures the compressibility and complexity of discrete symbolic sequences using lossless compression. It has been shown robustly estimate complexity, comparing favorably for relatively short and noisy time series relative to entropy and Lempel-Ziv complexity.
+A Python implementation of the compression-complexity measure called Effort-To-Compress or ETC. ETC captures the compressibility and complexity of discrete symbolic sequences using lossless compression. It has been shown to robustly estimate complexity, comparing favorably for short and noisy time series in comparison with entropy and Lempel-Ziv complexity.
 
-Using ETC, causal information flow between multiple discrete symbolic sequences can be assessed and recently, such a use has been presented, rigorously proven and demonstrated to be an effective model-free measure of causality. Introduced as Compression-Complexity Causality or CCC, this measure is robust to numerous data contaminants, noise sources and pre-processing artifacts. On comparison with Granger Causality and Transfer Entropy, CCC compares favorably and outperforms them on synthetic as well as real world benchmarks. An implementation of CCC is included in this repository.
+Using ETC, causal information flow between multiple discrete symbolic sequences can be assessed and recently, such a use has been presented, rigorously proven and demonstrated to be an effective model-free measure of causality. Introduced as Compression-Complexity Causality or CCC, this measure is robust to numerous data contaminants, noise sources and pre-processing artifacts. On comparison with Granger Causality and Transfer Entropy, CCC compares favorably and outperforms them on synthetic as well as real world causal interactions. An implementation of CCC is included in this repository.
 
 While any lossless compressor may be used with ETC and subsequently with CCC, a grammar-based lossless compression algorithm called Non-Sequential Recursive Pair Substitution or NSRPS is used presently. NSRPS has been rigorously studied and shown to be an effective tool for data compression and entropy estimation. This repository also contains a fast Cython implementation of NSRPS for use with ETC and CCC.
 
@@ -33,22 +33,40 @@ Skip this step if environment is already available:
 conda create -n myenv python numpy cython
 ```
 1. Activate environment using `conda activate myenv` or virtualenv equivalent.
-2. Use pip to install directly from GitHub using git
+2. Use pip to install directly from GitHub using git (mixing `pip` and `conda` is not a generally advised but can be used based on [guidelines](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env) )
 ```
 python -m pip install git+https://github.com/pranaysy/ETCPy.git
 ```
 3. Done!
 
 ### Usage
-Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a brief demo of Compression-Complexity Causality (CCC) is also included.
+Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/12a96044108912b3275240dfa55b631d3e740cc0/demo.py#L83) is also included.
+
+The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module. Use with caution on Windows with extra protection for `__main__`.
+
+### Testing
+Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
+Make sure dependencies are satisfied within the working environment:
+```
+python -m pip install -u pytest hypothesis
+```
+Grab a copy of this repository using git and enter the local directory:
+```
+git clone https://github.com/pranaysy/ETCPy.git
+cd ETCPy
+```
+Run tests:
+```
+pytest ETC/
+```
 
 ## TODO
  - Hyperparameter optimization for CCC
- - Visualizations
+ - Automated tests with `tox`
  - Better packaging
- - Use `tox` for automated tests
+ - Visualizations
  - Improve test coverage
- - Documentation using Sphinx
+ - Documentation using Sphinx/MkDocs
 
 ## License
 Copyright 2020 Pranay S. Yadav and Nithin Nagaraj

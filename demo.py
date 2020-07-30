@@ -92,3 +92,20 @@ ccc_est = CCC.compute(
 
 # See docstrings for more information on CCC estimation
 # ?CCC.compute
+
+# Simulate a pair of coupled first-order AR processes
+ar = CCC.coupled_AR(length=10000, a=0.9, b=0.8, c=0.8, burn=1000, seed=1)
+# ar is a dictionary of two key-value pairs with the following keys:
+#   "dependent" and "independent", each with their respective values in float arrays
+# ?CCC.coupled_AR for more information on sampling from AR processes
+
+# Estimate CCC for the direction independent -> dependent with binning
+ccc_ar = CCC.compute(
+    ar["dependent"], ar["independent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
+)
+# >> CCC for seq_y -> seq_x = 0.006690822761916147
+
+ccc_ar = CCC.compute(
+    ar["independent"], ar["dependent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
+)
+# >> CCC for seq_y -> seq_x = -0.0009449848459036229
