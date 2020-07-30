@@ -16,7 +16,7 @@ import ETC
 text = ETC.read(filepath="somefile.txt", delimiter=",")
 
 # Recode data to integers in lexicographic order
-ETC.recode_lexical(text, case_sensitive=False)
+ETC.recode_lexical("bbacdbedf", case_sensitive=False)
 
 # Check validity of input and automatically cast to the right form if valid
 ETC.cast(text)

@@ -14,41 +14,43 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
  - Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. “A New Complexity Measure for Time Series Analysis and Classification.” The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
 
 ## How to use
-The simplest way right now is to clone this repository and use inside a conda or a pip + virtualenv environment. The only requirements for proper functionality of the entire package are `numpy` and `cython`. After cloning many functions implemented in Cython need to be compiled.
+The simplest way right now is to clone this repository and use inside a conda or a pip + virtualenv environment. After cloning many functions implemented in Cython need to be compiled.
 
 For running tests (strongly recommended), additional packages need to be installed using pip.
 
+### Dependencies
+ - `numpy`
+ - `cython`
+
+For tests:
+ - `pytest`
+ - `hypothesis`
+
 ### Installation
-0. Create a fresh conda or pip-based environment with `numpy` and `cython` packages (Skip if already available)
-1. Clone the repository and enter the local directory
+Skip this step if environment is already available:
+0. Create a fresh conda or pip-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
+```bash
+conda create -n myenv python numpy cython
 ```
-git clone https://github.com/pranaysy/ETCPy.git
-cd ETCPy
+1. Activate environment using `conda activate myenv` or virtualenv equivalent.
+2. Use pip to install directly from GitHub using git
 ```
-2. Activate conda/pip environment and compile
+python -m pip install git+https://github.com/pranaysy/ETCPy.git
 ```
-python ETC/setup.py build_ext --inplace
-```
-3.
-*Dependencies:* None! Implemented in pure Python :)
-Currently unpackaged :(
+3. Done!
 
-Clone the repository; should be enough.
+### Usage
+Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a brief demo of Compression-Complexity Causality (CCC) is also included.
 
-# Demo
-Please check out `demo.py` to see ETC in action.
-
-# TODO
- - Add comments and documentation
- - Extend 1-dimensional ETC to n-dimensional ETC
- - Add functions to estimate various information theoretic measures
- - Incorporate CCC
+## TODO
+ - Hyperparameter optimization for CCC
  - Visualizations
- - Functions to work with string data from text/genome sequence/etc
- - Packaging
- - Add tests
+ - Better packaging
+ - Use `tox` for automated tests
+ - Improve test coverage
+ - Documentation using Sphinx
 
-# License
+## License
 Copyright 2020 Pranay S. Yadav and Nithin Nagaraj
 
    Licensed under the Apache License, Version 2.0 (the "License");
