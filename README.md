@@ -8,6 +8,7 @@
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
    - [Usage](https://github.com/pranaysy/ETCPy#usage)
    - [Testing](https://github.com/pranaysy/ETCPy#testing)
+   - [MATLAB Implementation](https://github.com/pranaysy/ETCPy#matlab-implementation)
  - [TODO](https://github.com/pranaysy/ETCPy#todo)
  - [License](https://github.com/pranaysy/ETCPy#license)
 
@@ -50,9 +51,9 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
 
 
 ## How to use it
-The simplest way right now is to clone this repository and use inside a conda or a pip + virtualenv environment. After cloning many functions implemented in Cython need to be compiled.
+The simplest way right now is to use `pip` to clone this repository and install locally inside a `conda` or a `virtualenv` environment. This way several functions implemented in Cython will be automatically compiled natively on the host system.
 
-For running tests (strongly recommended), additional packages need to be installed using pip.
+For running tests (strongly recommended), additional packages need to be installed.
 
 ### Dependencies
 For core functionality:
@@ -100,10 +101,15 @@ Run tests:
 pytest ETC/
 ```
 
+### MATLAB Implementation
+ - The original ETC implementation in MATLAB can be found here: https://sites.google.com/site/nithinnagaraj2/journal/etc
+
+
 ## TODO
  - Hyperparameter optimization for CCC
+ - Add performance metrics
  - Automated tests with `tox`
- - Better packaging
+ - Better packaging: `pip` vs `conda`
  - Visualizations
  - Improve test coverage
  - Documentation using Sphinx/MkDocs
