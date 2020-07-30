@@ -1,13 +1,13 @@
 # ETCPy
 Contents:
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
-  - [References](https://github.com/pranaysy/ETCPy#references)
+   - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it be used for](https://github.com/pranaysy/ETCPy#how-to-use)
  - [How to use it](https://github.com/pranaysy/ETCPy#what-can-it-be-used-for)
-  - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
-  - [Installation](https://github.com/pranaysy/ETCPy#installation)
-  - [Usage](https://github.com/pranaysy/ETCPy#usage)
-  - [Testing](https://github.com/pranaysy/ETCPy#testing)
+   - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
+   - [Installation](https://github.com/pranaysy/ETCPy#installation)
+   - [Usage](https://github.com/pranaysy/ETCPy#usage)
+   - [Testing](https://github.com/pranaysy/ETCPy#testing)
  - [TODO](https://github.com/pranaysy/ETCPy#todo)
  - [License](https://github.com/pranaysy/ETCPy#license)
 
