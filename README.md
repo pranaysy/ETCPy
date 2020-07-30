@@ -30,14 +30,14 @@ For tests:
 ### Installation
 Skip the first step if environment is already available:
 1. Create a fresh `conda` or `pip`/`virtualenv`-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
-```bash
-conda create -n myenv python numpy cython
-```
+    ```bash
+    conda create -n myenv python numpy cython
+    ```
 2. Activate environment using `conda activate myenv` or virtualenv equivalent.
 3. Use `pip`* to install directly from GitHub using the `git` VCS backend
-```
-python -m pip install git+https://github.com/pranaysy/ETCPy.git
-```
+    ```
+    python -m pip install git+https://github.com/pranaysy/ETCPy.git
+    ```
 4. Done!
 
 ---
