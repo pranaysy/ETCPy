@@ -80,8 +80,8 @@ seq_y = ETC.generate(size=1000, partitions=2)
 out = ETC.compute_2D(seq_x, seq_y, order=2, verbose=True, truncate=True)
 
 
-# CCC ESTIMATION
-# --------------
+# CAUSALITY TESTING USING THE CCC FRAMEWORK
+# -----------------------------------------
 # Import call for CCC sub-package
 from ETC import CCC
 
@@ -89,6 +89,7 @@ from ETC import CCC
 ccc_est = CCC.compute(
     seq_x, seq_y, LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=False
 )
+# [Out]: CCC for seq_y -> seq_x = 0.0033976260535235735
 
 # See docstrings for more information on CCC estimation
 # ?CCC.compute
@@ -103,10 +104,10 @@ ar = CCC.coupled_AR(length=10000, a=0.9, b=0.8, c=0.8, e=0.01, burn=1000, seed=1
 ccc_ar = CCC.compute(
     ar["dependent"], ar["independent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
 )
-# >> CCC for seq_y -> seq_x = 0.006690822761916147
+# [Out]: CCC for seq_y -> seq_x = 0.006690822761916147
 
 # And for the opposite direction
 ccc_ar = CCC.compute(
     ar["independent"], ar["dependent"], LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=2
 )
-# >> CCC for seq_y -> seq_x = -0.0009449848459036229
+# [Out]: CCC for seq_y -> seq_x = -0.0009449848459036229

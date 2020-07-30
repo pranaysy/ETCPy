@@ -41,7 +41,7 @@ python -m pip install git+https://github.com/pranaysy/ETCPy.git
 3. Done!
 
 ### Usage
-Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L83) is also included.
+Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L83) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
 The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module. Use with caution on Windows with extra protection for `__main__`.
 
