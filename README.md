@@ -1,12 +1,35 @@
 # ETCPy
-Compute Effort To Compress (ETC) using the NSRPS algorithm in Python.
 
-Currently computes the exact ETC on a 1-dimensional symbolic sequence. Convenience functions provided for converting data to symbolic sequence.
+## What is this
+A Python implementation of the compression-complexity measure called Effort-To-Compress or ETC. ETC captures the compressibility and complexity of discrete symbolic sequences using lossless compression. It has been shown robustly estimate complexity, comparing favorably for relatively short and noisy time series relative to entropy and Lempel-Ziv complexity.
 
-***Reference paper:***
-Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. *A New Complexity Measure for Time Series Analysis and Classification.* The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
+Using ETC, causal information flow between multiple discrete symbolic sequences can be assessed and recently, such a use has been presented, rigorously proven and demonstrated to be an effective model-free measure of causality. Introduced as Compression-Complexity Causality or CCC, this measure is robust to numerous data contaminants, noise sources and pre-processing artifacts. On comparison with Granger Causality and Transfer Entropy, CCC compares favorably and outperforms them on synthetic as well as real world benchmarks. An implementation of CCC is included in this repository.
 
-# Installation
+While any lossless compressor may be used with ETC and subsequently with CCC, a grammar-based lossless compression algorithm called Non-Sequential Recursive Pair Substitution or NSRPS is used presently. NSRPS has been rigorously studied and shown to be an effective tool for data compression and entropy estimation. This repository also contains a fast Cython implementation of NSRPS for use with ETC and CCC.
+
+#### References
+ - Balasubramanian, Karthi, Gayathri R. Prabhu, Lakshmipriya V. K. , Maneesha Krishnan, Praveena R. , and Nithin Nagaraj. “Classification of Periodic, Chaotic and Random Sequences Using NSRPS Complexity Measure.” ArXiv:1205.4886 [Nlin], May 22, 2012. http://arxiv.org/abs/1205.4886.
+ - Benedetto, Dario, Emanuele Caglioti, and Davide Gabrielli. “Non-Sequential Recursive Pair Substitution: Some Rigorous Results.” Journal of Statistical Mechanics: Theory and Experiment 2006, no. 09 (September 25, 2006): P09011–P09011. https://doi.org/10.1088/1742-5468/2006/09/P09011.
+ - Kathpalia, Aditi, and Nithin Nagaraj. “Data-Based Intervention Approach for Complexity-Causality Measure.” PeerJ Computer Science 5 (May 27, 2019): e196. https://doi.org/10.7717/peerj-cs.196.
+ - Nagaraj, Nithin, Karthi Balasubramanian, and Sutirth Dey. “A New Complexity Measure for Time Series Analysis and Classification.” The European Physical Journal Special Topics 222, no. 3–4 (July 2013): 847–60. https://doi.org/10.1140/epjst/e2013-01888-9.
+
+## How to use
+The simplest way right now is to clone this repository and use inside a conda or a pip + virtualenv environment. The only requirements for proper functionality of the entire package are `numpy` and `cython`. After cloning many functions implemented in Cython need to be compiled.
+
+For running tests (strongly recommended), additional packages need to be installed using pip.
+
+### Installation
+0. Create a fresh conda or pip-based environment with `numpy` and `cython` packages (Skip if already available)
+1. Clone the repository and enter the local directory
+```
+git clone https://github.com/pranaysy/ETCPy.git
+cd ETCPy
+```
+2. Activate conda/pip environment and compile
+```
+python ETC/setup.py build_ext --inplace
+```
+3.
 *Dependencies:* None! Implemented in pure Python :)
 Currently unpackaged :(
 
