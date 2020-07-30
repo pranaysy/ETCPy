@@ -9,6 +9,7 @@
 from array import array
 
 from ETC.seq import estimates as ce
+from ETC.seq.recode import cast
 from ETC.seq.IO import save
 from ETC.NSRWS.x2D import core as cc
 from ETC.NSRWS.x2D.onestep import _onestep
@@ -49,8 +50,8 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp_x = array("I", seq_x)
-    temp_y = array("I", seq_y)
+    temp_x = cast(seq_x)
+    temp_y = cast(seq_y)
 
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
@@ -170,8 +171,8 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp_x = array("I", seq_x)
-    temp_y = array("I", seq_y)
+    temp_x = cast(seq_x)
+    temp_y = cast(seq_y)
 
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
@@ -251,8 +252,8 @@ def _compute_compact_truncated(seq_x, seq_y, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp_x = array("I", seq_x)
-    temp_y = array("I", seq_y)
+    temp_x = cast(seq_x)
+    temp_y = cast(seq_y)
 
     if cc.check_equality(temp_x, temp_y):
         return etc
@@ -320,8 +321,8 @@ def _compute_compact_full(seq_x, seq_y, order=2):
     etc = 0
 
     # Create a copy of the original sequence
-    temp_x = array("I", seq_x)
-    temp_y = array("I", seq_y)
+    temp_x = cast(seq_x)
+    temp_y = cast(seq_y)
 
     if cc.check_equality(temp_x, temp_y):
         return etc

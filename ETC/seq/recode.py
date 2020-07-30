@@ -13,9 +13,6 @@ from ETC.seq.check import zeroes
 
 
 def cast(seq):
-    if not seq:
-        print("> Input is empty")
-        return None
 
     try:
         out = array("I", seq)

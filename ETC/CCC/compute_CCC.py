@@ -9,7 +9,8 @@ Compute the Compression-Complexity based Causality for two sequences.
 # Import functions
 from functools import partial
 from ETC import compute_1D, compute_2D
-from ETC.seq.recode import partition
+from ETC.seq.recode import partition, cast
+from ETC.seq.check import arraytype
 
 #
 get1D = partial(compute_1D, order=2, verbose=False, truncate=True)
@@ -70,6 +71,14 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
     if n_partitions:
         seq_x = partition(seq_x, n_partitions)
         seq_y = partition(seq_y, n_partitions)
+
+    # Check whether input is a discrete symbolic sequence
+    if not arraytype(seq_x):
+        seq_x = cast(seq_x)
+    if not arraytype(seq_y):
+        seq_y = cast(seq_y)
+
+    assert seq_x and seq_y, "ERROR: Invalid inputs, sequences should be integer-valued"
 
     # Setup variables
     LEN = len(seq_x)
