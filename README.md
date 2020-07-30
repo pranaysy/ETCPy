@@ -2,7 +2,7 @@
 
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
- - [What can it be used for](https://github.com/pranaysy/ETCPy#what-can-it-be-used-for)
+ - [What can it be used for](https://github.com/pranaysy/ETCPy#what-can-it-do)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
@@ -29,8 +29,8 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
  - Kathpalia, Aditi, and Nithin Nagaraj. “Data-Based Intervention Approach for Complexity-Causality Measure.” PeerJ Computer Science 5 (May 27, 2019): e196. https://doi.org/10.7717/peerj-cs.196.
 
 
-## What can it be used for
- - Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG
+## What can it do
+ - Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG
    - Balasubramanian, Karthi, Nithin Nagaraj, and Sandipan Pati. “Chaos or Randomness? Effect of Vagus Nerve Stimulation During Sleep on Heart-Rate Variability.” IETE Journal of Research, June 30, 2020, 1–7. https://doi.org/10.1080/03772063.2020.1780165.
    - Srilakshmi, P, Karthi Balasubramanian, Nithin Nagaraj, and Sandipan Pati. “Multiscale Analysis of Heart Rate Variability Using Subsymmetry and Effort-to-Compress Complexity Measures.” In 2018 15th IEEE India Council International Conference (INDICON), 1–5. Coimbatore, India: IEEE, 2018. https://doi.org/10.1109/INDICON45594.2018.8986972.
    - Thanaj, Marjola, Andrew J. Chipperfield, and Geraldine F. Clough. “Analysis of Microvascular Blood Flow and Oxygenation: Discrimination between Two Haemodynamic Steady States Using Nonlinear Measures and Multiscale Analysis.” Computers in Biology and Medicine 102 (November 2018): 157–67. https://doi.org/10.1016/j.compbiomed.2018.09.026.
@@ -43,10 +43,10 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
    - Kondo, Fumika. “Can Alterations in the Temporal Structure of Spontaneous Brain Activity Serve as a Disease-Specific Biomarker for Schizophrenia? A Multi Cohort FMRI Study,” 2017. https://doi.org/10.20381/RUOR-20801.
    - Kimiskidis, Vasilios K., Christos Koutlis, Alkiviadis Tsimpiris, Reetta Kälviäinen, Philippe Ryvlin, and Dimitris Kugiumtzis. “Transcranial Magnetic Stimulation Combined with EEG Reveals Covert States of Elevated Excitability in the Human Epileptic Brain.” International Journal of Neural Systems 25, no. 05 (August 2015): 1550018. https://doi.org/10.1142/S0129065715500185.
 
- - Genome Complexity and Classification
+ - Analyze Genome Complexity and Classify Nucleotide Sequences
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Automatic Identification of SARS Coronavirus Using Compression-Complexity Measures.” Preprint. Bioinformatics, March 27, 2020. https://doi.org/10.1101/2020.03.24.006007.
 
- - Denoising of Acoustic Signals
+ - Denoise Acoustic Signals
    - Li, Guohui, Qianru Guan, and Hong Yang. “Noise Reduction Method of Underwater Acoustic Signals Based on CEEMDAN, Effort-To-Compress Complexity, Refined Composite Multiscale Dispersion Entropy and Wavelet Threshold Denoising.” Entropy 21, no. 1 (December 24, 2018): 11. https://doi.org/10.3390/e21010011.
 
 
@@ -70,14 +70,14 @@ For tests:
 Skip the first step if an environment is already available:
 1. Create a fresh `conda` or `pip`/`virtualenv`-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
     ```bash
-    conda create -n myenv python numpy cython
+    $ conda create -n myenv python numpy cython
     ```
 2. Activate environment using `conda activate myenv` or virtualenv equivalent.
 3. Use `pip`* to install directly from GitHub using the `git` VCS backend
+    ```bash
+    $ python -m pip install git+https://github.com/pranaysy/ETCPy.git
     ```
-    python -m pip install git+https://github.com/pranaysy/ETCPy.git
-    ```
-4. Done!
+4. Done! Open a Python shell, execute `import ETC` and then proceed to the [demo](./demo.py)
 
 ---
 *mixing `pip` and `conda` is not a generally advised but can be used based on [guidelines](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env)
@@ -90,17 +90,17 @@ The implementations of ETC as well as CCC include parallelization (~SIMD) using 
 ### Testing
 Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
 Make sure dependencies are satisfied within the working environment:
-```
-python -m pip install -u pytest hypothesis
+```bash
+$ python -m pip install -u pytest hypothesis
 ```
 Grab a copy of this repository using git and enter the local directory:
-```
-git clone https://github.com/pranaysy/ETCPy.git
-cd ETCPy
+```bash
+$ git clone https://github.com/pranaysy/ETCPy.git
+$ cd ETCPy
 ```
 Run tests:
-```
-pytest ETC/
+```bash
+$ pytest ETC/
 ```
 
 ### MATLAB Implementation
