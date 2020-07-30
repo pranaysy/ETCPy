@@ -6,14 +6,14 @@
 @author: Pranay S. Yadav
 """
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from Cython.Build import cythonize
 import numpy
 
 setup(
     ext_modules=cythonize(
-        ["./NSRWS/x1D/core.pyx", "./NSRWS/x2D/core.pyx", "./seq/estimates.pyx",],
-        annotate=True,
+        ["./ETC/NSRWS/x1D/core.pyx", "./ETC/NSRWS/x2D/core.pyx", "./ETC/seq/estimates.pyx",],
+        annotate=False,
         compiler_directives={"language_level": "3"},
     ),
     include_dirs=[numpy.get_include()],
@@ -21,7 +21,6 @@ setup(
     version="1.0",
     author_email="mail@pranaysy.com",
     description="Compute the Effort-To-Compress (ETC) of a symbolic sequence",
-    packages=["ETC",],
-    license="Apache License, Version 2.0",
-    long_description=open("README.md").read()
+    packages=find_packages(),
+    license="Apache License, Version 2.0"
 )
