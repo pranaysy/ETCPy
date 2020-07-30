@@ -51,7 +51,9 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
 
 
 ## How to use it
-The simplest way right now is to use `pip` to clone this repository and install locally inside a `conda` or a `virtualenv` environment. This way several functions implemented in Cython will be automatically compiled natively on the host system.
+The simplest way right now is to use `pip` to clone this repository and install locally inside a `conda` or a `virtualenv` environment. This way several functions implemented in Cython will be automatically compiled natively on the host system. Instructions below.
+
+While the repository is called `ETCPy`, the package namespsace available for use is `ETC`. All functionality is available through the `ETC` namespace.
 
 For running tests (strongly recommended), additional packages need to be installed.
 
@@ -65,7 +67,7 @@ For tests:
  - `hypothesis`
 
 ### Installation
-Skip the first step if environment is already available:
+Skip the first step if an environment is already available:
 1. Create a fresh `conda` or `pip`/`virtualenv`-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
     ```bash
     conda create -n myenv python numpy cython
