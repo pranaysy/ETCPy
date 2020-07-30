@@ -3,6 +3,10 @@
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it do](https://github.com/pranaysy/ETCPy#what-can-it-do)
+   - [Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG](https://github.com/pranaysy/ETCPy#study-haemodynamics-heart-rate-variability-and-cardiac-aging-using-ecgekg)
+   - [Network Neuroscience and Scientific Study of Consciousness using EEG and fMRI]()
+   - []()
+   - []()
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
@@ -37,13 +41,13 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
    - Balasubramanian, Karthi, K Harikumar, Nithin Nagaraj, and Sandipan Pati. “Vagus Nerve Stimulation Modulates Complexity of Heart Rate Variability Differently during Sleep and Wakefulness.” Annals of Indian Academy of Neurology 20, no. 4 (2017): 403. https://doi.org/10.4103/aian.AIAN_148_17.
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Aging and Cardiovascular Complexity: Effect of the Length of RR Tachograms.” PeerJ 4 (2016): e2755. https://doi.org/10.7717/peerj.2755.
 
-#### Network Neuroscience and Consciousness using EEG and fMRI
+#### Network Neuroscience and Scientific Study of Consciousness using EEG and fMRI
    - Agarwal, Nikita, Aditi Kathpalia, and Nithin Nagaraj. “Distinguishing Different Levels of Consciousness Using a Novel Network Causal Activity Measure.” In 2019 Global Conference for Advancement in Technology (GCAT), 1–5. BANGALURU, India: IEEE, 2019. https://doi.org/10.1109/GCAT47503.2019.8978424.
    - Virmani, Mohit, and Nithin Nagaraj. “A Novel Perturbation Based Compression Complexity Measure for Networks.” Heliyon 5, no. 2 (February 2019): e01181. https://doi.org/10.1016/j.heliyon.2019.e01181.
    - Kondo, Fumika. “Can Alterations in the Temporal Structure of Spontaneous Brain Activity Serve as a Disease-Specific Biomarker for Schizophrenia? A Multi Cohort FMRI Study,” 2017. https://doi.org/10.20381/RUOR-20801.
    - Kimiskidis, Vasilios K., Christos Koutlis, Alkiviadis Tsimpiris, Reetta Kälviäinen, Philippe Ryvlin, and Dimitris Kugiumtzis. “Transcranial Magnetic Stimulation Combined with EEG Reveals Covert States of Elevated Excitability in the Human Epileptic Brain.” International Journal of Neural Systems 25, no. 05 (August 2015): 1550018. https://doi.org/10.1142/S0129065715500185.
 
-#### Analyze Genome Complexity and Classify Nucleotide Sequences
+#### Genome Complexity Analysis and Classification of Nucleotide Sequences
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Automatic Identification of SARS Coronavirus Using Compression-Complexity Measures.” Preprint. Bioinformatics, March 27, 2020. https://doi.org/10.1101/2020.03.24.006007.
 
 #### Denoise Acoustic Signals
