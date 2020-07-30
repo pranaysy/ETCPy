@@ -12,7 +12,7 @@ import numpy
 
 setup(
     ext_modules=cythonize(
-        ["ETC/NSRWS/x1D/core.pyx", "ETC/NSRWS/x2D/core.pyx", "ETC/seq/estimates.pyx",],
+        ["./NSRWS/x1D/core.pyx", "./NSRWS/x2D/core.pyx", "./seq/estimates.pyx",],
         annotate=True,
         compiler_directives={"language_level": "3"},
     ),
