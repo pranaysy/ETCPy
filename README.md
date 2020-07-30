@@ -2,7 +2,7 @@
 
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
- - [What can it be used for](https://github.com/pranaysy/ETCPy#what-can-it-do)
+ - [What can it do](https://github.com/pranaysy/ETCPy#what-can-it-do)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
