@@ -96,6 +96,13 @@ Skip the first step if an environment is already available:
 ---
 *mixing `pip` and `conda` is not a generally advised but can be used based on [certain recommendations](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env)
 
+### Updating
+Use the `-U` flag with pip for updating to the most current version available from this repository:
+```
+$ python -m pip install -U git+https://github.com/pranaysy/ETCPy.git
+```
+This will rebuild the compiled Cython functions as well.
+
 ### Usage
 Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L99) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
