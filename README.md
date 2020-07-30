@@ -61,6 +61,10 @@ While the repository is called `ETCPy`, the package namespsace available for use
 
 For running tests (strongly recommended), additional packages need to be installed.
 
+### Operating System Support
+ - Linux-based distributions (tested on Ubuntu 16.04, 18.04, 20.04)
+ - **Currently does not work out of the box on Windows.** Cython and C/C++ build toolchain need to be setup properly for compilation on Windows to work. It may work with MinGW + Visual Studio Build Tools, **currently untested.**
+
 ### Dependencies
 For core functionality:
  - `numpy`
@@ -77,19 +81,24 @@ Skip the first step if an environment is already available:
     $ conda create -n myenv python numpy cython
     ```
 2. Activate environment using `conda activate myenv` or virtualenv equivalent.
+
+   If `git` is not installed, then:
+     - either install it at a system level directly from the [official website](https://git-scm.com/download) or via prefereed package manager
+     - or install it within the newly created conda environment using `conda install git`
+
 3. Use `pip`* to install directly from GitHub using the `git` VCS backend
     ```bash
     $ python -m pip install git+https://github.com/pranaysy/ETCPy.git
     ```
-4. Done! Open a Python shell, execute `import ETC` and then proceed to the [demo](./demo.py)
+4. Done! Open a Python shell, execute `import ETC` and proceed to the [demo](./demo.py)
 
 ---
-*mixing `pip` and `conda` is not a generally advised but can be used based on [guidelines](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env)
+*mixing `pip` and `conda` is not a generally advised but can be used based on [certain recommendations](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#pip-in-env)
 
 ### Usage
 Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L99) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
-The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module. Use with caution on Windows with extra protection for `__main__`.
+The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module and can benefit from more available CPU cores for multiple sequences.
 
 ### Testing
 Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
@@ -119,6 +128,7 @@ $ pytest ETC/
  - Visualizations
  - Improve test coverage
  - Documentation using Sphinx/MkDocs
+ - Windows support
 
 ## License
 Copyright 2020 Pranay S. Yadav and Nithin Nagaraj
