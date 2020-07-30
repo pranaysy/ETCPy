@@ -10,6 +10,7 @@
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
+   - [Updating](https://github.com/pranaysy/ETCPy#updating)
    - [Usage](https://github.com/pranaysy/ETCPy#usage)
    - [Testing](https://github.com/pranaysy/ETCPy#testing)
    - [MATLAB Implementation](https://github.com/pranaysy/ETCPy#matlab-implementation)
