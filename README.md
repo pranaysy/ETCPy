@@ -19,6 +19,7 @@ The simplest way right now is to clone this repository and use inside a conda or
 For running tests (strongly recommended), additional packages need to be installed using pip.
 
 ### Dependencies
+For core functionality
  - `numpy`
  - `cython`
 
@@ -40,7 +41,7 @@ python -m pip install git+https://github.com/pranaysy/ETCPy.git
 3. Done!
 
 ### Usage
-Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/12a96044108912b3275240dfa55b631d3e740cc0/demo.py#L83) is also included.
+Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L83) is also included.
 
 The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module. Use with caution on Windows with extra protection for `__main__`.
 
