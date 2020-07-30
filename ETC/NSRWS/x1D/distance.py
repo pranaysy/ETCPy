@@ -37,20 +37,25 @@ def _compute_distance(inputs):
 
     """
     idx, seqs = inputs
+
+    S1 = ETC.seq.recode.recode_lexical(seqs[0])
+    S2 = ETC.seq.recode.recode_lexical(seqs[1])
+
     # Prepare output dictionary
-    out = {"item": idx, "length_seq1": len(seqs[0]), "length_seq2": len(seqs[1])}
+    out = {"item": idx, "length_seq1": len(S1), "length_seq2": len(S2)}
+
 
     # Compute ETC and update output dictionary
-    ETC1D_seq1 = get1D(seqs[0])["ETC1D"]
+    ETC1D_seq1 = get1D(S1)["ETC1D"]
     out.update({"ETC1D_seq1": ETC1D_seq1})
 
-    ETC1D_seq2 = get1D(seqs[1])["ETC1D"]
+    ETC1D_seq2 = get1D(S2)["ETC1D"]
     out.update({"ETC1D_seq2": ETC1D_seq2})
 
-    ETC1D_seq1seq2 = get1D(seqs[0] + seqs[1])["ETC1D"]
+    ETC1D_seq1seq2 = get1D(S1 + S2)["ETC1D"]
     out.update({"ETC1D_seq1seq2": ETC1D_seq1seq2})
 
-    ETC1D_seq2seq1 = get1D(seqs[1] + seqs[0])["ETC1D"]
+    ETC1D_seq2seq1 = get1D(S2 + S1)["ETC1D"]
     out.update({"ETC1D_seq2seq1": ETC1D_seq2seq1})
 
     dETC = 0.5 * (ETC1D_seq1seq2 + ETC1D_seq2seq1 - ETC1D_seq1 - ETC1D_seq2)

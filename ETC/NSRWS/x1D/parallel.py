@@ -13,6 +13,7 @@ from multiprocessing import Pool
 
 # Import local modules
 import ETC
+# from ETC.seq.process import entropy
 
 
 # Function definitions
@@ -33,16 +34,19 @@ def _compute_single_file(filepath, order=2):
 
     """
     # Read file as a sequence
-    seq = ETC.helper.IO.read(filepath)
+    seq = ETC.seq.IO.read(filepath)
+    seq = ETC.seq.recode.recode_lexical(seq)
 
     # Filename for writing output of ETC computation
-    fname = filepath.with_name(filepath.stem + f"_etc_order{order}.csv")
+    fname = filepath.with_name(filepath.stem + f"_ETC_order{order}.csv")
 
     # Prepare output dictionary
     out = {"file": filepath.name, "length": len(seq)}
 
     # Compute ETC, write to file and update output dictionary
-    out.update(ETC.compute_save_1D(seq, fname, order=order))
+    out.update(ETC.NSRWS.x1D.etc.compute_save
+               (seq, fname, order=order, truncate=True)
+               )
 
     return out
 
@@ -105,6 +109,35 @@ def _compute_single_seq(seq):
 
     return out
 
+
+# TEMPORARY MOD FOR ASSEMBLY-FREE
+# def _compute_single_seq(seq):
+#     """
+#     This function operates on a single sequence and computes ETC.
+
+#     Parameters
+#     ----------
+#     seq : tuple of 2 elements
+#         1st element is index for tracking.
+#         2nd element is a sequence of integers used for ETC computation.
+#         Output of enumerate.
+
+#     Returns
+#     -------
+#     out : dict
+#         index of sequence, length of sequence and ETC estimate.
+
+#     """
+#     data = ETC.seq.recode.recode_lexical(seq[1])
+
+#     # Prepare output dictionary
+#     out = {"item": seq[0], "length": len(data)}
+
+#     # Compute ETC and update output dictionary
+#     out.update(ETC.compute_1D(data, order=2, verbose=False, truncate=True))
+#     out.update({"Entropy": entropy(data, legacy=False)})
+
+#     return out
 
 def pcompute_multiple_seq(iterable):
     """

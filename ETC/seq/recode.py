@@ -42,6 +42,7 @@ def cast(seq):
 def recode_lexical(text, case_sensitive=True):
 
     if not isinstance(text, str):
+        print("ERROR: Input is not a string.")
         return None
     if not case_sensitive:
         text = text.lower()
@@ -104,6 +105,8 @@ def partition(seq, n_bins):
         Collection of integers. Contains unique integers from 1 to n_bins.
 
     """
+    assert isinstance(n_bins, int) and n_bins > 1, "ERROR: Number of bins should be a positive integer"
+
     # Get smallest value
     a = min(seq)
 

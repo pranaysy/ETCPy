@@ -53,10 +53,12 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
         out["ETC_1D_X_total_norm"] = ETC1D_X_total
 
         # ETC 1D for past of Y and current of X
-        segment = tuple(chain(
-            seq_y[k : k + past_win_size],
-            seq_x[k + past_win_size : k + total_win_size]
-        ))
+        segment = tuple(
+            chain(
+                seq_y[k : k + past_win_size],
+                seq_x[k + past_win_size : k + total_win_size],
+            )
+        )
         ETC1D_X_Ypast = get1D(segment)["ETC1D"]
         out["ETC_1D_X_YpastXcurr_raw"] = ETC1D_X_Ypast
 
@@ -98,10 +100,7 @@ def test(seq_x, seq_y, past_win_size, delta, step_size, partitions=False):
         ## --------------------------------------------------------------------
 
         # ETC 2D for current+past=total values of X and past values of Y plus current values of X
-        ETC2D_X_fin = get2D(
-            seq_x[k : k + total_win_size],
-            segment,
-        )["ETC2D"]
+        ETC2D_X_fin = get2D(seq_x[k : k + total_win_size], segment,)["ETC2D"]
         out["ETC_2D_X_total_Y_pastX_curr_raw"] = ETC2D_X_fin
 
         ETC2D_X_fin /= total_win_size - 1
