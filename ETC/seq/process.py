@@ -8,6 +8,7 @@
 from collections import Counter
 from math import log2
 from random import choices
+from random import seed as seedvalue
 from ETC.seq import estimates, recode
 from array import array
 import re
@@ -29,7 +30,7 @@ def sanitize(text, whitespace=False, lowercase=False):
     return text
 
 
-def generate(size=10, partitions=2):
+def generate(size=10, partitions=2, seed=None):
     """
     This function generates discrete random data of desired size and bins.
 
@@ -39,6 +40,8 @@ def generate(size=10, partitions=2):
         Length of sequence to generate. The default is 10.
     partitions : int, optional
         Number of bins/paritions to create.
+    seed : int, optional
+        Seed value for initializing the random number generator. The default is None
 
     Returns
     -------
@@ -49,6 +52,9 @@ def generate(size=10, partitions=2):
     if not (isinstance(partitions, int) and isinstance(size, int) and partitions >= 2):
         print(">> Number of bins is invalid ...")
         return None
+
+    if seed:
+        seedvalue(seed)
 
     return recode.cast(choices(range(1, partitions + 1), k=size))
 

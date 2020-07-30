@@ -27,6 +27,9 @@ ETC.partition([0.1, 0.34, 0.68, -1.9, 25.3], n_bins=2)
 # Generate synthetic data from the discrete uniform distribution
 ETC.generate(size=1000, partitions=4)
 
+# Reproducibility of random generation can be controlled by passing the same seed value
+ETC.generate(size=1000, partitions=4, seed=101)
+
 # Compute Shannon Entropy for a sequence
 ETC.entropy(seq=[1, 2, 1, 1, 1, 2, 1])
 
@@ -34,17 +37,30 @@ ETC.entropy(seq=[1, 2, 1, 1, 1, 2, 1])
 # 1D ETC ESTIMATION FOR A SINGLE SEQUENCE
 # ---------------------------------------
 # Generate a random discrete symbolic sequence
-seq = ETC.generate(size=1000, partitions=2)
+seq = ETC.generate(size=1000, partitions=2, seed=31)
 
 # Compute Effort To Compress using Non-Sequential Recursive Pair Substitution
 out = ETC.compute_1D(seq, order=2, verbose=True, truncate=True)
 
-# The result is a dictionary of substitutions plus other features
+# The result is a dictionary of the ETC estimate and substitutions plus other features
 print(out)
+
+# Get only the ETC estimate
+print(out["ETC1D"])
+# [Out]: 225
 
 # It can be saved to CSV using a convenience function:
 ETC.save(out, filename="ETC_results.csv")
 
+# Alternatively, verbosity can be turned off to return just the ETC estimate
+out = ETC.compute_1D(seq, order=2, verbose=False, truncate=True)
+
+# The result is now a dictionary of only the integer ETC estimate
+print(out)
+
+# Normalize this by its length minus 1
+print(out["ETC1D"] / (len(seq) - 1))
+# [Out]: 0.22522522522522523
 
 # PARALLELIZED 1D ETC ESTIMATION FOR CHUNKS OF A SINGLE SEQUENCE
 # --------------------------------------------------------------
@@ -73,8 +89,8 @@ if __name__ == "__main__":
 # 2D ETC ESTIMATION FOR A PAIR OF SEQUENCES
 # -----------------------------------------
 # Generate two random sequences
-seq_x = ETC.generate(size=1000, partitions=2)
-seq_y = ETC.generate(size=1000, partitions=2)
+seq_x = ETC.generate(size=1000, partitions=2, seed=17)
+seq_y = ETC.generate(size=1000, partitions=2, seed=19)
 
 # Compute Effort To Compress using Non-Sequential Recursive Pair Substitution
 out = ETC.compute_2D(seq_x, seq_y, order=2, verbose=True, truncate=True)
@@ -89,7 +105,7 @@ from ETC import CCC
 ccc_est = CCC.compute(
     seq_x, seq_y, LEN_past=150, ADD_meas=15, STEP_size=20, n_partitions=False
 )
-# [Out]: CCC for seq_y -> seq_x = 0.0033976260535235735
+# [Out]: CCC for seq_y -> seq_x = -0.00301035257856264
 
 # See docstrings for more information on CCC estimation
 # ?CCC.compute
