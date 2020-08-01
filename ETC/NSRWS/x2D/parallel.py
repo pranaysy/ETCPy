@@ -15,6 +15,7 @@ from multiprocessing import Pool
 
 # Import local modules
 import ETC
+from ETC.seq.process import entropy
 from ETC.helper.compute_markov_transition_probs import sample_sequence
 
 # Function definitions
@@ -203,7 +204,7 @@ def _compute_single_seq(seq):
 
     """
     # Prepare output dictionary
-    out = {"item": seq[0], "length": len(seq[1])}
+    out = {"item": seq[0], "length": len(seq[1]), "entropy": entropy(seq[1])}
 
     # Compute ETC and update output dictionary
     out.update(ETC.compute(seq[1], order=2, verbose=False, truncate=True))

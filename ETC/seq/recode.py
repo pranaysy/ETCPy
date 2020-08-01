@@ -11,29 +11,34 @@ from random import shuffle, choices
 from array import array
 from ETC.seq.check import zeroes
 
+import numpy as np
 
 def cast(seq):
 
-    try:
-        out = array("I", seq)
-        if zeroes(out):
-            print("> Input contains 0!")
-            print('> Recode or partition using "ETC.seq.recode" ')
+    if seq is not None and any(seq):
+        try:
+            out = array("I", seq)
+            if zeroes(out):
+                print("> Input contains 0!")
+                print('> Recode or partition using "ETC.seq.recode" ')
+                return None
+
+        except TypeError as error:
+            print("ERROR:", error)
+            print("> Input must be a list/tuple/array of positive integers!")
+            print('> Recode or partition using "ETC.seq.recode"')
             return None
 
-    except TypeError as error:
-        print("ERROR:", error)
-        print("> Input must be a list/tuple/array of positive integers!")
-        print('> Recode or partition using "ETC.seq.recode"')
-        return None
+        except OverflowError as error:
+            print("ERROR:", error)
+            print("> Input must be a list/tuple/array of positive integers!")
+            print('> Recode or partition using "ETC.seq.recode"')
+            return None
 
-    except OverflowError as error:
-        print("ERROR:", error)
-        print("> Input must be a list/tuple/array of positive integers!")
-        print('> Recode or partition using "ETC.seq.recode"')
-        return None
+        return out
 
-    return out
+    print("No input sequence provided.")
+    return None
 
 
 def recode_lexical(text, case_sensitive=True):

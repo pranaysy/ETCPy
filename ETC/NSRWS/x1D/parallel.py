@@ -13,6 +13,7 @@ from multiprocessing import Pool
 
 # Import local modules
 import ETC
+from ETC.seq.process import entropy
 # from ETC.seq.process import entropy
 
 
@@ -41,7 +42,7 @@ def _compute_single_file(filepath, order=2):
     fname = filepath.with_name(filepath.stem + f"_ETC_order{order}.csv")
 
     # Prepare output dictionary
-    out = {"file": filepath.name, "length": len(seq)}
+    out = {"file": filepath.name, "length": len(seq), "entropy": entropy(seq)}
 
     # Compute ETC, write to file and update output dictionary
     out.update(ETC.NSRWS.x1D.etc.compute_save
@@ -102,7 +103,7 @@ def _compute_single_seq(seq):
 
     """
     # Prepare output dictionary
-    out = {"item": seq[0], "length": len(seq[1])}
+    out = {"item": seq[0], "length": len(seq[1]), "entropy": entropy(seq[1])}
 
     # Compute ETC and update output dictionary
     out.update(ETC.compute_1D(seq[1], order=2, verbose=False, truncate=True))

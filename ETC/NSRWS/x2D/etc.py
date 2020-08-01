@@ -49,10 +49,6 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
     # Initialize ETC to 0
     etc = 0
 
-    # Create a copy of the original sequence
-    temp_x = cast(seq_x)
-    temp_y = cast(seq_y)
-
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
 
@@ -62,9 +58,9 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
     output.append(
         {
             "step": etc,
-            "length": len(temp_x),
-            "entropy_x": ce.entropy(temp_x),
-            "entropy_y": ce.entropy(temp_y),
+            "length": len(seq_x),
+            "entropy_x": ce.entropy(seq_x),
+            "entropy_y": ce.entropy(seq_y),
             "window_x": None,
             "window_y": None,
             "count": None,
@@ -72,16 +68,16 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
         }
     )
 
-    if cc.check_equality(temp_x, temp_y):
+    if cc.check_equality(seq_x, seq_y):
         return etc, output
 
     # Execute iteration loop until either all elements are equal or sequence is
     # reduced to less than size of the window being substituted (order)
-    while not signal and len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
+    while not signal and len(seq_x) >= order and not cc.check_equality(seq_x, seq_y):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
-            temp_x, temp_y, order, verbose=True
+        seq_x, seq_y, signal, pair_x, pair_y, count, time = _onestep(
+            seq_x, seq_y, order, verbose=True
         )
 
         # Increment ETC
@@ -91,9 +87,9 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
         output.append(
             {
                 "step": etc,
-                "length": len(temp_x),
-                "entropy_x": ce.entropy(temp_x),
-                "entropy_y": ce.entropy(temp_y),
+                "length": len(seq_x),
+                "entropy_x": ce.entropy(seq_x),
+                "entropy_y": ce.entropy(seq_y),
                 "window_x": pair_x,
                 "window_y": pair_y,
                 "count": count,
@@ -101,12 +97,12 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
             }
         )
     n = 0
-    if signal and not cc.check_equality(temp_x, temp_y):
+    if signal and not cc.check_equality(seq_x, seq_y):
 
-        while len(temp_x) >= order and n < 5:
+        while len(seq_x) >= order and n < 5:
             # Run one step of NSRWS in verbose mode (returns window and count)
-            temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
-                temp_x, temp_y, order, verbose=True
+            seq_x, seq_y, signal, pair_x, pair_y, count, time = _onestep(
+                seq_x, seq_y, order, verbose=True
             )
 
             # Increment ETC
@@ -116,9 +112,9 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
             output.append(
                 {
                     "step": etc,
-                    "length": len(temp_x),
-                    "entropy_x": ce.entropy(temp_x),
-                    "entropy_y": ce.entropy(temp_y),
+                    "length": len(seq_x),
+                    "entropy_x": ce.entropy(seq_x),
+                    "entropy_y": ce.entropy(seq_y),
                     "window_x": pair_x,
                     "window_y": pair_y,
                     "count": count,
@@ -126,10 +122,10 @@ def _compute_verbose_truncated(seq_x, seq_y, order=2):
                 }
             )
             n += 1
-        if len(temp_x) % (order - 1) == 0:
-            etc += len(temp_x) // (order - 1) - 1
+        if len(seq_x) % (order - 1) == 0:
+            etc += len(seq_x) // (order - 1) - 1
         else:
-            etc += len(temp_x) // (order - 1)
+            etc += len(seq_x) // (order - 1)
 
     # Display ETC and return it with aggregator
     # print(f"ETC={etc}")
@@ -170,10 +166,6 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
     # Initialize ETC to 0
     etc = 0
 
-    # Create a copy of the original sequence
-    temp_x = cast(seq_x)
-    temp_y = cast(seq_y)
-
     # Initialize an aggregator for collecting dictionaries of estimates
     output = list()
 
@@ -181,9 +173,9 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
     output.append(
         {
             "step": etc,
-            "length": len(temp_x),
-            "entropy_x": ce.entropy(temp_x),
-            "entropy_y": ce.entropy(temp_y),
+            "length": len(seq_x),
+            "entropy_x": ce.entropy(seq_x),
+            "entropy_y": ce.entropy(seq_y),
             "window_x": None,
             "window_y": None,
             "count": None,
@@ -191,16 +183,16 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
         }
     )
 
-    if cc.check_equality(temp_x, temp_y):
+    if cc.check_equality(seq_x, seq_y):
         return etc, output
 
     # Execute iteration loop until either all elements are equal or sequence is
     # reduced to less than size of the window being substituted (order)
-    while len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
+    while len(seq_x) >= order and not cc.check_equality(seq_x, seq_y):
 
         # Run one step of NSRWS in verbose mode (returns window and count)
-        temp_x, temp_y, signal, pair_x, pair_y, count, time = _onestep(
-            temp_x, temp_y, order, verbose=True
+        seq_x, seq_y, signal, pair_x, pair_y, count, time = _onestep(
+            seq_x, seq_y, order, verbose=True
         )
         # Increment ETC
         etc += 1
@@ -209,9 +201,9 @@ def _compute_verbose_full(seq_x, seq_y, order=2):
         output.append(
             {
                 "step": etc,
-                "length": len(temp_x),
-                "entropy_x": ce.entropy(temp_x),
-                "entropy_y": ce.entropy(temp_y),
+                "length": len(seq_x),
+                "entropy_x": ce.entropy(seq_x),
+                "entropy_y": ce.entropy(seq_y),
                 "window_x": pair_x,
                 "window_y": pair_y,
                 "count": count,
@@ -251,41 +243,37 @@ def _compute_compact_truncated(seq_x, seq_y, order=2):
     # Initialize ETC to 0
     etc = 0
 
-    # Create a copy of the original sequence
-    temp_x = cast(seq_x)
-    temp_y = cast(seq_y)
-
-    if cc.check_equality(temp_x, temp_y):
+    if cc.check_equality(seq_x, seq_y):
         return etc
 
     signal = False
     # Execute iteration loop until either all elements are equal or sequence is
     # reduced to less than size of the window being substituted (order)
-    # while len(temp) >= order and not equality(temp):
-    while not signal and len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
+    # while len(seq) >= order and not equality(seq):
+    while not signal and len(seq_x) >= order and not cc.check_equality(seq_x, seq_y):
 
         # Run one step of NSRWS
-        temp_x, temp_y, signal = _onestep(temp_x, temp_y, order, verbose=False)
+        seq_x, seq_y, signal = _onestep(seq_x, seq_y, order, verbose=False)
 
         # Increment ETC
         etc += 1
 
     n = 0
-    if signal and not cc.check_equality(temp_x, temp_y):
+    if signal and not cc.check_equality(seq_x, seq_y):
 
-        while len(temp_x) >= order and n < 5:
+        while len(seq_x) >= order and n < 5:
             # Run one step of NSRWS in verbose mode (returns window and count)
-            temp_x, temp_y, signal = _onestep(temp_x, temp_y, order, verbose=False)
+            seq_x, seq_y, signal = _onestep(seq_x, seq_y, order, verbose=False)
 
             # Increment ETC
             etc += 1
 
             n += 1
 
-        if len(temp_x) % (order - 1) == 0:
-            etc += len(temp_x) // (order - 1) - 1
+        if len(seq_x) % (order - 1) == 0:
+            etc += len(seq_x) // (order - 1) - 1
         else:
-            etc += len(temp_x) // (order - 1)
+            etc += len(seq_x) // (order - 1)
 
     # Display ETC and return it
     # print(f"ETC={etc}")
@@ -320,20 +308,16 @@ def _compute_compact_full(seq_x, seq_y, order=2):
     # Initialize ETC to 0
     etc = 0
 
-    # Create a copy of the original sequence
-    temp_x = cast(seq_x)
-    temp_y = cast(seq_y)
-
-    if cc.check_equality(temp_x, temp_y):
+    if cc.check_equality(seq_x, seq_y):
         return etc
 
     # Execute iteration loop until either all elements are equal or sequence is
     # reduced to less than size of the window being substituted (order)
-    # while len(temp) >= order and not equality(temp):
-    while len(temp_x) >= order and not cc.check_equality(temp_x, temp_y):
+    # while len(seq) >= order and not equality(seq):
+    while len(seq_x) >= order and not cc.check_equality(seq_x, seq_y):
 
         # Run one step of NSRWS
-        temp_x, temp_y, signal = _onestep(temp_x, temp_y, order, verbose=False)
+        seq_x, seq_y, signal = _onestep(seq_x, seq_y, order, verbose=False)
 
         # Increment ETC
         etc += 1
@@ -364,24 +348,30 @@ def compute(seq_x, seq_y, order=2, verbose=True, truncate=True):
         ETC (int) & optionally, trajectory of NSRWS algorithm if verbose=True.
 
     """
+    assert len(seq_x) == len(seq_y), "ERROR: The 2 sequences should have the same length!"
+
+    # Create a copy of the original sequence
+    seq_x = cast(seq_x)
+    seq_y = cast(seq_y)
+
     if truncate:
         # If verbose, run the verbose version and return accordingly
         if verbose:
             etc, out = _compute_verbose_truncated(seq_x, seq_y, order)
-            return {"ETC2D": etc, "Trajectory": out}
+            return {"ETC2D": etc, "NETC2D": etc / (len(seq_x) - 1), "Trajectory": out}
         else:
             # If not verbose, run the compact version and return accordingly
             etc = _compute_compact_truncated(seq_x, seq_y, order)
-            return {"ETC2D": etc}
+            return {"ETC2D": etc, "NETC2D": etc / (len(seq_x) - 1)}
     else:
         # If verbose, run the verbose version and return accordingly
         if verbose:
             etc, out = _compute_verbose_full(seq_x, seq_y, order)
-            return {"ETC2D": etc, "Trajectory": out}
+            return {"ETC2D": etc, "NETC2D": etc / (len(seq_x) - 1), "Trajectory": out}
         else:
             # If not verbose, run the compact version and return accordingly
             etc = _compute_compact_full(seq_x, seq_y, order)
-            return {"ETC2D": etc}
+            return {"ETC2D": etc, "NETC2D": etc / (len(seq_x) - 1)}
 
 
 def compute_save(seq_x, seq_y, filename, truncate=True, order=2):
@@ -405,6 +395,12 @@ def compute_save(seq_x, seq_y, filename, truncate=True, order=2):
         ETC (int).
 
     """
+    assert len(seq_x) == len(seq_y), "ERROR: The 2 sequences should have the same length!"
+
+    # Create a copy of the original sequence
+    seq_x = cast(seq_x)
+    seq_y = cast(seq_y)
+
     if truncate:
         etc, out = _compute_verbose_truncated(seq_x, seq_y, order)
     else:
@@ -413,7 +409,7 @@ def compute_save(seq_x, seq_y, filename, truncate=True, order=2):
     # Save the output to a csv file and return
     save(out, filename)
 
-    return {"ETC2D": etc}
+    return {"ETC2D": etc, "NETC2D": etc / (len(seq_x) - 1)}
 
 
 # %% Adapt into test!
