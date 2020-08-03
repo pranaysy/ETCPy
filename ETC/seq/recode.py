@@ -11,8 +11,6 @@ from random import shuffle, choices
 from array import array
 from ETC.seq.check import zeroes
 
-import numpy as np
-
 def cast(seq):
 
     if seq is not None and any(seq):
@@ -50,7 +48,7 @@ def recode_lexical(text, case_sensitive=True):
         text = text.lower()
     alphabets = sorted(set(text))
     replacer = dict((y, x + 1) for x, y in enumerate(alphabets))
-    text = cast(replacer[x] for x in text)
+    text = cast([replacer[x] for x in text])
     return text
 
 
@@ -61,14 +59,14 @@ def recode_alphabetical(text):
         print('> Input contains non alphabetical characters!')
         return None
     replacer = dict((y, x + 1) for x, y in enumerate(ascii_lowercase))
-    text = cast(replacer[x] for x in text)
+    text = cast([replacer[x] for x in text])
     return text
 
 
 def recode_dna(text):
 
     replacer = {"A": 1, "G": 1, "C": 2, "T": 2}
-    text = cast(replacer[x] for x in text.upper())
+    text = cast([replacer[x] for x in text.upper()])
     return text
 
 
@@ -77,7 +75,7 @@ def recode_random(text):
     alphabets = list(set(text))
     shuffle(alphabets)
     replacer = dict((y, x + 1) for x, y in enumerate(alphabets))
-    text = cast(replacer[x] for x in text)
+    text = cast([replacer[x] for x in text])
     return text
 
 
@@ -86,7 +84,7 @@ def recode_randint(text):
     alphabets = list(set(text))
     numbers = choices(range(1, 2 ** 20), k=len(alphabets))
     replacer = dict(zip(alphabets, numbers))
-    text = cast(replacer[x] for x in text)
+    text = cast([replacer[x] for x in text])
     return text
 
 
