@@ -14,8 +14,9 @@ from multiprocessing import Pool
 # Import local modules
 import ETC
 from ETC.seq.process import entropy
-# from ETC.seq.process import entropy
 
+# from ETC.seq.process import entropy
+import numpy as np
 
 # Function definitions
 def _compute_single_file(filepath, order=2):
@@ -45,9 +46,7 @@ def _compute_single_file(filepath, order=2):
     out = {"file": filepath.name, "length": len(seq), "entropy": entropy(seq)}
 
     # Compute ETC, write to file and update output dictionary
-    out.update(ETC.NSRWS.x1D.etc.compute_save
-               (seq, fname, order=order, truncate=True)
-               )
+    out.update(ETC.NSRWS.x1D.etc.compute_save(seq, fname, order=order, truncate=True))
 
     return out
 
@@ -103,7 +102,7 @@ def _compute_single_seq(seq):
 
     """
     # Prepare output dictionary
-    out = {"item": seq[0], "length": len(seq[1]), "entropy": entropy(seq[1])}
+    out = {"index": seq[0], "length": len(seq[1]), "entropy": entropy(seq[1])}
 
     # Compute ETC and update output dictionary
     out.update(ETC.compute_1D(seq[1], order=2, verbose=False, truncate=True))
@@ -139,6 +138,7 @@ def _compute_single_seq(seq):
 #     out.update({"Entropy": entropy(data, legacy=False)})
 
 #     return out
+
 
 def pcompute_multiple_seq(iterable):
     """
@@ -259,3 +259,41 @@ def pcompute_single(seq, size, offset=1):
 
     # Execute parallel computation over chunks
     return pcompute_multiple_seq(iterable)
+
+
+def pcompute_numpy(nparr):
+    """
+    This function operates concurrently row-wise on a 2D NumPy array. Loads
+    each sequence and computes ETC.
+
+    CAUTION: main module is unguarded, do not run these functions as is,
+        particularly on Windows.
+
+    Parameters
+    ----------
+    nparr : numpy array, int, 2D
+        Sequence present as column, each row representing a different sequence
+
+    Returns
+    -------
+    list of dict elements
+        Each dictionary element contains index, length of sequence & ETC.
+
+    """
+    assert (
+        isinstance(nparr, np.ndarray) and nparr.ndim == 2 and nparr.dtype == np.uint32
+    ), ">ERROR: Input must be 2D NumPy array of 32-bit unsigned integers (np.uint32)"
+    # Initialize pool of parallel workers
+    pool = Pool()
+
+    # Map-execute function across sequences
+    out = pool.map_async(
+        _compute_single_seq, enumerate([nparr[idx] for idx in range(nparr.shape[0])])
+    )
+
+    # Graceful exit
+    pool.close()
+    pool.join()
+
+    # Return collected results
+    return out.get()

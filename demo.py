@@ -85,17 +85,6 @@ print(out.get("Trajectory"))
 # The default function call ETC.compute_1D(seq) is the same as:
 # ETC.compute_1D(seq, order=2, verbose=False, truncate=True)
 
-# --------------------------------
-# WORKS WITH NUMPY OUT OF THE BOX!
-# --------------------------------
-# Generate a random discrete symbolic sequence and compute 1D ETC on it
-import numpy as np
-np.random.seed(10)
-seq = np.random.randint(1, 3, size=5000)
-out = ETC.compute_1D(seq)
-
-print(out)
-
 # --------------------------------------------------------------
 # PARALLELIZED 1D ETC ESTIMATION FOR CHUNKS OF A SINGLE SEQUENCE
 # --------------------------------------------------------------
@@ -128,7 +117,26 @@ if __name__ == "__main__":
 
 print(outp)
 
-# Integration with 2D Numpy arrays pending ... :|
+
+# --------------------------------
+# WORKS WITH NUMPY OUT OF THE BOX!
+# --------------------------------
+# Generate a random discrete symbolic sequence and compute 1D ETC on it
+import numpy as np
+np.random.seed(10)
+seq = np.random.randint(1, 3, size=5000)
+out = ETC.compute_1D(seq)
+
+print(out)
+# {'ETC1D': 884, 'NETC1D': 0.17683536707341468}
+
+# Parallelized ETC estimation - row-wise for 2D numpy arrays
+seq = np.random.normal(1, 3, size=[10,5000]) # Each row is a distinct sequence
+seq = ETC.partition_numpy(nparr=seq, n_bins=2)
+out = ETC.pcompute_numpy(nparr=seq)
+
+print(out)
+# One estimate per row
 
 # -----------------------------------------
 # 2D ETC ESTIMATION FOR A PAIR OF SEQUENCES

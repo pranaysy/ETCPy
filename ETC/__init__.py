@@ -5,7 +5,7 @@ __import__("pkg_resources").declare_namespace(__name__)
 
 from ETC.seq.IO import read, save
 from ETC.seq.process import generate, entropy
-from ETC.seq.recode import cast, recode_lexical, partition
+from ETC.seq.recode import cast, recode_lexical, partition, partition_numpy
 
 from ETC.NSRWS.x1D.etc import compute as compute_1D
 
@@ -22,4 +22,4 @@ from ETC.NSRWS.x2D.etc import compute as compute_2D
 
 
 
-from ETC.NSRWS.x1D.parallel import pcompute_multiple_seq, pcompute_single, pcompute_files
+from ETC.NSRWS.x1D.parallel import pcompute_multiple_seq, pcompute_single, pcompute_files, pcompute_numpy

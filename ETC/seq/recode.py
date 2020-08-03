@@ -9,6 +9,7 @@
 from string import ascii_lowercase
 from random import shuffle, choices
 from array import array
+import numpy as np
 from ETC.seq.check import zeroes
 
 def cast(seq):
@@ -115,3 +116,36 @@ def partition(seq, n_bins):
 
     # Transform each element and return
     return [1 + int((elem - a) * delta_inv) for elem in seq]
+
+
+def partition_numpy(nparr, n_bins):
+    """
+    This function takes an input sequence and bins it into discrete points.
+
+    Parameters
+    ----------
+    nparr : numpy array, int or float, 2D
+        Sequence present as column, each row representing a different sequence.
+    n_bins : int
+        Number of bins/paritions to create.
+
+    Returns
+    -------
+    list
+        Collection of integers. Contains unique integers from 1 to n_bins.
+
+    """
+    assert isinstance(n_bins, int) and n_bins > 1, "ERROR: Number of bins should be a positive integer"
+
+    assert (
+        isinstance(nparr, np.ndarray) and nparr.ndim == 2
+    ), ">ERROR: Input must be 2D NumPy array of numbers"
+
+    # Get smallest value
+    a = nparr.min(axis=1)[:, np.newaxis]
+
+    # Compute reciprocal of peak-to-peak per bin
+    delta_inv = n_bins / (nparr.max(axis=1)[:, np.newaxis] - a + 1e-6)
+
+    # Transform each element and return
+    return 1 + ((nparr - a)*delta_inv).astype("uint32")
