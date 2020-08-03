@@ -105,7 +105,7 @@ $ python -m pip install -U git+https://github.com/pranaysy/ETCPy.git
 This will rebuild the compiled Cython functions as well.
 
 ### Usage
-Please check out [`demo.py`](./demo.py) to see ETC in action. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L150) is also included for uncoupled as well as coupled first-order auto-regressive processes.
+Please check out [`demo.py`](./demo.py) to see ETC in action. [Functions for dealing with NumPy arrays](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L121) are also available. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L158) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
 The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module and can benefit from more available CPU cores for multiple sequences.
 
@@ -113,7 +113,7 @@ The implementations of ETC as well as CCC include parallelization (~SIMD) using 
 Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
 Make sure dependencies are satisfied within the working environment:
 ```bash
-$ python -m pip install -u pytest hypothesis
+$ python -m pip install -U pytest hypothesis
 ```
 Grab a copy of this repository using git and enter the local directory:
 ```bash
