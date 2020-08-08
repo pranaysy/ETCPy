@@ -14,10 +14,10 @@ def coupled_AR(length=1000, a=0.9, b=0.8, c=0.8, e=0.01, burn=100, seed=1):
     Generate discrete-time coupled AR processes with known parameters.
 
     Dependent process defined as:
-        x[n] = a * x[n - 1] + c * y[n - 1] + e * noise_x[n]
+        x[n] = a * x[n - 1] + b * y[n - 1] + e * noise_x[n]
 
     Independent process defined as:
-        y[n] = b * y[n - 1] + e * noise_y[n]
+        y[n] = c * y[n - 1] + e * noise_y[n]
 
     Parameters
     ----------
@@ -28,7 +28,7 @@ def coupled_AR(length=1000, a=0.9, b=0.8, c=0.8, e=0.01, burn=100, seed=1):
         The default is 0.9.
     b : float, optional
         Coefficient for dependent process, capturing dependency on the independent
-        process. The default is 0.8.
+        process - causal interaction from independent to dependent. The default is 0.8.
     c : float, optional
         Coefficient for independent process, capturing dependency on its own past.
         The default is 0.8.
@@ -65,12 +65,12 @@ def coupled_AR(length=1000, a=0.9, b=0.8, c=0.8, e=0.01, burn=100, seed=1):
     # Burn initial samples
     if burn:
         for n in range(burn):
-            x[0] = a * x[0] + c * y[0] + noise_x[n]
-            y[0] = b * y[0] + noise_y[n]
+            x[0] = a * x[0] + b * y[0] + noise_x[n]
+            y[0] = c * y[0] + noise_y[n]
 
     # Store further samples
     for n in range(1, length):
-        x[n] = a * x[n - 1] + c * y[n - 1] + noise_x[n]
-        y[n] = b * y[n - 1] + noise_y[n]
+        x[n] = a * x[n - 1] + b * y[n - 1] + noise_x[n]
+        y[n] = c * y[n - 1] + noise_y[n]
 
     return {"dependent": x, "independent": y}

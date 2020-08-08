@@ -171,7 +171,7 @@ ccc_est = CCC.compute(
 # ?CCC.compute
 
 # Simulate a pair of coupled first-order AR processes
-ar = CCC.coupled_AR(length=10000, a=0.9, b=0.8, c=0.8, e=0.01, burn=1000, seed=1)
+ar = CCC.coupled_AR(length=10000, a=0.8, b=0.9, c=0.8, e=0.01, burn=1000, seed=1)
 # ar is a dictionary of two key-value pairs with the following keys:
 #   "dependent" and "independent", each with their respective values in float arrays
 # ?CCC.coupled_AR for more information on sampling from AR processes
@@ -185,7 +185,7 @@ ccc_ar = CCC.compute(
     STEP_size=20,
     n_partitions=2,
 )
-# [Out]: CCC for seq_y -> seq_x = 0.006690822761916147
+# [Out]: CCC for seq_y -> seq_x = 0.005755172746030292
 
 # And for the opposite direction
 ccc_ar = CCC.compute(
@@ -196,4 +196,4 @@ ccc_ar = CCC.compute(
     STEP_size=20,
     n_partitions=2,
 )
-# [Out]: CCC for seq_y -> seq_x = -0.0009449848459036229
+# [Out]: CCC for seq_y -> seq_x = 0.0002971309733327245
