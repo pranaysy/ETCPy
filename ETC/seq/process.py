@@ -50,6 +50,7 @@ def generate(size=10, partitions=2, seed=None):
 
     """
     if not (isinstance(partitions, int) and isinstance(size, int) and partitions >= 2):
+        print(partitions, size)
         print(">> Number of bins is invalid ...")
         return None
 

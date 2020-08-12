@@ -9,7 +9,7 @@
 import ETC
 from ETC.NSRWS.x1D import core
 from entropy import lziv_complexity as LZ
-
+from gzip import compress
 
 def external_substitution(seq, trajectory):
 
@@ -37,10 +37,13 @@ def external_substitution(seq, trajectory):
     return etc, seq
 
 
-def ETC_causality(x, y):
+def ETC_causality(x, y, lengths=False):
 
-    # Add sequence lengths to results
-    result = {"length_x": len(x), "length_y": len(y)}
+    result = {}
+
+    if lengths:
+        # Add sequence lengths to results
+        result.update({"length_x": len(x), "length_y": len(y)})
 
     # Compute ETC for the 2 sequences
     out_x = ETC.compute_1D(x, order=2, verbose=True, truncate=False)
@@ -84,6 +87,9 @@ def ETC_causality(x, y):
         )
     # Else, don't compress and get causal estimate
     else:
+
+        etc_y_residual = 0
+
         # As formulated
         causal_y_from_x = etc_y_given_x - etc_y
 
@@ -117,6 +123,8 @@ def ETC_causality(x, y):
     # Else, don't compress and get causal estimate
     else:
 
+        etc_x_residual = 0
+
         # As formulated
         causal_x_from_y = etc_x_given_y - etc_x
 
@@ -130,20 +138,31 @@ def ETC_causality(x, y):
         )
 
     # Verbal description of causal direction
-    if causal_y_from_x == causal_x_from_y:
-        result.update({"direction": "none_or_mutual"})
+    if abs(causal_y_from_x - causal_x_from_y) <= 1:
+        result.update({"direction_ETC_penalty": "none_or_mutual"})
     elif causal_y_from_x > causal_x_from_y:
-        result.update({"direction": "x_causes_y"})
+        result.update({"direction_ETC_penalty": "x_causes_y"})
     else:
-        result.update({"direction": "y_causes_x"})
+        result.update({"direction_ETC_penalty": "y_causes_x"})
+
+    # Verbal description of causal direction
+    if abs(etc_y_residual - etc_x_residual) <= 1:
+        result.update({"direction_ETC_efficacy": "none_or_mutual"})
+    elif etc_y_residual < etc_x_residual:
+        result.update({"direction_ETC_efficacy": "x_causes_y"})
+    else:
+        result.update({"direction_ETC_efficacy": "y_causes_x"})
 
     return result
 
 
-def LZ_causality(x, y):
+def LZ_causality(x, y, lengths=False):
 
-    # Add sequence lengths to results
-    result = {"length_x": len(x), "length_y": len(y)}
+    result = {}
+
+    if lengths:
+        # Add sequence lengths to results
+        result.update({"length_x": len(x), "length_y": len(y)})
 
     # Compute ETC for the 2 sequences
     lz_x = LZ(x, normalize=False)
@@ -165,10 +184,81 @@ def LZ_causality(x, y):
     result.update(
         {
             "LZ_xy": lz_xy,
+            "LZ_xy-x": lz_xy - lz_x,
+            "LZ_xy-y": lz_xy - lz_y,
             "LZ_xy_norm": lz_xy_norm,
+            "LZ_xy-x_norm": lz_xy_norm - lz_x_norm,
+            "LZ_xy-y_norm": lz_xy_norm - lz_y_norm,
             "LZ_yx": lz_yx,
+            "LZ_yx-y": lz_yx - lz_y,
+            "LZ_yx-x": lz_yx - lz_x,
             "LZ_yx_norm": lz_yx_norm,
+            "LZ_yx-y_norm": lz_yx_norm - lz_y_norm,
+            "LZ_yx-x_norm": lz_yx_norm - lz_x_norm,
         }
     )
 
+    # LZ penalty version
+    if abs(result["LZ_xy-y"] - result["LZ_yx-x"]) <= 1:
+        LZ_penalty = "none_or_mutual"
+    elif result["LZ_xy-y"] > result["LZ_yx-x"]:
+        LZ_penalty = "x_causes_y"
+    else:
+        LZ_penalty = "y_causes_x"
+
+    # LZ penalty version, normalized
+    if result["LZ_xy-y_norm"] > result["LZ_yx-x_norm"]:
+        LZ_penalty_norm = "x_causes_y"
+    elif result["LZ_xy-y_norm"] < result["LZ_yx-x_norm"]:
+        LZ_penalty_norm = "y_causes_x"
+    else:
+        LZ_penalty_norm = "none_or_mutual"
+
+    # LZ efficacy version
+    if abs(result["LZ_xy-x"] - result["LZ_yx-y"]) <= 1:
+        LZ_efficacy = "none_or_mutual"
+    if result["LZ_xy-x"] > result["LZ_yx-y"]:
+        LZ_efficacy = "x_causes_y"
+    else:
+        LZ_efficacy = "y_causes_x"
+
+
+    # LZ efficacy version, normalized
+    if result["LZ_xy-x_norm"] > result["LZ_yx-y_norm"]:
+        LZ_efficacy_norm = "x_causes_y"
+    elif result["LZ_xy-x_norm"] < result["LZ_yx-y_norm"]:
+        LZ_efficacy_norm = "y_causes_x"
+    else:
+        LZ_efficacy_norm = "none_or_mutual"
+
+    result.update(
+        {"direction_LZ_efficacy": LZ_efficacy, "direction_LZ_penalty": LZ_penalty, "direction_LZ_efficacy_norm": LZ_efficacy_norm, "direction_LZ_penalty_norm": LZ_penalty_norm}
+    )
+
     return result
+
+def GZ_causality(x, y):
+
+    gzip = {
+        "sz_x" : len(bytearray(x)),
+        "sz_x_gz" : len(compress(bytearray(x))),
+        "sz_y" : len(bytearray(y)),
+        "sz_y_gz" : len(compress(bytearray(y))),
+        "sz_xy" : len(bytearray(x)),
+        "sz_xy_gz" : len(compress(bytearray(x+y))),
+        "sz_yx" : len(bytearray(x)),
+        "sz_yx_gz" : len(compress(bytearray(y+x))),
+        }
+
+    # LZ efficacy version
+    if abs(abs(gzip["sz_yx_gz"] - gzip["sz_y_gz"]) - abs(gzip["sz_xy_gz"] - gzip["sz_x_gz"])) <= 1:
+        direction = "none_or_mutual"
+    elif (gzip["sz_yx_gz"] - gzip["sz_y_gz"]) > (gzip["sz_xy_gz"] - gzip["sz_x_gz"]):
+        direction = "x_causes_y"
+    else:
+        direction = "y_causes_x"
+
+
+    gzip.update({"direction_GZ_efficacy":direction})
+
+    return gzip
