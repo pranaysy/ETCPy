@@ -262,3 +262,62 @@ def GZ_causality(x, y):
     gzip.update({"direction_GZ_efficacy":direction})
 
     return gzip
+
+##-------------------------------------------------------------------------------------#
+def LZ_penalty(x, y, lengths=False):
+
+    result = {}
+
+    if lengths:
+        # Add sequence lengths to results
+        result.update({"length_x": len(x), "length_y": len(y)})
+
+    # Compute ETC for the 2 sequences
+    lz_x = LZ(x, normalize=False)
+    lz_x_norm = LZ(x, normalize=True)
+
+    lz_y = LZ(y, normalize=False)
+    lz_y_norm = LZ(y, normalize=True)
+
+    result.update(
+        {"LZ_x": lz_x, "LZ_x_norm": lz_x_norm, "LZ_y": lz_y, "LZ_y_norm": lz_y_norm}
+    )
+
+    lz_xy = LZ(x + y, normalize=False)
+    lz_xy_norm = LZ(x + y, normalize=True)
+
+    lz_yx = LZ(y + x, normalize=False)
+    lz_yx_norm = LZ(y + x, normalize=True)
+
+    result.update(
+        {
+            "LZ_xy": lz_xy,
+            "LZ_xy-y": lz_xy - lz_y,
+            "LZ_xy_norm": lz_xy_norm,
+            "LZ_xy-y_norm": lz_xy_norm - lz_y_norm,
+            "LZ_yx": lz_yx,
+            "LZ_yx-x": lz_yx - lz_x,
+            "LZ_yx_norm": lz_yx_norm,
+            "LZ_yx-x_norm": lz_yx_norm - lz_x_norm,
+        }
+    )
+
+    # LZ penalty version
+    if abs(result["LZ_xy-y"] - result["LZ_yx-x"]) <= 1:
+        LZ_penalty = "none_or_mutual"
+    elif result["LZ_xy-y"] > result["LZ_yx-x"]:
+        LZ_penalty = "x_causes_y"
+    else:
+        LZ_penalty = "y_causes_x"
+
+    # LZ penalty version, normalized
+    if result["LZ_xy-y_norm"] > result["LZ_yx-x_norm"]:
+        LZ_penalty_norm = "x_causes_y"
+    elif result["LZ_xy-y_norm"] < result["LZ_yx-x_norm"]:
+        LZ_penalty_norm = "y_causes_x"
+    else:
+        LZ_penalty_norm = "none_or_mutual"
+
+    result.update(
+        {"direction_LZ_penalty": LZ_penalty, "direction_LZ_penalty_norm": LZ_penalty_norm}
+    )
