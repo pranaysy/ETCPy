@@ -4,7 +4,7 @@
    - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it do](https://github.com/pranaysy/ETCPy#what-can-it-do)
    - [Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG](https://github.com/pranaysy/ETCPy#study-haemodynamics-heart-rate-variability-and-cardiac-aging-using-ecgekg)
-   - [Network Neuroscience and Scientific Study of Consciousness using EEG, fMRI](https://github.com/pranaysy/ETCPy#network-neuroscience-and-scientific-study-of-consciousness-using-eeg-fmri)
+   - [Network Neuroscience, Psychophysics and Scientific Study of Consciousness](https://github.com/pranaysy/ETCPy#network-neuroscience-psychophysics-and-scientific-study-of-consciousness)
    - [Genome Complexity Analysis and Classification of Nucleotide Sequences](https://github.com/pranaysy/ETCPy#genome-complexity-analysis-and-classification-of-nucleotide-sequences)
    - [Denoise Acoustic Signals](https://github.com/pranaysy/ETCPy#denoise-acoustic-signals)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
