@@ -42,7 +42,8 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
    - Balasubramanian, Karthi, K Harikumar, Nithin Nagaraj, and Sandipan Pati. “Vagus Nerve Stimulation Modulates Complexity of Heart Rate Variability Differently during Sleep and Wakefulness.” Annals of Indian Academy of Neurology 20, no. 4 (2017): 403. https://doi.org/10.4103/aian.AIAN_148_17.
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Aging and Cardiovascular Complexity: Effect of the Length of RR Tachograms.” PeerJ 4 (2016): e2755. https://doi.org/10.7717/peerj.2755.
 
-#### Network Neuroscience and Scientific Study of Consciousness using EEG, fMRI
+#### Network Neuroscience, Psychophysics and Scientific Study of Consciousness
+   - Ashley J. Funkhouser. "The Role of Action in Affordance Perception Using Virtual Reality" 2020. Honors College Thesis with Dr. Alen Hajnal, Department of Psychology, The University of Southwestern Mississipi. https://aquila.usm.edu/honors_theses/714/
    - Agarwal, Nikita, Aditi Kathpalia, and Nithin Nagaraj. “Distinguishing Different Levels of Consciousness Using a Novel Network Causal Activity Measure.” In 2019 Global Conference for Advancement in Technology (GCAT), 1–5. BANGALURU, India: IEEE, 2019. https://doi.org/10.1109/GCAT47503.2019.8978424.
    - Virmani, Mohit, and Nithin Nagaraj. “A Novel Perturbation Based Compression Complexity Measure for Networks.” Heliyon 5, no. 2 (February 2019): e01181. https://doi.org/10.1016/j.heliyon.2019.e01181.
    - Kondo, Fumika. “Can Alterations in the Temporal Structure of Spontaneous Brain Activity Serve as a Disease-Specific Biomarker for Schizophrenia? A Multi Cohort FMRI Study,” 2017. https://doi.org/10.20381/RUOR-20801.
