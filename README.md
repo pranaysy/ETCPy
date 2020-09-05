@@ -6,7 +6,7 @@
    - [Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG](https://github.com/pranaysy/ETCPy#study-haemodynamics-heart-rate-variability-and-cardiac-aging-using-ecgekg)
    - [Network Neuroscience, Psychophysics and Scientific Study of Consciousness](https://github.com/pranaysy/ETCPy#network-neuroscience-psychophysics-and-scientific-study-of-consciousness)
    - [Genome Complexity Analysis and Classification of Nucleotide Sequences](https://github.com/pranaysy/ETCPy#genome-complexity-analysis-and-classification-of-nucleotide-sequences)
-   - [Denoise Acoustic Signals](https://github.com/pranaysy/ETCPy#denoise-acoustic-signals)
+   - [Audio Signal Processing and Denoising](https://github.com/pranaysy/ETCPy#audio-signal-processing-and-denoising)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
@@ -52,7 +52,8 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
 #### Genome Complexity Analysis and Classification of Nucleotide Sequences
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Automatic Identification of SARS Coronavirus Using Compression-Complexity Measures.” Preprint. Bioinformatics, March 27, 2020. https://doi.org/10.1101/2020.03.24.006007.
 
-#### Denoise Acoustic Signals
+#### Audio Signal Processing and Denoising
+   - Kiefer, Chris, Overholt, Dan and Eldridge, Alice (2020) Shaping the behaviour of feedback instruments with complexity-controlled gain dynamics. New Interfaces for Musical Expression, Birmingham, UK, 21-25 July 2020. Published in: Proceedings of the International Conference on New Interfaces for Musical Expression. 343-348. NIME, Birmingham, UK. ISSN 2220-4806. https://sro.sussex.ac.uk/id/eprint/91009/ 
    - Li, Guohui, Qianru Guan, and Hong Yang. “Noise Reduction Method of Underwater Acoustic Signals Based on CEEMDAN, Effort-To-Compress Complexity, Refined Composite Multiscale Dispersion Entropy and Wavelet Threshold Denoising.” Entropy 21, no. 1 (December 24, 2018): 11. https://doi.org/10.3390/e21010011.
 
 
