@@ -11,6 +11,17 @@ from ETC.NSRWS.x1D import core
 from entropy import lziv_complexity as LZ
 from gzip import compress
 
+from collections import Counter
+from itertools import compress, islice
+
+def check_pair(pair, seq):
+
+    # Create overlapped sliding pairs
+    pairs = Counter(zip(*(islice(seq, i, None) for i in range(2)))).keys()
+
+    return pair in pairs
+
+
 def external_substitution(seq, trajectory):
 
     # Assign proper type
@@ -23,7 +34,7 @@ def external_substitution(seq, trajectory):
     for pair in trajectory[1:]:  # Skip first entry, not a substitution step
 
         # Substitute only if the sequence is atleast 2 symbols long
-        if len(seq) > 1:
+        if len(seq) > 1 and check_pair(tuple(pair.get("window")), seq):
 
             # Cython function call
             seq = ETC.cast(core.substitute_pairs(seq, pair.get("window"), max(seq) + 1))
@@ -321,3 +332,5 @@ def LZ_penalty(x, y, lengths=False):
     result.update(
         {"direction_LZ_penalty": LZ_penalty, "direction_LZ_penalty_norm": LZ_penalty_norm}
     )
+
+    return result

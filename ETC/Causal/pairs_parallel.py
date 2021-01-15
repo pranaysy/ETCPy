@@ -99,11 +99,11 @@ def megapar(values, kernel):
     pool = Pool()
 
     # Map-execute function across sequences
-    out = pool.map_async(kernel, enumerate(values))
+    out = pool.map(kernel, enumerate(values))
 
     # Graceful exit
     pool.close()
     pool.join()
 
     # Return collected results
-    return out.get()
+    return out

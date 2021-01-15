@@ -64,7 +64,7 @@ For running tests (strongly recommended), additional packages need to be install
 
 ### Operating System Support
  - GNU/Linux-based distributions (tested on Ubuntu 16.04, 18.04, 20.04)
- - **Currently does not work out of the box on Windows.** Cython and C/C++ build toolchain need to be setup properly for compilation on Windows to work. It may work with some gymnastics using MinGW + Visual Studio Build Tools, **currently untested.**
+ - **Currently does not work out of the box on Windows.** Cython and C/C++ build toolchain need to be setup properly for compilation on Windows to work. It may work with some gymnastics using MinGW + Visual Studio Build Tools, **currently untested.** Although does work on WSL!
 
 ### Dependencies
 For core functionality:
