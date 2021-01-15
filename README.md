@@ -4,9 +4,9 @@
    - [References](https://github.com/pranaysy/ETCPy#references)
  - [What can it do](https://github.com/pranaysy/ETCPy#what-can-it-do)
    - [Study Haemodynamics, Heart-Rate Variability and Cardiac Aging using ECG/EKG](https://github.com/pranaysy/ETCPy#study-haemodynamics-heart-rate-variability-and-cardiac-aging-using-ecgekg)
-   - [Network Neuroscience and Scientific Study of Consciousness using EEG, fMRI](https://github.com/pranaysy/ETCPy#network-neuroscience-and-scientific-study-of-consciousness-using-eeg-fmri)
+   - [Network Neuroscience, Psychophysics and Scientific Study of Consciousness](https://github.com/pranaysy/ETCPy#network-neuroscience-psychophysics-and-scientific-study-of-consciousness)
    - [Genome Complexity Analysis and Classification of Nucleotide Sequences](https://github.com/pranaysy/ETCPy#genome-complexity-analysis-and-classification-of-nucleotide-sequences)
-   - [Denoise Acoustic Signals](https://github.com/pranaysy/ETCPy#denoise-acoustic-signals)
+   - [Audio Signal Processing and Denoising](https://github.com/pranaysy/ETCPy#audio-signal-processing-and-denoising)
  - [How to use it](https://github.com/pranaysy/ETCPy#how-to-use-it)
    - [Dependencies](https://github.com/pranaysy/ETCPy#dependencies)
    - [Installation](https://github.com/pranaysy/ETCPy#installation)
@@ -42,7 +42,8 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
    - Balasubramanian, Karthi, K Harikumar, Nithin Nagaraj, and Sandipan Pati. “Vagus Nerve Stimulation Modulates Complexity of Heart Rate Variability Differently during Sleep and Wakefulness.” Annals of Indian Academy of Neurology 20, no. 4 (2017): 403. https://doi.org/10.4103/aian.AIAN_148_17.
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Aging and Cardiovascular Complexity: Effect of the Length of RR Tachograms.” PeerJ 4 (2016): e2755. https://doi.org/10.7717/peerj.2755.
 
-#### Network Neuroscience and Scientific Study of Consciousness using EEG, fMRI
+#### Network Neuroscience, Psychophysics and Scientific Study of Consciousness
+   - Ashley J. Funkhouser. "The Role of Action in Affordance Perception Using Virtual Reality" 2020. Honors College Thesis with Dr. Alen Hajnal, Department of Psychology, The University of Southwestern Mississipi. https://aquila.usm.edu/honors_theses/714/
    - Agarwal, Nikita, Aditi Kathpalia, and Nithin Nagaraj. “Distinguishing Different Levels of Consciousness Using a Novel Network Causal Activity Measure.” In 2019 Global Conference for Advancement in Technology (GCAT), 1–5. BANGALURU, India: IEEE, 2019. https://doi.org/10.1109/GCAT47503.2019.8978424.
    - Virmani, Mohit, and Nithin Nagaraj. “A Novel Perturbation Based Compression Complexity Measure for Networks.” Heliyon 5, no. 2 (February 2019): e01181. https://doi.org/10.1016/j.heliyon.2019.e01181.
    - Kondo, Fumika. “Can Alterations in the Temporal Structure of Spontaneous Brain Activity Serve as a Disease-Specific Biomarker for Schizophrenia? A Multi Cohort FMRI Study,” 2017. https://doi.org/10.20381/RUOR-20801.
@@ -51,7 +52,8 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
 #### Genome Complexity Analysis and Classification of Nucleotide Sequences
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Automatic Identification of SARS Coronavirus Using Compression-Complexity Measures.” Preprint. Bioinformatics, March 27, 2020. https://doi.org/10.1101/2020.03.24.006007.
 
-#### Denoise Acoustic Signals
+#### Audio Signal Processing and Denoising
+   - Kiefer, Chris, Overholt, Dan and Eldridge, Alice (2020) Shaping the behaviour of feedback instruments with complexity-controlled gain dynamics. New Interfaces for Musical Expression, Birmingham, UK, 21-25 July 2020. Published in: Proceedings of the International Conference on New Interfaces for Musical Expression. 343-348. NIME, Birmingham, UK. ISSN 2220-4806. https://sro.sussex.ac.uk/id/eprint/91009/ 
    - Li, Guohui, Qianru Guan, and Hong Yang. “Noise Reduction Method of Underwater Acoustic Signals Based on CEEMDAN, Effort-To-Compress Complexity, Refined Composite Multiscale Dispersion Entropy and Wavelet Threshold Denoising.” Entropy 21, no. 1 (December 24, 2018): 11. https://doi.org/10.3390/e21010011.
 
 
