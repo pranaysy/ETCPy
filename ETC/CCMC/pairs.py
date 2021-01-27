@@ -203,13 +203,17 @@ def ETC_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, lengths=True)
 
     # Compute efficacy estimates in each direction, with default normalization
     # Only for non-empty / non-zero residuals
-    if etc_x_residual != 0:
+    if etc_y_residual != 0:
+        ETC_y_residual_norm = etc_y_residual / (len(y_residual) - 1)
         efficacy_x_to_y = etc_y_residual / (len(y_residual) - 1)
     else:
+        ETC_y_residual_norm = 0
         efficacy_x_to_y = 0
-    if etc_y_residual != 0:
+    if etc_x_residual != 0:
+        ETC_x_residual_norm = etc_x_residual / (len(x_residual) - 1)
         efficacy_y_to_x = etc_x_residual / (len(x_residual) - 1)
     else:
+        ETC_x_residual_norm = 0
         efficacy_y_to_x = 0
 
     # Add to results: residuals and penalty estimates
@@ -219,8 +223,8 @@ def ETC_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, lengths=True)
             "length_y_residual": len(y_residual),
             "ETC_x_residual": etc_x_residual,
             "ETC_y_residual": etc_y_residual,
-            "ETC_x_residual_norm": etc_x_residual / (len(x_residual) - 1),
-            "ETC_y_residual_norm": etc_y_residual / (len(y_residual) - 1),
+            "ETC_x_residual_norm": ETC_x_residual_norm,
+            "ETC_y_residual_norm": ETC_y_residual_norm,
             "ETCP_x_to_y": penalty_x_to_y,
             "ETCP_y_to_x": penalty_y_to_x,
             "ETCP_strength": abs(penalty_y_to_x - penalty_x_to_y),
