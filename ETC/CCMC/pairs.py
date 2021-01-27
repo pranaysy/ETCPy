@@ -288,6 +288,7 @@ def _convert_to_list(seq):
         except:  # catch-all, bad practice, I know
             print("> ERROR: Could not convert input sequence to list!")
             return seq
+    return seq
 
 
 def LZ_causality(x, y, penalty_threshold=1, lengths=True):
