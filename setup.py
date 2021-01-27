@@ -12,15 +12,19 @@ import numpy
 
 setup(
     ext_modules=cythonize(
-        ["./ETC/NSRWS/x1D/core.pyx", "./ETC/NSRWS/x2D/core.pyx", "./ETC/seq/estimates.pyx",],
+        [
+            "./ETC/NSRWS/x1D/core.pyx",
+            "./ETC/NSRWS/x2D/core.pyx",
+            "./ETC/seq/estimates.pyx",
+        ],
         annotate=False,
         compiler_directives={"language_level": "3"},
     ),
     include_dirs=[numpy.get_include()],
     name="ETCPy",
-    version="1.0",
+    version="1.01",
     author_email="mail@pranaysy.com",
     description="Compute the Effort-To-Compress (ETC) of a symbolic sequence",
     packages=find_packages(),
-    license="Apache License, Version 2.0"
+    license="Apache License, Version 2.0",
 )

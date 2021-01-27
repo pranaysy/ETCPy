@@ -202,8 +202,15 @@ def ETC_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, lengths=True)
     penalty_y_to_x = etc_x_given_y + etc_x_residual - etc_x
 
     # Compute efficacy estimates in each direction, with default normalization
-    efficacy_x_to_y = etc_y_residual / (len(y_residual) - 1)
-    efficacy_y_to_x = etc_x_residual / (len(x_residual) - 1)
+    # Only for non-empty / non-zero residuals
+    if etc_x_residual != 0:
+        efficacy_x_to_y = etc_y_residual / (len(y_residual) - 1)
+    else:
+        efficacy_x_to_y = 0
+    if etc_y_residual != 0:
+        efficacy_y_to_x = etc_x_residual / (len(x_residual) - 1)
+    else:
+        efficacy_y_to_x = 0
 
     # Add to results: residuals and penalty estimates
     result.update(
@@ -361,7 +368,7 @@ def LZ_causality(x, y, penalty_threshold=1, lengths=True):
     return result
 
 
-def CCM_causality(x, y, penalty_threshold=1, efficacy_tolerance=0):
+def CCM_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, hashes=False):
     """
     Wrapper around ETC_causality and LZ_causality, calls both and returns merged estimates
     for causal discovery based on ETCP, ETCE and LZP models
@@ -386,14 +393,15 @@ def CCM_causality(x, y, penalty_threshold=1, efficacy_tolerance=0):
     result = {}
 
     # Add hashes of sequences
-    result.update(
-        {
-            "x_hash": blake2b(bytearray(x), digest_size=32).hexdigest(),
-            "y_hash": blake2b(bytearray(y), digest_size=32).hexdigest(),
-            "hash_algorithm": "blake2b",
-            "digest_size": 32,
-        }
-    )
+    if hashes:
+        result.update(
+            {
+                "x_hash": blake2b(bytearray(x), digest_size=32).hexdigest(),
+                "y_hash": blake2b(bytearray(y), digest_size=32).hexdigest(),
+                "hash_algorithm": "blake2b",
+                "digest_size": 32,
+            }
+        )
 
     result.update(
         ETC_causality(
