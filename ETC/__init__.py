@@ -2,10 +2,10 @@
 
 __import__("pkg_resources").declare_namespace(__name__)
 
-print("Loading ETC codebase ... ", end="")
 from ETC.seq.IO import read, save
 from ETC.seq.process import generate, entropy
 from ETC.seq.recode import cast, recode_lexical, partition, partition_numpy
+from ETC.seq import check
 
 from ETC.NSRWS.x1D.etc import compute as compute_1D
 
@@ -27,10 +27,7 @@ from ETC.NSRWS.x1D.parallel import (
     pcompute_numpy,
 )
 
-print("Done")
-
-print("Loading LZ codebase ... ", end="")
+from ETC.LZ76.lzc import compute_complexity as LZC
 from ETC.CCMC.pairs import CCM_causality
 from ETC.CCMC.pairs_parallel import parallelized as CCM_causality_parallel
-
-print("Done")
+from ETC.CCMC.pairs_parallel import get_rowpairs

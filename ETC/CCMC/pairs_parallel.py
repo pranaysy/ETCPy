@@ -8,6 +8,7 @@
 from ETC.CCMC.pairs import ETC_causality, LZ_causality, CCM_causality
 from multiprocessing import Pool
 from functools import partial
+from itertools import combinations
 
 
 def _kernel_seq(inputs, estimator):
@@ -42,10 +43,10 @@ def _kernel_seq(inputs, estimator):
     idx, seqs = inputs
 
     # Unpack sequences
-    seq_x, seq_y = seqs
+    idx_x, idx_y, seq_x, seq_y = seqs
 
     # Initialize dictionary of output estimates with index
-    out = {"index": idx}
+    out = {"index_pair": idx, "index_x": idx_x, "index_y": idx_y}
 
     # Execute the estimator function on the sequence pair
     out.update(estimator(seq_x, seq_y))
@@ -56,34 +57,29 @@ def _kernel_seq(inputs, estimator):
     return out
 
 
-def get_kernel(name):
+def get_rowpairs(matrix):
     """
-    Convenience wrapper for selection of estimators from available options
-
-    Curries (Currys?) _kernel_seq by fixing the chosen estimator for use as a kernel with
-    a multiprocessing pool. Throws a fit if unknown estimator passed, helps with breaking
-    parallel execution before it begins.
+    Create a generator for iterating over pairs of rows of an input matrix
 
     Parameters
     ----------
-    name : str
-        Name of an estimator function. Currently available: "CCM", "ETC" and "LZ"
+    matrix : numpy array, int or float, 2D
+        Each row representing a different sequence. (Columns as time)
 
-    Returns
-    -------
-    function
-        Curried (Curryed?) kernel function for parallel execution.
+    Yields
+    ------
+    row1 : int
+        Index of first row in the pair.
+    row2 : int
+        Index of second row in the pair.
+    np.array, 1D, int
+        Data of first row in the pair.
+    np.array, 1D, int
+        Data of first row in the pair.
 
     """
-    if name == "CCM":
-        return partial(_kernel_seq, estimator=CCM_causality)
-    elif name == "ETC":
-        return partial(_kernel_seq, estimator=ETC_causality)
-    elif name == "LZ":
-        return partial(_kernel_seq, estimator=LZ_causality)
-    else:
-        print("> ERROR: Invalid kernel specified")
-        return None
+    for row1, row2 in combinations(range(0, matrix.shape[0]), 2):
+        yield (row1, row2, matrix[row1, :], matrix[row2, :])
 
 
 def parallelized(pairs, kernel="CCM"):
@@ -111,21 +107,26 @@ def parallelized(pairs, kernel="CCM"):
         Each dictionary element contains index, length of sequence & ETC.
 
     """
-    exec_kernel = get_kernel(kernel)
 
-    if exec_kernel:
+    if kernel == "CCM":
+        exec_kernel = partial(_kernel_seq, estimator=CCM_causality)
+    elif kernel == "ETC":
+        exec_kernel = partial(_kernel_seq, estimator=ETC_causality)
+    elif kernel == "LZ":
+        exec_kernel = partial(_kernel_seq, estimator=LZ_causality)
+    else:
+        print("> ERROR: Invalid kernel specified")
+        return None
 
-        # Initialize pool of parallel workers
-        pool = Pool()
+    # Initialize pool of parallel workers
+    pool = Pool()
 
-        # Map-execute function across sequences
-        out = pool.map_async(exec_kernel, enumerate(pairs))
+    # Map-execute function across sequences
+    out = pool.map_async(exec_kernel, enumerate(pairs))
 
-        # Graceful exit
-        pool.close()
-        pool.join()
+    # Graceful exit
+    pool.close()
+    pool.join()
 
-        # Return collected results
-        return out.get()
-
-    return None
+    # Return collected results
+    return out.get()

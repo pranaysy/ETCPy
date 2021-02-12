@@ -16,7 +16,9 @@ Each model returns a causal direction and strength of evidence in favor of that 
 # Import libraries
 import ETC
 from ETC.NSRWS.x1D import core
-from entropy import lziv_complexity as LZ
+from ETC.LZ76.lzc import compute_complexity as LZ
+
+# from entropy import lziv_complexity as LZ
 
 # from collections import Counter
 from itertools import islice
@@ -166,6 +168,17 @@ def ETC_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, lengths=True)
         1D-ETC estimates for both sequences; direction & strengths of causal interaction
 
     """
+    # If either was not successfully converted to array, break
+    if not (ETC.check.arraytype(x) and ETC.check.arraytype(y)):
+
+        # Convert inputs to arrays
+        x = ETC.cast(x)
+        y = ETC.cast(y)
+
+        # If unsuccessful, break
+        if (x is None) or (y is None):
+            return None
+
     # Initialize output dictionary
     result = {}
 
@@ -265,30 +278,30 @@ def ETC_causality(x, y, penalty_threshold=1, efficacy_tolerance=0, lengths=True)
     return result
 
 
-def _convert_to_list(seq):
-    """
-    Convert a sequence to a list
+# def _convert_to_list(seq):
+#     """
+#     Convert a sequence to a list
 
-    LZ function from entropy package needs a list or a string as input
+#     LZ function from entropy package needs a list or a string as input
 
-    Parameters
-    ----------
-    seq : array.array, tuple, list, str
-        Discrete symbolic sequence for compression using LZ.
+#     Parameters
+#     ----------
+#     seq : array.array, tuple, list, str
+#         Discrete symbolic sequence for compression using LZ.
 
-    Returns
-    -------
-    list
-        Input sequence cast into list.
+#     Returns
+#     -------
+#     list
+#         Input sequence cast into list.
 
-    """
-    if not isinstance(seq, list):
-        try:
-            return list(seq)
-        except:  # catch-all, bad practice, I know
-            print("> ERROR: Could not convert input sequence to list!")
-            return seq
-    return seq
+#     """
+#     if not isinstance(seq, list):
+#         try:
+#             return list(seq)
+#         except:  # catch-all, bad practice, I know
+#             print("> ERROR: Could not convert input sequence to list!")
+#             return seq
+#     return seq
 
 
 def LZ_causality(x, y, penalty_threshold=1, lengths=True):
@@ -317,13 +330,16 @@ def LZ_causality(x, y, penalty_threshold=1, lengths=True):
         for both sequences; direction & strengths of causal interaction
 
     """
-    # Convert inputs to list, if possible
-    x = _convert_to_list(x)
-    y = _convert_to_list(y)
+    # If either was not successfully converted to array, break
+    if not (ETC.check.arraytype(x) and ETC.check.arraytype(y)):
 
-    # If either was not successfully converted to list, break
-    if not (isinstance(x, list) and isinstance(y, list)):
-        return None
+        # Convert inputs to arrays
+        x = ETC.cast(x)
+        y = ETC.cast(y)
+
+        # If unsuccessful, break
+        if (x is None) or (y is None):
+            return None
 
     result = {}
 
@@ -332,12 +348,12 @@ def LZ_causality(x, y, penalty_threshold=1, lengths=True):
         result.update({"length_x": len(x), "length_y": len(y)})
 
     # Compute LZ for the 2 sequences
-    LZ_x = LZ(x, normalize=False)
-    LZ_y = LZ(y, normalize=False)
+    LZ_x = LZ(x)
+    LZ_y = LZ(y)
 
     # Compute LZ after concatenation in both directions
-    LZ_xy = LZ(x + y, normalize=False)
-    LZ_yx = LZ(y + x, normalize=False)
+    LZ_xy = LZ(x + y)
+    LZ_yx = LZ(y + x)
     LZ_concat_mean = 0.5 * (LZ_xy + LZ_yx)
     LZ_concat_diff = abs(LZ_xy - LZ_yx)
 

@@ -8,6 +8,7 @@
 
 from ETC.seq import estimates
 from array import array
+import numpy as np
 
 
 def zeroes(seq):
@@ -45,5 +46,7 @@ def equality(seq, legacy=False):
 
 def arraytype(seq):
     if isinstance(seq, array) and seq.typecode == "I":
+        return True
+    if isinstance(seq, np.ndarray) and seq.dtype == "uint32":
         return True
     return False
