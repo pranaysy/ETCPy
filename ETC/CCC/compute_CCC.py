@@ -12,9 +12,35 @@ from ETC import compute_1D, compute_2D
 from ETC.seq.recode import partition, cast
 from ETC.seq.check import arraytype
 
+import numpy as np
+import array
+
 # Curry the functions for computing 1D and 2D ETC estimates
 get1D = partial(compute_1D, order=2, verbose=False, truncate=True)
 get2D = partial(compute_2D, order=2, verbose=False, truncate=True)
+
+
+def get_params():
+    """
+    Helper function for creating a dictionary of CCC params interactively
+
+    Returns
+    -------
+    dict
+        The main 3 parameters for passing directly into CCC.compute
+
+    """
+    print("#" * 80)
+    print("-" * 80)
+    print("Initialize CCC Parameters: The thorns")
+    print("-" * 80, "\n")
+    print("All the following 3 should be integers\n")
+    LEN_past = int(input("1. Window length of immediate past values: "))
+    ADD_meas = int(input("2. Window length of present values: "))
+    STEP_size = int(input("3. Step-size for sliding window ahead: "))
+    print("\n", "-" * 80)
+    print("#" * 80)
+    return {"LEN_past": LEN_past, "ADD_meas": ADD_meas, "STEP_size": STEP_size}
 
 
 def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
@@ -56,9 +82,6 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
 
     """
     # Sanity checks
-    assert arraytype(seq_x) and arraytype(
-        seq_y
-    ), "ERROR: Sequences should be integer arrays (array.array or np.array)"
     assert len(seq_x) == len(seq_y), "ERROR: Sequences must have the same length!"
     assert (
         isinstance(LEN_past, int) and LEN_past > 1
@@ -81,7 +104,11 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
     if not arraytype(seq_y):
         seq_y = cast(seq_y)
 
-    assert seq_x and seq_y, "ERROR: Invalid inputs, sequences should be integer-valued"
+    # Set switch for operating differently on native vs numpy arrays
+    if type(seq_x) == np.ndarray or type(seq_y) == np.ndarray:
+        combine = lambda x, y: np.hstack([x, y])
+    if type(seq_x) == array.array or type(seq_y) == array.array:
+        combine = lambda x, y: x + y
 
     # Setup variables
     LEN = len(seq_x)
@@ -110,7 +137,7 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         # 2D ETC of chunks of both seq_x, seq_y of length LEN_to_check at the same locus
         ETC2D_fin = get2D(
             seq_x[k : k + LEN_to_check],
-            seq_y[k : k + LEN_past] + seq_x[k + LEN_past : k + LEN_to_check],
+            combine(seq_y[k : k + LEN_past], seq_x[k + LEN_past : k + LEN_to_check]),
         )["NETC2D"]
 
         # Dynamic Compression-Complexity of seq_x
