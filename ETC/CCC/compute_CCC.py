@@ -56,6 +56,9 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
 
     """
     # Sanity checks
+    assert arraytype(seq_x) and arraytype(
+        seq_y
+    ), "ERROR: Sequences should be integer arrays (array.array or np.array)"
     assert len(seq_x) == len(seq_y), "ERROR: Sequences must have the same length!"
     assert (
         isinstance(LEN_past, int) and LEN_past > 1
@@ -116,12 +119,12 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         # Dynamic Compression Complexity of seq_x conditional on seq_y
         ETC2D_delta = ETC2D_fin - ETC2D_ini
 
-        # Aggregate
+        # Aggregate Dynamic CCs
         l_1D.append(ETC1D_delta)
         l_2D.append(ETC2D_delta)
 
     ## Compute Compession-Complexity Causality
     # Average of the difference: CC(X | X_past) - CC(X | Y_past + X_present)
     CCC = (sum(l_1D) - sum(l_2D)) / (len(l_1D) - 1)
-    print(f"CCC for seq_y -> seq_x = {CCC}")
+    # print(f"CCC for seq_y -> seq_x = {CCC}")
     return CCC
