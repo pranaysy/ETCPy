@@ -125,6 +125,6 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
 
     ## Compute Compession-Complexity Causality
     # Average of the difference: CC(X | X_past) - CC(X | Y_past + X_present)
-    CCC = (sum(l_1D) - sum(l_2D)) / (len(l_1D) - 1)
+    CCC = (sum(l_1D) - sum(l_2D)) / len(l_1D)
     # print(f"CCC for seq_y -> seq_x = {CCC}")
     return CCC
