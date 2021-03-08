@@ -15,7 +15,7 @@ from ETC.seq.check import zeroes
 
 def cast(seq):
 
-    if seq is not None and any(seq):
+    if seq is not None:
         if isinstance(seq, np.ndarray):
             try:
                 out = seq.astype("uint32")
