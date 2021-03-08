@@ -52,7 +52,7 @@ def _kernel_seq(inputs, estimator):
     out.update(estimator(seq_x, seq_y))
 
     # Some feedback to console
-    print(".", end="")
+    # print(".", end="")
 
     return out
 
@@ -121,12 +121,18 @@ def parallelized(pairs, kernel="CCM"):
     # Initialize pool of parallel workers
     pool = Pool()
 
+    # Confirm to stdout
+    print(f"Running kernel={kernel} in parallel on input")
+
     # Map-execute function across sequences
     out = pool.map_async(exec_kernel, enumerate(pairs))
 
     # Graceful exit
     pool.close()
     pool.join()
+
+    # Confirm completion
+    print("Done!")
 
     # Return collected results
     return out.get()
