@@ -122,7 +122,7 @@ def parallelized(pairs, kernel="CCM"):
     pool = Pool()
 
     # Confirm to stdout
-    print(f"Running kernel={kernel} in parallel on input")
+    print(f"Running kernel={kernel} in parallel on input ... ", end="")
 
     # Map-execute function across sequences
     out = pool.map_async(exec_kernel, enumerate(pairs))
