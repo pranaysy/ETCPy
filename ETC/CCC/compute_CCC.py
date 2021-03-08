@@ -12,7 +12,7 @@ from ETC import compute_1D, compute_2D
 from ETC.seq.recode import partition, cast
 from ETC.seq.check import arraytype
 
-#
+# Curry the functions for computing 1D and 2D ETC estimates
 get1D = partial(compute_1D, order=2, verbose=False, truncate=True)
 get2D = partial(compute_2D, order=2, verbose=False, truncate=True)
 
@@ -40,7 +40,7 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         Parameter "L": Window length of immediate past values of seq_x and seq_y.
     ADD_meas : int
         Parameter "w": Window length of present values of seq_x. Minimal data length
-        over which CC rate can be reliably estimated,
+        over which CC rate can be reliably estimated, application/domain-specific
     STEP_size : int
         Parameter "delta": Step-size for sliding chunks across both sequences. An overlap
         of 20-50% between successive chunks or windows suggested.
@@ -93,35 +93,22 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
 
         ## Compression-Complexity of past values of seq_x
         # 1D ETC of a chunk of seq_x of length LEN_past
-        ETC1D_ini = compute_1D(
-            seq_x[k : k + LEN_past], order=2, verbose=False, truncate=True
-        )["ETC1D"] / (LEN_past - 1)
+        ETC1D_ini = get1D(seq_x[k : k + LEN_past])["NETC1D"]
 
         ## Compression-Complexity of past values of seq_x and seq_y
         # 2D ETC of chunks of both seq_x,seq_y of length LEN_past at the same locus
-        ETC2D_ini = compute_2D(
-            seq_x[k : k + LEN_past],
-            seq_y[k : k + LEN_past],
-            order=2,
-            verbose=False,
-            truncate=True,
-        )["ETC2D"] / (LEN_past - 1)
+        ETC2D_ini = get2D(seq_x[k : k + LEN_past], seq_y[k : k + LEN_past],)["NETC2D"]
 
         ## Compression-Complexity of present values of seq_x
         # 1D ETC of a chunk of seq_x of length LEN_to_check
-        ETC1D_fin = compute_1D(
-            seq_x[k : k + LEN_to_check], order=2, verbose=False, truncate=True
-        )["ETC1D"] / (LEN_to_check - 1)
+        ETC1D_fin = get1D(seq_x[k : k + LEN_to_check])["NETC1D"]
 
         ## Compression-Complexity of values of seq_x & past of seq_y + present of seq_x
         # 2D ETC of chunks of both seq_x, seq_y of length LEN_to_check at the same locus
-        ETC2D_fin = compute_2D(
+        ETC2D_fin = get2D(
             seq_x[k : k + LEN_to_check],
             seq_y[k : k + LEN_past] + seq_x[k + LEN_past : k + LEN_to_check],
-            order=2,
-            verbose=False,
-            truncate=True,
-        )["ETC2D"] / (LEN_to_check - 1)
+        )["NETC2D"]
 
         # Dynamic Compression-Complexity of seq_x
         ETC1D_delta = ETC1D_fin - ETC1D_ini
@@ -134,7 +121,7 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         l_2D.append(ETC2D_delta)
 
     ## Compute Compession-Complexity Causality
-    # CC(X | X_past) - CC(X | Y_past + X_present)
+    # Average of the difference: CC(X | X_past) - CC(X | Y_past + X_present)
     CCC = (sum(l_1D) - sum(l_2D)) / (len(l_1D) - 1)
     print(f"CCC for seq_y -> seq_x = {CCC}")
     return CCC
