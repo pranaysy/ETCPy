@@ -23,7 +23,7 @@ setup(
     ),
     include_dirs=[numpy.get_include()],
     name="ETCPy",
-    version="1.3.1",
+    version="1.3.2",
     author_email="mail@pranaysy.com",
     description="Compute the Effort-To-Compress (ETC) of a symbolic sequence",
     packages=find_packages(),
