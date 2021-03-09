@@ -6,6 +6,7 @@
 @author: Pranay S. Yadav
 """
 from ETC.CCMC.pairs import CCM_causality as CCM_compute
+from ETC.CCMC.pairs import LZ_causality as LZ_compute
 from ETC.CCC.compute_CCC import compute as CCC_compute
 from multiprocessing import Pool
 from functools import partial
@@ -58,13 +59,13 @@ def _kernel(inputs, CCC_params):
     out = {"index_pair": idx, "index_x": idx_x, "index_y": idx_y}
 
     # Execute the CCM_compute on the sequence pair
-    out.update(CCM_compute(seq_x, seq_y))
+    out.update(LZ_compute(seq_x, seq_y))
 
     # Execute CCC_compute on the sequence pair in one direction
-    out.update({"CCC_y_to_x": CCC_compute(seq_x, seq_y, **CCC_params)})
+    # out.update({"CCC_y_to_x": CCC_compute(seq_x, seq_y, **CCC_params)})
 
     # Execute CCC_compute on the sequence pair in the other direction
-    out.update({"CCC_x_to_y": CCC_compute(seq_y, seq_x, **CCC_params)})
+    # out.update({"CCC_x_to_y": CCC_compute(seq_y, seq_x, **CCC_params)})
 
     # Some feedback to console
     # print(".", end="")
