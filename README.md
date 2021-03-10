@@ -53,7 +53,7 @@ While any lossless compressor may be used with ETC and subsequently with CCC, a 
    - Balasubramanian, Karthi, and Nithin Nagaraj. “Automatic Identification of SARS Coronavirus Using Compression-Complexity Measures.” Preprint. Bioinformatics, March 27, 2020. https://doi.org/10.1101/2020.03.24.006007.
 
 #### Audio Signal Processing and Denoising
-   - Kiefer, Chris, Overholt, Dan and Eldridge, Alice (2020) Shaping the behaviour of feedback instruments with complexity-controlled gain dynamics. New Interfaces for Musical Expression, Birmingham, UK, 21-25 July 2020. Published in: Proceedings of the International Conference on New Interfaces for Musical Expression. 343-348. NIME, Birmingham, UK. ISSN 2220-4806. https://sro.sussex.ac.uk/id/eprint/91009/ 
+   - Kiefer, Chris, Overholt, Dan and Eldridge, Alice (2020) Shaping the behaviour of feedback instruments with complexity-controlled gain dynamics. New Interfaces for Musical Expression, Birmingham, UK, 21-25 July 2020. Published in: Proceedings of the International Conference on New Interfaces for Musical Expression. 343-348. NIME, Birmingham, UK. ISSN 2220-4806. https://sro.sussex.ac.uk/id/eprint/91009/
    - Li, Guohui, Qianru Guan, and Hong Yang. “Noise Reduction Method of Underwater Acoustic Signals Based on CEEMDAN, Effort-To-Compress Complexity, Refined Composite Multiscale Dispersion Entropy and Wavelet Threshold Denoising.” Entropy 21, no. 1 (December 24, 2018): 11. https://doi.org/10.3390/e21010011.
 
 
@@ -71,6 +71,8 @@ For running tests (strongly recommended), additional packages need to be install
 ### Dependencies
 For core functionality:
  - `numpy`
+ - `pandas`
+ - `joblib`
  - `cython`
    - Note: Cython needs a working C/C++ compiler such as GCC/Clang and associated build-utils/toolchain. While it should work out of the box on any modern Linux distribution, ensure a proper installation as instructed in the [official documentation.](https://cython.readthedocs.io/en/latest/src/quickstart/install.html).
 
@@ -82,7 +84,7 @@ For tests:
 Skip the first step if an environment is already available:
 1. Create a fresh `conda` or `pip`/`virtualenv`-based environment with `numpy` and `cython` packages. Choose an appropriate name instead of `myenv`.
     ```bash
-    $ conda create -n myenv python numpy cython
+    $ conda create -n myenv python numpy pandas joblib cython
     ```
 2. Activate environment using `conda activate myenv` or virtualenv equivalent.
 
@@ -109,7 +111,7 @@ This will rebuild the compiled Cython functions as well.
 ### Usage
 Please check out [`demo.py`](./demo.py) to see ETC in action. [Functions for dealing with NumPy arrays](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L121) are also available. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L158) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
-The implementations of ETC as well as CCC include parallelization (~SIMD) using Python's `multiprocessing` module and can benefit from more available CPU cores for multiple sequences.
+The implementations of ETC as well as CCC include multicore parallelization (using [`joblib`](https://joblib.readthedocs.io/en/latest/index.html)) module and can benefit from more available CPU cores for multiple sequences.
 
 ### Testing
 Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
