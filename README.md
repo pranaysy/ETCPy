@@ -111,7 +111,7 @@ This will rebuild the compiled Cython functions as well.
 ### Usage
 Please check out [`demo.py`](./demo.py) to see ETC in action. [Functions for dealing with NumPy arrays](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L121) are also available. In addition to the core functionality of ETC, a [brief demo of Compression-Complexity Causality (CCC)](https://github.com/pranaysy/ETCPy/blob/master/demo.py#L158) is also included for uncoupled as well as coupled first-order auto-regressive processes.
 
-The implementations of ETC as well as CCC include multicore parallelization (using [`joblib`](https://joblib.readthedocs.io/en/latest/index.html)) module and can benefit from more available CPU cores for multiple sequences.
+The implementations of ETC as well as CCC include multicore parallelization (using [`joblib`](https://joblib.readthedocs.io/en/latest/index.html)) and can benefit from more available CPU cores for multiple sequences.
 
 ### Testing
 Most of the tests are property-based or behavior-based, and are implemented using the awesome [`hypothesis` framework](https://hypothesis.readthedocs.io/en/latest/).
