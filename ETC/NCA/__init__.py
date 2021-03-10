@@ -1,2 +1,2 @@
 #
-from ETC.NCA.compute import compute, get_causal, get_complexity, get_NCA
+from ETC.NCA.compute import compute_CCC, compute_CCM, get_causal, get_NCA
