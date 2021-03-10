@@ -6,7 +6,7 @@ This module has functions for multicore computation of NCA from a 2D matrix
 @author: Pranay S. Yadav
 """
 import pandas as pd
-from ETC.NCA import parallelize as NCAP
+from ETC.NCA import parallelize_jl as NCAP
 
 
 def compute_CCC(matrix, CCC_params):
