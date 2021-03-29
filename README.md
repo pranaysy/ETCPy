@@ -1,4 +1,7 @@
+[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/issues) [![GitHub forks](https://img.shields.io/github/forks/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/network) [![GitHub stars](https://img.shields.io/github/stars/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/stargazers) 
+
 # ETCPy
+
 **E**ffort-**T**o-**C**ompress in **Py**thon
  - [What is this](https://github.com/pranaysy/ETCPy#what-is-this)
    - [References](https://github.com/pranaysy/ETCPy#references)
