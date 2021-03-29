@@ -11,7 +11,7 @@ from functools import partial
 from ETC import compute_1D, compute_2D
 from ETC.seq.recode import partition, cast
 from ETC.seq.check import arraytype
-
+import pandas as pd
 import numpy as np
 import array
 
@@ -43,7 +43,7 @@ def get_params():
     return {"LEN_past": LEN_past, "ADD_meas": ADD_meas, "STEP_size": STEP_size}
 
 
-def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
+def _one_way(seq_x, seq_y, LEN_past, ADD_meas, STEP_size):
     """
     Estimate the Compression-Complexity based Causality for two sequences.
 
@@ -71,7 +71,7 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         Parameter "delta": Step-size for sliding chunks across both sequences. An overlap
         of 20-50% between successive chunks or windows suggested.
     n_partitions : int or bool, optional
-        Parameter "B": Number of bins. Smalles number of symbols that capture the time
+        Parameter "B": Number of bins. Smallest number of symbols that capture the time
         series dynamics. The default is False indicating that the data is already in the
         form of discrete symbolic sequences.
 
@@ -81,28 +81,6 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         Estimated Compression-Complexity based Causality for direction seq_y -> seq_x.
 
     """
-    # Sanity checks
-    assert len(seq_x) == len(seq_y), "ERROR: Sequences must have the same length!"
-    assert (
-        isinstance(LEN_past, int) and LEN_past > 1
-    ), "ERROR: LEN_past must be a positive integer!"
-    assert (
-        isinstance(ADD_meas, int) and ADD_meas > 1
-    ), "ERROR: ADD_meas must be a positive integer!"
-    assert (
-        isinstance(STEP_size, int) and STEP_size > 1
-    ), "ERROR: STEP_size must be a positive integer!"
-
-    # Partition data if requested with the specificed number of bins
-    if n_partitions:
-        seq_x = partition(seq_x, n_partitions)
-        seq_y = partition(seq_y, n_partitions)
-
-    # Check whether input is a discrete symbolic sequence
-    if not arraytype(seq_x):
-        seq_x = cast(seq_x)
-    if not arraytype(seq_y):
-        seq_y = cast(seq_y)
 
     # Set switch for operating differently on native vs numpy arrays
     if type(seq_x) == np.ndarray or type(seq_y) == np.ndarray:
@@ -115,11 +93,10 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
     LEN_to_check = LEN_past + ADD_meas
 
     # Initialize aggregators
-    l_1D = []
-    l_2D = []
+    dcc = []
 
     # Iterate over chunks of both sequences
-    for k in range(0, LEN - LEN_to_check, STEP_size):
+    for idx, k in enumerate(range(0, LEN - LEN_to_check, STEP_size)):
 
         ## Compression-Complexity of past values of seq_x
         # 1D ETC of a chunk of seq_x of length LEN_past
@@ -147,11 +124,95 @@ def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_partitions=False):
         ETC2D_delta = ETC2D_fin - ETC2D_ini
 
         # Aggregate Dynamic CCs
-        l_1D.append(ETC1D_delta)
-        l_2D.append(ETC2D_delta)
+        dcc.append({"Window": idx, "DCC_ETC1D": ETC1D_delta, "DCC_ETC2D": ETC2D_delta})
+
+    # Convert to DataFrame and compute differences
+    df = pd.DataFrame(dcc)
+    df["DFF_diff"] = df["DCC_ETC1D"] - df["DCC_ETC2D"]
 
     ## Compute Compession-Complexity Causality
     # Average of the difference: CC(X | X_past) - CC(X | Y_past + X_present)
-    CCC = (sum(l_1D) - sum(l_2D)) / len(l_1D)
+    CCC = df["DFF_diff"].mean()
     # print(f"CCC for seq_y -> seq_x = {CCC}")
-    return CCC
+    return CCC, df
+
+
+def compute(seq_x, seq_y, LEN_past, ADD_meas, STEP_size, n_bins=False, verbose=True):
+    """
+
+
+    Parameters
+    ----------
+    seq_x : TYPE
+        DESCRIPTION.
+    seq_y : TYPE
+        DESCRIPTION.
+    LEN_past : TYPE
+        DESCRIPTION.
+    ADD_meas : TYPE
+        DESCRIPTION.
+    STEP_size : TYPE
+        DESCRIPTION.
+    n_bins : TYPE, optional
+        DESCRIPTION. The default is False.
+    verbose : TYPE, optional
+        DESCRIPTION. The default is True.
+
+    Returns
+    -------
+    out : TYPE
+        DESCRIPTION.
+
+    """
+    # Sanity checks
+    assert len(seq_x) == len(seq_y), "ERROR: Sequences must have the same length!"
+    assert (
+        isinstance(LEN_past, int) and LEN_past > 1
+    ), "ERROR: LEN_past must be a positive integer!"
+    assert (
+        isinstance(ADD_meas, int) and ADD_meas > 1
+    ), "ERROR: ADD_meas must be a positive integer!"
+    assert (
+        isinstance(STEP_size, int) and STEP_size > 1
+    ), "ERROR: STEP_size must be a positive integer!"
+
+    # Partition data if requested with the specificed number of bins
+    if n_bins:
+        seq_x = partition(seq_x, n_bins)
+        seq_y = partition(seq_y, n_bins)
+
+    # Check whether input is a discrete symbolic sequence
+    if not arraytype(seq_x):
+        seq_x = cast(seq_x)
+    if not arraytype(seq_y):
+        seq_y = cast(seq_y)
+
+    # Compute in direction y -> x
+    CCC_y_to_x, df_y_to_x = _one_way(seq_x, seq_y, LEN_past, ADD_meas, STEP_size)
+    df_y_to_x["Direction"] = "y_to_x"
+
+    # Compute in direction x -> y
+    CCC_x_to_y, df_x_to_y = _one_way(seq_y, seq_x, LEN_past, ADD_meas, STEP_size)
+    df_x_to_y["Direction"] = "x_to_y"
+
+    # Prepare output
+    out = {
+        "Param_Len_Past": LEN_past,
+        "Param_Len_Prediction": ADD_meas,
+        "Param_Len_Slide": STEP_size,
+        "CCC_y_to_x": CCC_y_to_x,
+        "CCC_x_to_y": CCC_x_to_y,
+        "CCC_strength": abs(CCC_y_to_x - CCC_x_to_y),
+        "CCC_direction": "y_causes_x" if CCC_y_to_x > CCC_x_to_y else "x_causes_y",
+        "CCC_cause": "y" if CCC_y_to_x > CCC_x_to_y else "x",
+    }
+
+    # Verbose output requested, return informative DataFrame
+    if verbose:
+        # Aggregate DCC estimates and add metadata
+        df = pd.concat([df_y_to_x, df_x_to_y]).reset_index(drop=True)
+        out.update({"DCC": df})
+        return out
+
+    # Else return minimal output
+    return out
