@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt
       - name: Compile extensions
         run: |
-          python ETC/setup.py build_ext --inplace
+          python setup.py install
       - name: Test with pytest
         run: |
           pip install pytest
