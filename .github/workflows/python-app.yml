@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        python: [3.7, 3.8]
+        python: [3.6, 3.7, 3.8, 3.9]
 
     steps:
       - uses: actions/checkout@v2
@@ -28,9 +28,11 @@ jobs:
       - name: Compile extensions
         run: |
           python setup.py install
-      - name: Test with pytest
+      - name: Setup test environment
         run: |
           pip install pytest
           pip install pytest-cov
           pip install hypothesis
-          pytest ETC/ --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          pip install tox tox-gh-actions
+      - name: Run tests using tox
+        run: tox
