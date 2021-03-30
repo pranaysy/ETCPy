@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE) ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pranaysy/ETCPy/AppTests/restruct?label=Tests&style=for-the-badge)
 
 # ETCPy
 
