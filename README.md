@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE) ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pranaysy/ETCPy/AppTests/restruct?label=Tests&style=for-the-badge) ![Codecov branch](https://img.shields.io/codecov/c/gh/pranaysy/ETCPy/restruct?style=for-the-badge)
+[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE) ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/pranaysy/ETCPy/AppTests/restruct?label=Tests&style=for-the-badge) ![Codecov branch](https://img.shields.io/codecov/c/gh/pranaysy/ETCPy/restruct?style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/pranaysy/ETCPy/restruct?color=turquoise&style=for-the-badge) 
 
 # ETCPy
 
