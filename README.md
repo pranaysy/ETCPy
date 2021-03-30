@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/issues) [![GitHub forks](https://img.shields.io/github/forks/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/network) [![GitHub stars](https://img.shields.io/github/stars/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/stargazers) 
+[![GitHub license](https://img.shields.io/github/license/pranaysy/ETCPy?style=for-the-badge)](https://github.com/pranaysy/ETCPy/blob/master/LICENSE)
 
 # ETCPy
 
