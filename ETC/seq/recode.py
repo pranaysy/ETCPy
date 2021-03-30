@@ -39,12 +39,13 @@ def cast(seq):
 
         else:
             try:
-                out = array("I", seq)
-                if zeroes(out):
-                    print("> Input contains 0!")
-                    print('> Recode or partition using "ETC.seq.recode" ')
-                    return None
-                return out
+                if len(seq) > 0:
+                    out = array("I", seq)
+                    if zeroes(out):
+                        print("> Input contains 0!")
+                        print('> Recode or partition using "ETC.seq.recode" ')
+                        return None
+                    return out
 
             except TypeError as error:
                 print("ERROR:", error)
