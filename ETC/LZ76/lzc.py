@@ -9,9 +9,15 @@ from ETC.LZ76 import core
 from ETC.seq.recode import cast
 from ETC.seq.check import arraytype
 
+# from ETC import logger
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def compute_complexity(seq):
 
+    logger.info("LZC called")
     # Coerce input to appropriate array type, if not possible throw a fit & exit
     if not arraytype(seq):
         seq = cast(seq)
