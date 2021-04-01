@@ -34,7 +34,7 @@ jobs:
           pip install pytest-cov
           pip install hypothesis
       - name: Run tests using pytest
-        run: pytest ETC/ --cov=ETC/
+        run: pytest --cov=./
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
