@@ -6,7 +6,7 @@
 @author: Pranay S. Yadav
 """
 
-from ETC.seq import estimates
+from ETC.utils import estimates
 from array import array
 import numpy as np
 
