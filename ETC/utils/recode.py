@@ -10,7 +10,7 @@ from string import ascii_lowercase
 from random import shuffle, choices
 from array import array
 import numpy as np
-from ETC.seq.check import zeroes
+from ETC.utils.check import zeroes
 
 
 def cast(seq):
