@@ -9,7 +9,7 @@ from collections import Counter
 from math import log2
 from random import choices
 from random import seed as seedvalue
-from ETC.seq import estimates, recode
+from ETC.utils import estimates, recode
 from array import array
 import re
 
