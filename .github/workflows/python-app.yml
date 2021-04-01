@@ -27,11 +27,15 @@ jobs:
           pip install -r requirements.txt
       - name: Compile extensions
         run: |
-          python setup.py install
+          python ./setup.py build_ext --inplace
       - name: Setup test environment
         run: |
           pip install pytest
           pip install pytest-cov
           pip install hypothesis
       - name: Run tests using pytest
-        run: pytest ETC/ --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        run: python -m pytest --cov-report term-missing --cov=./ETC/ ./ETC/tests
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          fail_ci_if_error: true
