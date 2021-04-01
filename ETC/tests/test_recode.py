@@ -8,7 +8,7 @@
 from array import array
 from hypothesis import given
 from hypothesis import strategies as st
-from ETC.seq import recode
+from ETC.utils import recode
 from collections import Counter
 from string import ascii_lowercase
 
