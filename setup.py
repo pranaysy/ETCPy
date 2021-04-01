@@ -17,7 +17,10 @@ VERSION = '1.3.5'
 
 from setuptools import setup, find_packages
 from Cython.Build import cythonize
+from pathlib import Path
 import numpy
+
+[print(x) for x in Path.cwd().iterdir()]
 
 setup(
     ext_modules=cythonize(
