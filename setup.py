@@ -20,16 +20,11 @@ from Cython.Build import cythonize
 from pathlib import Path
 import numpy
 
-[print(x) for x in Path.cwd().iterdir()]
+cython_modules = [*Path.cwd().rglob("*.pyx")]
 
 setup(
     ext_modules=cythonize(
-        [
-            "./ETC/NSRWS/x1D/core.pyx",
-            "./ETC/NSRWS/x2D/core.pyx",
-            "./ETC/seq/estimates.pyx",
-            "./ETC/LZ76/core.pyx",
-        ],
+        cython_modules,
         annotate=False,
         compiler_directives={"language_level": "3"},
     ),
