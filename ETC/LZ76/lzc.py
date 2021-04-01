@@ -6,8 +6,8 @@
 @author: Pranay S. Yadav
 """
 from ETC.LZ76 import core
-from ETC.seq.recode import cast
-from ETC.seq.check import arraytype
+from ETC.utils.recode import cast
+from ETC.utils.check import arraytype
 
 # from ETC import logger
 import logging

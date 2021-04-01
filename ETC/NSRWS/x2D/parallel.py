@@ -15,7 +15,7 @@ from multiprocessing import Pool
 
 # Import local modules
 import ETC
-from ETC.seq.process import entropy
+from ETC.utils.process import entropy
 from ETC.helper.compute_markov_transition_probs import sample_sequence
 
 # Function definitions

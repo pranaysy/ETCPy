@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "ETC.seq.estimates",
+        "name": "ETC.utils.estimates",
         "sources": [
             "./ETC/seq/estimates.pyx"
         ]
     },
-    "module_name": "ETC.seq.estimates"
+    "module_name": "ETC.utils.estimates"
 }
 END: Cython Metadata */
 
@@ -2139,7 +2139,7 @@ static PyTypeObject *__pyx_ptype_5numpy_broadcast = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
-/* Module declarations from 'ETC.seq.estimates' */
+/* Module declarations from 'ETC.utils.estimates' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2189,11 +2189,11 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, 
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int = { "unsigned int", NULL, sizeof(unsigned int), { 0 }, 0, IS_UNSIGNED(unsigned int) ? 'U' : 'I', IS_UNSIGNED(unsigned int), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_unsigned_int__const__ = { "const unsigned int", NULL, sizeof(unsigned int const ), { 0 }, 0, IS_UNSIGNED(unsigned int const ) ? 'U' : 'I', IS_UNSIGNED(unsigned int const ), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
-#define __Pyx_MODULE_NAME "ETC.seq.estimates"
+#define __Pyx_MODULE_NAME "ETC.utils.estimates"
 extern int __pyx_module_is_main_ETC__seq__estimates;
 int __pyx_module_is_main_ETC__seq__estimates = 0;
 
-/* Implementation of 'ETC.seq.estimates' */
+/* Implementation of 'ETC.utils.estimates' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_ValueError;
@@ -2717,7 +2717,7 @@ static double __pyx_f_3ETC_3seq_9estimates_entropy(__Pyx_memviewslice __pyx_v_x,
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
-  __Pyx_WriteUnraisable("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("ETC.utils.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_counts_view, 1);
@@ -2740,7 +2740,7 @@ static PyObject *__pyx_pw_3ETC_3seq_9estimates_1entropy(PyObject *__pyx_self, Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.utils.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -2770,7 +2770,7 @@ static PyObject *__pyx_pf_3ETC_3seq_9estimates_entropy(CYTHON_UNUSED PyObject *_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.seq.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.utils.estimates.entropy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
@@ -2896,7 +2896,7 @@ static int __pyx_f_3ETC_3seq_9estimates_equality(__Pyx_memviewslice __pyx_v_x, C
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_WriteUnraisable("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("ETC.utils.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2919,7 +2919,7 @@ static PyObject *__pyx_pw_3ETC_3seq_9estimates_3equality(PyObject *__pyx_self, P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.utils.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -2949,7 +2949,7 @@ static PyObject *__pyx_pf_3ETC_3seq_9estimates_2equality(CYTHON_UNUSED PyObject 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ETC.seq.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ETC.utils.estimates.equality", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
@@ -16941,7 +16941,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.seq.estimates.array", /*tp_name*/
+  "ETC.utils.estimates.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -17060,7 +17060,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.seq.estimates.Enum", /*tp_name*/
+  "ETC.utils.estimates.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -17321,7 +17321,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.seq.estimates.memoryview", /*tp_name*/
+  "ETC.utils.estimates.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -17459,7 +17459,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ETC.seq.estimates._memoryviewslice", /*tp_name*/
+  "ETC.utils.estimates._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -18330,8 +18330,8 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ETC.seq.estimates")) {
-      if (unlikely(PyDict_SetItemString(modules, "ETC.seq.estimates", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ETC.utils.estimates")) {
+      if (unlikely(PyDict_SetItemString(modules, "ETC.utils.estimates", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -18534,11 +18534,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init ETC.seq.estimates", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ETC.utils.estimates", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ETC.seq.estimates");
+    PyErr_SetString(PyExc_ImportError, "init ETC.utils.estimates");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

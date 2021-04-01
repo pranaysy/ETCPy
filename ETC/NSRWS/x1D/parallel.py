@@ -13,9 +13,9 @@ from multiprocessing import Pool
 
 # Import local modules
 import ETC
-from ETC.seq.process import entropy
+from ETC.utils.process import entropy
 
-# from ETC.seq.process import entropy
+# from ETC.utils.process import entropy
 import numpy as np
 
 # Function definitions
@@ -36,8 +36,8 @@ def _compute_single_file(filepath, order=2):
 
     """
     # Read file as a sequence
-    seq = ETC.seq.IO.read(filepath)
-    seq = ETC.seq.recode.recode_lexical(seq)
+    seq = ETC.utils.IO.read(filepath)
+    seq = ETC.utils.recode.recode_lexical(seq)
 
     # Filename for writing output of ETC computation
     fname = filepath.with_name(filepath.stem + f"_ETC_order{order}.csv")
@@ -128,7 +128,7 @@ def _compute_single_seq(seq):
 #         index of sequence, length of sequence and ETC estimate.
 
 #     """
-#     data = ETC.seq.recode.recode_lexical(seq[1])
+#     data = ETC.utils.recode.recode_lexical(seq[1])
 
 #     # Prepare output dictionary
 #     out = {"item": seq[0], "length": len(data)}

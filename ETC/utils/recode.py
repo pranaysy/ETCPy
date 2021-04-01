@@ -28,13 +28,13 @@ def cast(seq):
             except TypeError as error:
                 print("ERROR:", error)
                 print("> Input must be a list/tuple/array of positive integers!")
-                print('> Recode or partition using "ETC.seq.recode"')
+                print('> Recode or partition using "ETC.utils.recode"')
                 return None
 
             except OverflowError as error:
                 print("ERROR:", error)
                 print("> Input must be a list/tuple/array of positive integers!")
-                print('> Recode or partition using "ETC.seq.recode"')
+                print('> Recode or partition using "ETC.utils.recode"')
                 return None
 
         else:
@@ -43,20 +43,20 @@ def cast(seq):
                     out = array("I", seq)
                     if zeroes(out):
                         print("> Input contains 0!")
-                        print('> Recode or partition using "ETC.seq.recode" ')
+                        print('> Recode or partition using "ETC.utils.recode" ')
                         return None
                     return out
 
             except TypeError as error:
                 print("ERROR:", error)
                 print("> Input must be a list/tuple/array of positive integers!")
-                print('> Recode or partition using "ETC.seq.recode"')
+                print('> Recode or partition using "ETC.utils.recode"')
                 return None
 
             except OverflowError as error:
                 print("ERROR:", error)
                 print("> Input must be a list/tuple/array of positive integers!")
-                print('> Recode or partition using "ETC.seq.recode"')
+                print('> Recode or partition using "ETC.utils.recode"')
                 return None
 
     print("No input sequence provided.")

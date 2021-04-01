@@ -6,9 +6,9 @@
 @author: Pranay S. Yadav
 """
 
-from ETC.seq import estimates as ce
-from ETC.seq.recode import cast
-from ETC.seq.IO import save
+from ETC.utils import estimates as ce
+from ETC.utils.recode import cast
+from ETC.utils.IO import save
 from ETC.NSRWS.x1D import core as cc
 from ETC.NSRWS.x1D.onestep import _onestep
 

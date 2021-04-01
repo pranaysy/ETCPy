@@ -9,8 +9,8 @@ Compute the Compression-Complexity based Causality for two sequences.
 # Import functions
 from functools import partial
 from ETC import compute_1D, compute_2D
-from ETC.seq.recode import partition, cast
-from ETC.seq.check import arraytype
+from ETC.utils.recode import partition, cast
+from ETC.utils.check import arraytype
 import pandas as pd
 import numpy as np
 import array

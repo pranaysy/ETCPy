@@ -10,8 +10,8 @@ from itertools import compress, islice
 from time import perf_counter
 
 from ETC.NSRWS.x2D import core
-from ETC.seq.recode import cast
-from ETC.seq.check import arraytype
+from ETC.utils.recode import cast
+from ETC.utils.check import arraytype
 
 
 def _mask_and_count(seq_x, seq_y, mask, order):

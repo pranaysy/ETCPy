@@ -38,8 +38,8 @@ def _compute_distance(inputs):
     """
     idx, seqs = inputs
 
-    S1 = ETC.seq.recode.recode_lexical(seqs[0])
-    S2 = ETC.seq.recode.recode_lexical(seqs[1])
+    S1 = ETC.utils.recode.recode_lexical(seqs[0])
+    S2 = ETC.utils.recode.recode_lexical(seqs[1])
 
     # Prepare output dictionary
     out = {"item": idx, "length_seq1": len(S1), "length_seq2": len(S2)}

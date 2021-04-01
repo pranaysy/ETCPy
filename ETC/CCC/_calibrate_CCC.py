@@ -7,7 +7,7 @@
 """
 
 from ETC import compute_1D, compute_2D, generate
-from ETC.seq.recode import partition
+from ETC.utils.recode import partition
 from itertools import product
 from functools import partial
 from multiprocessing import Pool
