@@ -20,7 +20,7 @@ from Cython.Build import cythonize
 from pathlib import Path
 import numpy
 
-cython_modules = [*Path.cwd().rglob("*.pyx")]
+cython_modules = [str(x) for x in Path.cwd().rglob("*.pyx")]
 
 setup(
     ext_modules=cythonize(
